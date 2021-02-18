@@ -1,0 +1,44 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Lint changelog file
+        uses: avto-dev/markdown-lint@v1
+        with:
+          # Commenting due to
+          # https://github.com/avto-dev/markdown-lint/blob/aab9be9823fcd706f6da3e6ad6c64874c23fbd4c/lint/rules/changelog.js#L51-L71
+          # TODO: adhere to, or overwrite above rule and uncomment rules
+          # rules: "/lint/rules/changelog.js"
+          config: "/lint/config/changelog.yml"
+          args: "./CHANGELOG.md"
+
+      - name: Lint markdown files
+        uses: avto-dev/markdown-lint@v1
+        with:
+          args: "./**/*.md -i ./CHANGELOG.md"
+
+      - name: Install root dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build 🔧
+        run: npm run compile
+
+      - name: Generate Documentation 📜
+        run: npm run docs
+
+      - name: Test Docs
+        run: npm run docs-test
