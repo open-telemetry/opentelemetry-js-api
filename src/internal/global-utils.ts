@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { diag } from '..';
 import { ContextManager } from '../context/types';
 import { DiagLogger } from '../diag/logger';
 import { DiagLogLevel } from '../diag/logLevel';
@@ -40,16 +41,26 @@ export function registerGlobal<Type extends keyof OTelGlobalAPI>(
   const api = _global[GLOBAL_OPENTELEMETRY_API_KEY]!;
   if (api[type]) {
     // already registered an API of this type
-    throw new Error(
-      `@opentelemetry/api: Attempted duplicate registration of API: ${type}`
+    diag.error(
+      String(
+        new Error(
+          `@opentelemetry/api: Attempted duplicate registration of API: ${type}`
+        )
+      )
     );
+    return;
   }
 
   if (api.version != VERSION) {
     // All registered APIs must be of the same version exactly
-    throw new Error(
-      '@opentelemetry/api: All API registration versions must match'
+    diag.error(
+      String(
+        new Error(
+          '@opentelemetry/api: All API registration versions must match'
+        )
+      )
     );
+    return;
   }
 
   api[type] = instance;
