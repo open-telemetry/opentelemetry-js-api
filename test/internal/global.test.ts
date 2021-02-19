@@ -15,10 +15,8 @@
  */
 
 import * as assert from 'assert';
-import {
-  GLOBAL_CONTEXT_MANAGER_API_KEY,
-  _global,
-} from '../../src/api/global-utils';
+import { getGlobal } from '../../src/internal/global-utils';
+import { _globalThis } from '../../src/platform';
 import { NoopContextManager } from '../../src/context/NoopContextManager';
 
 const api1 = require('../../src') as typeof import('../../src');
@@ -72,9 +70,16 @@ describe('Global Utils', () => {
 
   it('should return the module NoOp implementation if the version is a mismatch', () => {
     const original = api1.context['_getContextManager']();
-    api1.context.setGlobalContextManager(new NoopContextManager());
-    const afterSet = _global[GLOBAL_CONTEXT_MANAGER_API_KEY]!(-1);
+    const newContextManager = new NoopContextManager();
+    api1.context.setGlobalContextManager(newContextManager);
 
-    assert.strictEqual(original, afterSet);
+    assert.strictEqual(api1.context['_getContextManager'](), newContextManager);
+
+    const globalInstance = getGlobal('context');
+    assert.ok(globalInstance);
+    // @ts-ignore we are modifying internals for testing purposes here
+    _globalThis[Symbol.for('io.opentelemetry.js.api')].version = '0.0.1';
+
+    assert.strictEqual(api1.context['_getContextManager'](), original);
   });
 });

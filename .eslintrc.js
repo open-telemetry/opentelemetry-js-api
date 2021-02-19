@@ -44,6 +44,7 @@ module.exports = {
             "files": ["test/**/*.ts"],
             "rules": {
                 "no-empty": "off",
+                "@typescript-eslint/ban-ts-comment": "off",
                 "@typescript-eslint/ban-ts-ignore": "off",
                 "@typescript-eslint/no-empty-function": "off",
                 "@typescript-eslint/no-explicit-any": "off",

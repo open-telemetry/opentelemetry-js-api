@@ -35,7 +35,6 @@ import api, {
   diagLoggerFunctions,
 } from '../../src';
 import { DiagAPI } from '../../src/api/diag';
-import { _global } from '../../src/api/global-utils';
 import { NoopSpan } from '../../src/trace/NoopSpan';
 
 describe('API', () => {
