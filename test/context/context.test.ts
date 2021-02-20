@@ -17,15 +17,43 @@
 import * as assert from 'assert';
 import {
   createContextKey,
+  getSpan,
   isInstrumentationSuppressed,
   ROOT_CONTEXT,
   suppressInstrumentation,
   unsuppressInstrumentation,
+  withSpan,
 } from '../../src/context/context';
+import { NoopSpan } from '../../src/trace/NoopSpan';
+import { Context, context, NoopContextManager } from '../../src';
 
 const SUPPRESS_INSTRUMENTATION_KEY = createContextKey(
   'OpenTelemetry Context Key SUPPRESS_INSTRUMENTATION'
 );
+
+// simple ContextManager supporting sync calls (NoopContextManager.active returns always ROOT_CONTEXT)
+class SimpleContextManager extends NoopContextManager {
+  active(): Context {
+    return this._activeContext;
+  }
+
+  with<A extends unknown[], F extends (...args: A) => ReturnType<F>>(
+    context: Context,
+    fn: F,
+    thisArg?: ThisParameterType<F>,
+    ...args: A
+  ): ReturnType<F> {
+    const prevContext = this._activeContext;
+    try {
+      this._activeContext = context;
+      return fn.call(thisArg, ...args);
+    } finally {
+      this._activeContext = prevContext;
+    }
+  }
+
+  private _activeContext = ROOT_CONTEXT;
+}
 
 describe('Context Helpers', () => {
   describe('suppressInstrumentation', () => {
@@ -76,6 +104,33 @@ describe('Context Helpers', () => {
 
         assert.equal(value, false);
       });
+    });
+  });
+
+  describe('withSpan', () => {
+    before(() => {
+      const mgr = new SimpleContextManager();
+      context.setGlobalContextManager(mgr);
+    });
+
+    after(() => {
+      context.disable();
+    });
+
+    it('should run callback with span on context', () => {
+      const span = new NoopSpan();
+
+      function fnWithThis(this: string, a: string, b: number): string {
+        assert.strictEqual(getSpan(context.active()), span);
+        assert.strictEqual(this, 'that');
+        assert.strictEqual(arguments.length, 2);
+        assert.strictEqual(a, 'one');
+        assert.strictEqual(b, 2);
+        return 'done';
+      }
+
+      const res = withSpan(span, fnWithThis, 'that', 'one', 2);
+      assert.strictEqual(res, 'done');
     });
   });
 });

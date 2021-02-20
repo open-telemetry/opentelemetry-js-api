@@ -44,6 +44,12 @@ describe('Global Utils', () => {
     api1.trace.disable();
   });
 
+  afterEach(() => {
+    api1.context.disable();
+    api1.propagation.disable();
+    api1.trace.disable();
+  });
+
   it('should change the global context manager', () => {
     const original = api1.context['_getContextManager']();
     const newContextManager = new NoopContextManager();

@@ -15,7 +15,7 @@
  */
 
 import { Context } from './types';
-import { Baggage, Span, SpanContext } from '../';
+import { Baggage, Span, SpanContext, context } from '../';
 import { NoopSpan } from '../trace/NoopSpan';
 
 /**
@@ -53,6 +53,28 @@ export function getSpan(context: Context): Span | undefined {
  */
 export function setSpan(context: Context, span: Span): Context {
   return context.setValue(SPAN_KEY, span);
+}
+
+/**
+ * Helper to execute the given function on a new context created from
+ * active context with given span set.
+ * Note: The global context manager is used to get active context.
+ * @param span span to set on context
+ * @param fn function to execute in new context
+ * @param thisArg optional receiver to be used for calling fn
+ * @param args optional arguments forwarded to fn
+ */
+export function withSpan<
+  A extends unknown[],
+  F extends (...args: A) => ReturnType<F>
+>(
+  span: Span,
+  fn: F,
+  thisArg?: ThisParameterType<F>,
+  ...args: A
+): ReturnType<F> {
+  const ctx = setSpan(context.active(), span);
+  return context.with(ctx, fn, thisArg, ...args);
 }
 
 /**
