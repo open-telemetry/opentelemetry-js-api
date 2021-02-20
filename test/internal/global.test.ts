@@ -46,6 +46,12 @@ describe('Global Utils', () => {
     delete _globalThis[Symbol.for('io.opentelemetry.js.api.0')];
   });
 
+  afterEach(() => {
+    api1.context.disable();
+    api1.propagation.disable();
+    api1.trace.disable();
+  });
+
   it('should change the global context manager', () => {
     const original = api1.context['_getContextManager']();
     const newContextManager = new NoopContextManager();
