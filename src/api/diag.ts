@@ -81,7 +81,8 @@ export class DiagAPI implements DiagLogger {
       logger: DiagLogger = _noopLogger,
       logLevel: DiagLogLevel = DiagLogLevel.INFO
     ) => {
-      registerGlobal('diag', createLogLevelDiagLogger(logLevel, logger));
+      logger = logger === self ? self.getLoggingDestination() : logger;
+      registerGlobal('diag', createLogLevelDiagLogger(logLevel, logger), true);
     };
 
     self.disable = () => {
@@ -101,9 +102,10 @@ export class DiagAPI implements DiagLogger {
   public getLogger!: () => DiagLogger;
 
   /**
-   * Set the DiagLogger instance
-   * @param logger - [Optional] The DiagLogger instance to set as the default logger, if not provided it will set it back as a noop
-   * @param logLevel - [Optional] The DiagLogLevel used to filter logs sent to the logger, if not provided it will default to INFO
+   * Set the global DiagLogger and DiagLogLevel
+   *
+   * @param logger - [Optional] The DiagLogger instance to set as the default logger. If not provided it will set it back as a noop.
+   * @param logLevel - [Optional] The DiagLogLevel used to filter logs sent to the logger. If not provided it will default to INFO.
    * @returns The previously registered DiagLogger
    */
   public setLogger!: (logger?: DiagLogger, logLevel?: DiagLogLevel) => void;

@@ -196,7 +196,7 @@ describe('LogLevelFilter DiagLogger', () => {
 
           levelMap.forEach(masterLevelMap => {
             describe(`when diag logger is set to ${masterLevelMap.message}`, () => {
-              it('diag setLogLevel is not ignored and using default logger', () => {
+              it('diag.setLogger level is not ignored and using default logger', () => {
                 diag.setLogger(dummyLogger, masterLevelMap.level);
 
                 const testLogger = createLogLevelDiagLogger(map.level);
@@ -216,7 +216,27 @@ describe('LogLevelFilter DiagLogger', () => {
                 });
               });
 
-              it('diag setLogLevel is ignored when using a specific logger', () => {
+              it('diag.setLogger level is ignored and using diag as the logger', () => {
+                diag.setLogger(dummyLogger, masterLevelMap.level);
+                diag.setLogger(diag, map.level);
+
+                diag[fName](`${fName} called %s`, 'param1');
+                diagLoggerFunctions.forEach(lName => {
+                  if (
+                    fName === lName &&
+                    map.ignoreFuncs.indexOf(lName) === -1
+                  ) {
+                    assert.deepStrictEqual(calledArgs[lName], [
+                      `${fName} called %s`,
+                      'param1',
+                    ]);
+                  } else {
+                    assert.strictEqual(calledArgs[lName], null);
+                  }
+                });
+              });
+
+              it('diag.setLogger level is ignored when using a specific logger', () => {
                 diag.setLogger(dummyLogger, masterLevelMap.level);
 
                 const testLogger = createLogLevelDiagLogger(
@@ -241,7 +261,7 @@ describe('LogLevelFilter DiagLogger', () => {
             });
           });
 
-          it('diag setLogLevel and logger should log', () => {
+          it('diag.setLogger level and logger should log', () => {
             diag.setLogger(dummyLogger, map.level);
             diag[fName](`${fName} called %s`, 'param1');
             diagLoggerFunctions.forEach(lName => {

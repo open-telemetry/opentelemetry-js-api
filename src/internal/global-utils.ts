@@ -29,7 +29,8 @@ const _global = _globalThis as OTelGlobal;
 
 export function registerGlobal<Type extends keyof OTelGlobalAPI>(
   type: Type,
-  instance: OTelGlobalAPI[Type]
+  instance: OTelGlobalAPI[Type],
+  allowOverride = false
 ): void {
   _global[GLOBAL_OPENTELEMETRY_API_KEY] = _global[
     GLOBAL_OPENTELEMETRY_API_KEY
@@ -38,7 +39,7 @@ export function registerGlobal<Type extends keyof OTelGlobalAPI>(
   };
 
   const api = _global[GLOBAL_OPENTELEMETRY_API_KEY]!;
-  if (api[type]) {
+  if (!allowOverride && api[type]) {
     // already registered an API of this type
     diag.error(
       String(
