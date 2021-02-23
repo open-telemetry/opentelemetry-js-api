@@ -89,7 +89,7 @@ export function createLogLevelDiagLogger(
   }
 
   if (!logger) {
-    logger = diag.getLogger();
+    logger = diag.getLoggingDestination();
   }
 
   function _filterFunc(

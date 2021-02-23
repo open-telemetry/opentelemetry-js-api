@@ -204,8 +204,7 @@ describe('LogLevelFilter DiagLogger', () => {
                 diagLoggerFunctions.forEach(lName => {
                   if (
                     fName === lName &&
-                    map.ignoreFuncs.indexOf(lName) === -1 &&
-                    masterLevelMap.ignoreFuncs.indexOf(lName) === -1
+                    map.ignoreFuncs.indexOf(lName) === -1
                   ) {
                     assert.deepStrictEqual(calledArgs[lName], [
                       `${fName} called %s`,
