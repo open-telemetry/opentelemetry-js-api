@@ -118,7 +118,7 @@ export function createLogLevelDiagLogger(
     newLogger[name] = _filterFunc(logger, name, levelMap[i].l);
   }
 
-  newLogger.getDestinationlogger = () => logger!;
+  newLogger.getLoggingDestination = () => logger!;
 
   return newLogger;
 }

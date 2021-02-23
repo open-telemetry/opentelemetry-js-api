@@ -74,7 +74,7 @@ export class DiagAPI implements DiagLogger {
     };
 
     self.getLoggingDestination = () => {
-      return getGlobal('diag')?.getDestinationlogger() ?? _noopLogger;
+      return getGlobal('diag')?.getLoggingDestination() ?? _noopLogger;
     };
 
     self.setLogger = (

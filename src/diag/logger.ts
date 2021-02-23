@@ -60,7 +60,7 @@ export interface DiagLogger {
 }
 
 export interface FilteredDiagLogger extends DiagLogger {
-  getDestinationlogger(): DiagLogger;
+  getLoggingDestination(): DiagLogger;
 }
 
 // DiagLogger implementation
@@ -86,7 +86,7 @@ export function createNoopDiagLogger(): FilteredDiagLogger {
     diagLogger[diagLoggerFunctions[i]] = noopLogFunction;
   }
 
-  diagLogger.getDestinationlogger = () => diagLogger;
+  diagLogger.getLoggingDestination = () => diagLogger;
 
   return diagLogger;
 }
