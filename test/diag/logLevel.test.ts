@@ -50,8 +50,7 @@ describe('LogLevelFilter DiagLogger', () => {
 
   beforeEach(() => {
     // Set no logger so that sinon doesn't complain about TypeError: Attempted to wrap xxxx which is already wrapped
-    diag.setLogger();
-    diag.setLogLevel(DiagLogLevel.INFO);
+    diag.disable();
 
     // mock
     dummyLogger = {} as DiagLogger;
@@ -164,8 +163,7 @@ describe('LogLevelFilter DiagLogger', () => {
           });
 
           it('should use default logger for undefined and log', () => {
-            diag.setLogger(dummyLogger);
-            diag.setLogLevel(DiagLogLevel.ALL);
+            diag.setLogger(dummyLogger, DiagLogLevel.ALL);
             const testLogger = createLogLevelDiagLogger(map.level, undefined);
             testLogger[fName](`${fName} called %s`, 'param1');
             diagLoggerFunctions.forEach(lName => {
@@ -181,8 +179,7 @@ describe('LogLevelFilter DiagLogger', () => {
           });
 
           it('should use default logger for null and log', () => {
-            diag.setLogger(dummyLogger);
-            diag.setLogLevel(DiagLogLevel.ALL);
+            diag.setLogger(dummyLogger, DiagLogLevel.ALL);
             const testLogger = createLogLevelDiagLogger(map.level, null);
             testLogger[fName](`${fName} called %s`, 'param1');
             diagLoggerFunctions.forEach(lName => {
@@ -200,16 +197,14 @@ describe('LogLevelFilter DiagLogger', () => {
           levelMap.forEach(masterLevelMap => {
             describe(`when diag logger is set to ${masterLevelMap.message}`, () => {
               it('diag setLogLevel is not ignored and using default logger', () => {
-                diag.setLogger(dummyLogger);
-                diag.setLogLevel(masterLevelMap.level);
+                diag.setLogger(dummyLogger, masterLevelMap.level);
 
                 const testLogger = createLogLevelDiagLogger(map.level);
                 testLogger[fName](`${fName} called %s`, 'param1');
                 diagLoggerFunctions.forEach(lName => {
                   if (
                     fName === lName &&
-                    map.ignoreFuncs.indexOf(lName) === -1 &&
-                    masterLevelMap.ignoreFuncs.indexOf(lName) === -1
+                    map.ignoreFuncs.indexOf(lName) === -1
                   ) {
                     assert.deepStrictEqual(calledArgs[lName], [
                       `${fName} called %s`,
@@ -222,12 +217,11 @@ describe('LogLevelFilter DiagLogger', () => {
               });
 
               it('diag setLogLevel is ignored when using a specific logger', () => {
-                diag.setLogger(dummyLogger);
-                diag.setLogLevel(masterLevelMap.level);
+                diag.setLogger(dummyLogger, masterLevelMap.level);
 
                 const testLogger = createLogLevelDiagLogger(
                   map.level,
-                  diag.getLogger()
+                  diag.getLoggingDestination()
                 );
                 testLogger[fName](`${fName} called %s`, 'param1');
                 diagLoggerFunctions.forEach(lName => {
@@ -248,8 +242,7 @@ describe('LogLevelFilter DiagLogger', () => {
           });
 
           it('diag setLogLevel and logger should log', () => {
-            diag.setLogger(dummyLogger);
-            diag.setLogLevel(map.level);
+            diag.setLogger(dummyLogger, map.level);
             diag[fName](`${fName} called %s`, 'param1');
             diagLoggerFunctions.forEach(lName => {
               if (fName === lName && map.ignoreFuncs.indexOf(lName) === -1) {

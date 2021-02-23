@@ -16,8 +16,7 @@
 
 import { diag } from '..';
 import { ContextManager } from '../context/types';
-import { DiagLogger } from '../diag/logger';
-import { DiagLogLevel } from '../diag/logLevel';
+import { FilteredDiagLogger } from '../diag/logger';
 import { _globalThis } from '../platform';
 import { TextMapPropagator } from '../propagation/TextMapPropagator';
 import type { TracerProvider } from '../trace/tracer_provider';
@@ -91,10 +90,7 @@ type OTelGlobal = {
 type OTelGlobalAPI = {
   version: string;
 
-  diagLogger?: DiagLogger;
-  filteredDiagLogger?: DiagLogger;
-  diagLogLevel?: DiagLogLevel;
-
+  diag?: FilteredDiagLogger;
   trace?: TracerProvider;
   context?: ContextManager;
   propagation?: TextMapPropagator;

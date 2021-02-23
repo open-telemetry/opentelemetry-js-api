@@ -48,6 +48,7 @@ describe('DiagLogger functions', () => {
     diagLoggerFunctions.forEach(fName => {
       calledArgs[fName] = null;
     });
+    diag.disable();
   });
 
   describe('constructor', () => {
@@ -68,8 +69,7 @@ describe('DiagLogger functions', () => {
       });
 
       it(`diag should log with ${fName} message`, () => {
-        diag.setLogger(dummyLogger);
-        diag.setLogLevel(DiagLogLevel.ALL);
+        diag.setLogger(dummyLogger, DiagLogLevel.ALL);
         diag[fName](`${fName} called %s`, 'param1');
         diagLoggerFunctions.forEach(lName => {
           if (fName === lName) {

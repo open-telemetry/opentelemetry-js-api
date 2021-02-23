@@ -53,7 +53,7 @@ export class DiagAPI implements DiagLogger {
     function _logProxy(funcName: keyof DiagLogger): DiagLogFunction {
       return function () {
         const orgArguments = arguments as unknown;
-        const theLogger = getGlobal('filteredDiagLogger') || _noopLogger;
+        const theLogger = self.getLogger();
         const theFunc = theLogger[funcName];
         if (typeof theFunc === 'function') {
           return theFunc.apply(
@@ -64,44 +64,28 @@ export class DiagAPI implements DiagLogger {
       };
     }
 
-    function getLevel(): DiagLogLevel {
-      return getGlobal('diagLogLevel') ?? DiagLogLevel.INFO;
-    }
-
     // Using self local variable for minification purposes as 'this' cannot be minified
     const self = this;
 
     // DiagAPI specific functions
 
     self.getLogger = (): DiagLogger => {
-      return getGlobal('diagLogger') || _noopLogger;
+      return getGlobal('diag') || _noopLogger;
     };
 
-    self.setLogger = (logger?: DiagLogger): DiagLogger => {
-      const previous = getGlobal('diagLogger') || _noopLogger;
-
-      unregisterGlobal('diagLogger');
-      unregisterGlobal('filteredDiagLogger');
-
-      const newLogger = logger || _noopLogger;
-      registerGlobal('diagLogger', newLogger);
-      registerGlobal(
-        'filteredDiagLogger',
-        createLogLevelDiagLogger(getLevel(), newLogger)
-      );
-
-      return previous;
+    self.getLoggingDestination = () => {
+      return getGlobal('diag')?.getLoggingDestination() ?? _noopLogger;
     };
 
-    self.setLogLevel = (maxLogLevel: DiagLogLevel) => {
-      const logger = self.getLogger();
-      unregisterGlobal('diagLogLevel');
-      unregisterGlobal('filteredDiagLogger');
-      registerGlobal('diagLogLevel', maxLogLevel);
-      registerGlobal(
-        'filteredDiagLogger',
-        createLogLevelDiagLogger(maxLogLevel, logger)
-      );
+    self.setLogger = (
+      logger: DiagLogger = _noopLogger,
+      logLevel: DiagLogLevel = DiagLogLevel.INFO
+    ) => {
+      registerGlobal('diag', createLogLevelDiagLogger(logLevel, logger));
+    };
+
+    self.disable = () => {
+      unregisterGlobal('diag');
     };
 
     for (let i = 0; i < diagLoggerFunctions.length; i++) {
@@ -119,12 +103,10 @@ export class DiagAPI implements DiagLogger {
   /**
    * Set the DiagLogger instance
    * @param logger - [Optional] The DiagLogger instance to set as the default logger, if not provided it will set it back as a noop
+   * @param logLevel - [Optional] The DiagLogLevel used to filter logs sent to the logger, if not provided it will default to INFO
    * @returns The previously registered DiagLogger
    */
-  public setLogger!: (logger?: DiagLogger) => DiagLogger;
-
-  /** Set the default maximum diagnostic logging level */
-  public setLogLevel!: (maxLogLevel: DiagLogLevel) => void;
+  public setLogger!: (logger?: DiagLogger, logLevel?: DiagLogLevel) => void;
 
   // DiagLogger implementation
   public verbose!: DiagLogFunction;
@@ -132,4 +114,11 @@ export class DiagAPI implements DiagLogger {
   public info!: DiagLogFunction;
   public warn!: DiagLogFunction;
   public error!: DiagLogFunction;
+
+  /**
+   * Unregister the global logger and return to Noop
+   */
+  public disable!: () => void;
+
+  public getLoggingDestination!: () => DiagLogger;
 }
