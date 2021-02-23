@@ -89,7 +89,7 @@ export function createLogLevelDiagLogger(
   }
 
   if (!logger) {
-    logger = diag.getLoggingDestination();
+    logger = diag.getLogger().getChild();
   }
 
   function _filterFunc(
@@ -118,7 +118,7 @@ export function createLogLevelDiagLogger(
     newLogger[name] = _filterFunc(logger, name, levelMap[i].l);
   }
 
-  newLogger.getLoggingDestination = () => logger!;
+  newLogger.getChild = () => logger!;
 
   return newLogger;
 }

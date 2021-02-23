@@ -19,6 +19,7 @@ import {
   DiagLogFunction,
   createNoopDiagLogger,
   diagLoggerFunctions,
+  FilteredDiagLogger,
 } from '../diag/logger';
 import { DiagLogLevel, createLogLevelDiagLogger } from '../diag/logLevel';
 import {
@@ -69,19 +70,15 @@ export class DiagAPI implements DiagLogger {
 
     // DiagAPI specific functions
 
-    self.getLogger = (): DiagLogger => {
+    self.getLogger = (): FilteredDiagLogger => {
       return getGlobal('diag') || _noopLogger;
-    };
-
-    self.getLoggingDestination = () => {
-      return getGlobal('diag')?.getLoggingDestination() ?? _noopLogger;
     };
 
     self.setLogger = (
       logger: DiagLogger = _noopLogger,
       logLevel: DiagLogLevel = DiagLogLevel.INFO
     ) => {
-      logger = logger === self ? self.getLoggingDestination() : logger;
+      logger = logger === self ? self.getLogger().getChild() : logger;
       registerGlobal('diag', createLogLevelDiagLogger(logLevel, logger), true);
     };
 
@@ -99,7 +96,7 @@ export class DiagAPI implements DiagLogger {
    * Return the currently configured logger instance, if no logger has been configured
    * it will return itself so any log level filtering will still be applied in this case.
    */
-  public getLogger!: () => DiagLogger;
+  public getLogger!: () => FilteredDiagLogger;
 
   /**
    * Set the global DiagLogger and DiagLogLevel
@@ -121,6 +118,4 @@ export class DiagAPI implements DiagLogger {
    * Unregister the global logger and return to Noop
    */
   public disable!: () => void;
-
-  public getLoggingDestination!: () => DiagLogger;
 }

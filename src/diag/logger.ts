@@ -59,8 +59,16 @@ export interface DiagLogger {
   verbose: DiagLogFunction;
 }
 
+/**
+ * A filtered diag logger has the same functions as a diag logger, but calls the
+ * child logging methods or not depending on some filtering scheme; for example
+ * log level, namespace, or throttling.
+ */
 export interface FilteredDiagLogger extends DiagLogger {
-  getLoggingDestination(): DiagLogger;
+  /**
+   * Get the child logger of the filtered diag logger.
+   */
+  getChild(): DiagLogger;
 }
 
 // DiagLogger implementation
@@ -86,7 +94,7 @@ export function createNoopDiagLogger(): FilteredDiagLogger {
     diagLogger[diagLoggerFunctions[i]] = noopLogFunction;
   }
 
-  diagLogger.getLoggingDestination = () => diagLogger;
+  diagLogger.getChild = () => diagLogger;
 
   return diagLogger;
 }

@@ -241,7 +241,7 @@ describe('LogLevelFilter DiagLogger', () => {
 
                 const testLogger = createLogLevelDiagLogger(
                   map.level,
-                  diag.getLoggingDestination()
+                  diag.getLogger().getChild()
                 );
                 testLogger[fName](`${fName} called %s`, 'param1');
                 diagLoggerFunctions.forEach(lName => {
