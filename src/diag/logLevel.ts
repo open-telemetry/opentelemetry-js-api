@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { DiagAPI } from '../api/diag';
-import { DiagLogger, DiagLogFunction, createNoopDiagLogger } from './logger';
+import { diag } from '..';
+import { DiagLogger, DiagLogFunction, FilteredDiagLogger } from './logger';
 
 /**
  * Defines the available internal logging levels for the diagnostic logger, the numeric values
@@ -81,19 +81,15 @@ const levelMap: { n: keyof DiagLogger; l: DiagLogLevel }[] = [
 export function createLogLevelDiagLogger(
   maxLevel: DiagLogLevel,
   logger?: DiagLogger | null
-): DiagLogger {
+): FilteredDiagLogger {
   if (maxLevel < DiagLogLevel.NONE) {
     maxLevel = DiagLogLevel.NONE;
   } else if (maxLevel > DiagLogLevel.ALL) {
     maxLevel = DiagLogLevel.ALL;
   }
 
-  if (maxLevel === DiagLogLevel.NONE) {
-    return createNoopDiagLogger();
-  }
-
   if (!logger) {
-    logger = DiagAPI.instance();
+    logger = diag.getLogger();
   }
 
   function _filterFunc(
@@ -116,11 +112,13 @@ export function createLogLevelDiagLogger(
     return function () {};
   }
 
-  const newLogger = {} as DiagLogger;
+  const newLogger = {} as FilteredDiagLogger;
   for (let i = 0; i < levelMap.length; i++) {
     const name = levelMap[i].n;
     newLogger[name] = _filterFunc(logger, name, levelMap[i].l);
   }
+
+  newLogger.getDestinationlogger = () => logger!;
 
   return newLogger;
 }
