@@ -14,14 +14,9 @@
  * limitations under the License.
  */
 
-import {
-  DiagLogger,
-  DiagLogFunction,
-  createNoopDiagLogger,
-  diagLoggerFunctions,
-  FilteredDiagLogger,
-} from '../diag/logger';
-import { DiagLogLevel, createLogLevelDiagLogger } from '../diag/logLevel';
+import { createLogLevelDiagLogger } from '../diag/internal/logLevelLogger';
+import { createNoopDiagLogger } from '../diag/internal/noopLogger';
+import { DiagLogFunction, DiagLogger, DiagLogLevel } from '../diag/types';
 import {
   API_BACKWARDS_COMPATIBILITY_VERSION,
   GLOBAL_DIAG_LOGGER_API_KEY,
@@ -34,7 +29,6 @@ function noopDiagApi(): DiagAPI {
   const noopLogger = createNoopDiagLogger();
   return {
     disable: () => {},
-    getLogger: () => noopLogger,
     setLogger: () => {},
     ...noopLogger,
   };
@@ -73,7 +67,7 @@ export class DiagAPI implements DiagLogger {
    */
   private constructor() {
     const _noopLogger = createNoopDiagLogger();
-    let _filteredLogger: FilteredDiagLogger | undefined;
+    let _filteredLogger: DiagLogger | undefined;
 
     function _logProxy(funcName: keyof DiagLogger): DiagLogFunction {
       return function () {
@@ -94,18 +88,24 @@ export class DiagAPI implements DiagLogger {
 
     // DiagAPI specific functions
 
-    self.getLogger = (): FilteredDiagLogger => {
-      return _filteredLogger || _noopLogger;
-    };
-
     self.setLogger = (
       logger: DiagLogger,
       logLevel: DiagLogLevel = DiagLogLevel.INFO
     ) => {
-      // This is required to prevent an endless loop in the case where the diag
-      // is used as a child of itself accidentally.
-      logger = logger === self ? self.getLogger().getChild() : logger;
-      logger = logger ?? _noopLogger;
+      if (logger === self) {
+        if (_filteredLogger) {
+          const err = new Error(
+            'Cannot use diag as the logger for itself. Please use a DiagLogger implementation like ConsoleDiagLogger or a custom implementation'
+          );
+          _filteredLogger.error(err.stack ?? err.message);
+          logger = _filteredLogger;
+        } else {
+          // There isn't much we can do here.
+          // Logging to the console might break the user application.
+          return;
+        }
+      }
+
       _filteredLogger = createLogLevelDiagLogger(logLevel, logger);
     };
 
@@ -113,17 +113,12 @@ export class DiagAPI implements DiagLogger {
       _filteredLogger = undefined;
     };
 
-    for (let i = 0; i < diagLoggerFunctions.length; i++) {
-      const name = diagLoggerFunctions[i];
-      self[name] = _logProxy(name);
-    }
+    self.verbose = _logProxy('verbose');
+    self.debug = _logProxy('debug');
+    self.info = _logProxy('info');
+    self.warn = _logProxy('warn');
+    self.error = _logProxy('error');
   }
-
-  /**
-   * Return the currently configured logger instance, if no logger has been configured
-   * it will return itself so any log level filtering will still be applied in this case.
-   */
-  public getLogger!: () => FilteredDiagLogger;
 
   /**
    * Set the global DiagLogger and DiagLogLevel.
