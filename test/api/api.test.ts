@@ -190,6 +190,7 @@ describe('API', () => {
 
     diagLoggerFunctions.forEach(fName => {
       it(`no argument logger ${fName} message doesn't throw`, () => {
+        //@ts-expect-error logger argument is required
         diag.setLogger();
         assert.doesNotThrow(() => {
           diag[fName](`${fName} message`);

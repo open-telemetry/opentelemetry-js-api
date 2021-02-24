@@ -81,6 +81,7 @@ export class DiagAPI implements DiagLogger {
       // This is required to prevent an endless loop in the case where the diag
       // is used as a child of itself accidentally.
       logger = logger === self ? self.getLogger().getChild() : logger;
+      logger = logger ?? _noopLogger;
       registerGlobal('diag', createLogLevelDiagLogger(logLevel, logger), true);
     };
 
