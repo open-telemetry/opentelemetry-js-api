@@ -18,6 +18,7 @@ import * as assert from 'assert';
 import { getGlobal } from '../../src/internal/global-utils';
 import { _globalThis } from '../../src/platform';
 import { NoopContextManager } from '../../src/context/NoopContextManager';
+import sinon = require('sinon');
 
 const api1 = require('../../src') as typeof import('../../src');
 
@@ -40,6 +41,9 @@ describe('Global Utils', () => {
     api1.context.disable();
     api1.propagation.disable();
     api1.trace.disable();
+    api1.diag.disable();
+    // @ts-ignore we are modifying internals for testing purposes here
+    delete _globalThis[Symbol.for('io.opentelemetry.js.api')];
   });
 
   it('should change the global context manager', () => {
@@ -81,5 +85,50 @@ describe('Global Utils', () => {
     _globalThis[Symbol.for('io.opentelemetry.js.api')].version = '0.0.1';
 
     assert.strictEqual(api1.context['_getContextManager'](), original);
+  });
+
+  it('should log an error if there is a duplicate registration', () => {
+    const error = sinon.stub();
+    api1.diag.setLogger({
+      verbose: () => {},
+      debug: () => {},
+      info: () => {},
+      warn: () => {},
+      error,
+    });
+
+    api1.context.setGlobalContextManager(new NoopContextManager());
+    api1.context.setGlobalContextManager(new NoopContextManager());
+
+    sinon.assert.calledOnce(error);
+    assert.strictEqual(error.firstCall.args.length, 1);
+    assert.ok(
+      error.firstCall.args[0].startsWith(
+        'Error: @opentelemetry/api: Attempted duplicate registration of API: context'
+      )
+    );
+  });
+
+  it('should allow duplicate registration of the diag logger', () => {
+    const error1 = sinon.stub();
+    const error2 = sinon.stub();
+    api1.diag.setLogger({
+      verbose: () => {},
+      debug: () => {},
+      info: () => {},
+      warn: () => {},
+      error: error1,
+    });
+
+    api1.diag.setLogger({
+      verbose: () => {},
+      debug: () => {},
+      info: () => {},
+      warn: () => {},
+      error: error2,
+    });
+
+    sinon.assert.notCalled(error1);
+    sinon.assert.notCalled(error2);
   });
 });

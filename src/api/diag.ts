@@ -75,9 +75,11 @@ export class DiagAPI implements DiagLogger {
     };
 
     self.setLogger = (
-      logger: DiagLogger = _noopLogger,
+      logger: DiagLogger,
       logLevel: DiagLogLevel = DiagLogLevel.INFO
     ) => {
+      // This is required to prevent an endless loop in the case where the diag
+      // is used as a child of itself accidentally.
       logger = logger === self ? self.getLogger().getChild() : logger;
       registerGlobal('diag', createLogLevelDiagLogger(logLevel, logger), true);
     };
@@ -99,13 +101,14 @@ export class DiagAPI implements DiagLogger {
   public getLogger!: () => FilteredDiagLogger;
 
   /**
-   * Set the global DiagLogger and DiagLogLevel
+   * Set the global DiagLogger and DiagLogLevel.
+   * If a global diag logger is already set, this will override it.
    *
-   * @param logger - [Optional] The DiagLogger instance to set as the default logger. If not provided it will set it back as a noop.
+   * @param logger - [Optional] The DiagLogger instance to set as the default logger.
    * @param logLevel - [Optional] The DiagLogLevel used to filter logs sent to the logger. If not provided it will default to INFO.
    * @returns The previously registered DiagLogger
    */
-  public setLogger!: (logger?: DiagLogger, logLevel?: DiagLogLevel) => void;
+  public setLogger!: (logger: DiagLogger, logLevel?: DiagLogLevel) => void;
 
   // DiagLogger implementation
   public verbose!: DiagLogFunction;

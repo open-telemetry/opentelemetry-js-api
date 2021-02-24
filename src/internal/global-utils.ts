@@ -41,25 +41,19 @@ export function registerGlobal<Type extends keyof OTelGlobalAPI>(
   const api = _global[GLOBAL_OPENTELEMETRY_API_KEY]!;
   if (!allowOverride && api[type]) {
     // already registered an API of this type
-    diag.error(
-      String(
-        new Error(
-          `@opentelemetry/api: Attempted duplicate registration of API: ${type}`
-        )
-      )
+    const err = new Error(
+      `@opentelemetry/api: Attempted duplicate registration of API: ${type}`
     );
+    diag.error(err.stack || err.message);
     return;
   }
 
   if (api.version != VERSION) {
     // All registered APIs must be of the same version exactly
-    diag.error(
-      String(
-        new Error(
-          '@opentelemetry/api: All API registration versions must match'
-        )
-      )
+    const err = new Error(
+      '@opentelemetry/api: All API registration versions must match'
     );
+    diag.error(err.stack || err.message);
     return;
   }
 
