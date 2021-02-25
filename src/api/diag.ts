@@ -66,17 +66,17 @@ export class DiagAPI implements DiagLogger {
    * @private
    */
   private constructor() {
-    const _noopLogger = createNoopDiagLogger();
     let _filteredLogger: DiagLogger | undefined;
 
     function _logProxy(funcName: keyof DiagLogger): DiagLogFunction {
       return function () {
+        // shortcut if logger not set
+        if (!_filteredLogger) return;
         const orgArguments = arguments as unknown;
-        const theLogger = _filteredLogger || _noopLogger;
-        const theFunc = theLogger[funcName];
+        const theFunc = _filteredLogger[funcName];
         if (typeof theFunc === 'function') {
           return theFunc.apply(
-            theLogger,
+            _filteredLogger,
             orgArguments as Parameters<DiagLogFunction>
           );
         }

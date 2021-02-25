@@ -15,7 +15,6 @@
  */
 
 import { DiagLogFunction, DiagLogger, DiagLogLevel } from '../types';
-import { createNoopDiagLogger } from './noopLogger';
 
 export function createLogLevelDiagLogger(
   maxLevel: DiagLogLevel,
@@ -27,36 +26,30 @@ export function createLogLevelDiagLogger(
     maxLevel = DiagLogLevel.ALL;
   }
 
-  if (!logger) {
-    // this shouldn't happen, but return a noop logger to not break the user
-    return createNoopDiagLogger();
-  }
+  // In case the logger is null or undefined
+  logger = logger ?? {};
 
   function _filterFunc(
-    theLogger: DiagLogger,
     funcName: keyof DiagLogger,
     theLevel: DiagLogLevel
   ): DiagLogFunction {
-    if (maxLevel >= theLevel) {
+    const theFunc = logger[funcName];
+
+    if (typeof theFunc === 'function' && maxLevel >= theLevel) {
       return function () {
-        const orgArguments = arguments as unknown;
-        const theFunc = theLogger[funcName];
-        if (theFunc && typeof theFunc === 'function') {
-          return theFunc.apply(
-            logger,
-            orgArguments as Parameters<DiagLogFunction>
-          );
-        }
+        // Work around Function.prototype.apply types
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return theFunc.apply(logger, arguments as any);
       };
     }
     return function () {};
   }
 
   return {
-    error: _filterFunc(logger, 'error', DiagLogLevel.ERROR),
-    warn: _filterFunc(logger, 'warn', DiagLogLevel.WARN),
-    info: _filterFunc(logger, 'info', DiagLogLevel.INFO),
-    debug: _filterFunc(logger, 'debug', DiagLogLevel.DEBUG),
-    verbose: _filterFunc(logger, 'verbose', DiagLogLevel.VERBOSE),
+    error: _filterFunc('error', DiagLogLevel.ERROR),
+    warn: _filterFunc('warn', DiagLogLevel.WARN),
+    info: _filterFunc('info', DiagLogLevel.INFO),
+    debug: _filterFunc('debug', DiagLogLevel.DEBUG),
+    verbose: _filterFunc('verbose', DiagLogLevel.VERBOSE),
   };
 }
