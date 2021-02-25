@@ -36,11 +36,7 @@ export function createLogLevelDiagLogger(
     const theFunc = logger[funcName];
 
     if (typeof theFunc === 'function' && maxLevel >= theLevel) {
-      return function () {
-        // Work around Function.prototype.apply types
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return theFunc.apply(logger, arguments as any);
-      };
+      return theFunc.bind(logger);
     }
     return function () {};
   }
