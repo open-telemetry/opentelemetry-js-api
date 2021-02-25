@@ -27,7 +27,7 @@ export function createLogLevelDiagLogger(
   }
 
   // In case the logger is null or undefined
-  logger = logger ?? {};
+  logger = logger || {};
 
   function _filterFunc(
     funcName: keyof DiagLogger,
