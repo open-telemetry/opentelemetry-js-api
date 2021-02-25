@@ -24,14 +24,14 @@ import {
   _global,
 } from './global-utils';
 
+function nop() {}
+
 /** Internal simple Noop Diag API that returns a noop logger and does not allow any changes */
 function noopDiagApi(): DiagAPI {
-  const noopLogger = createNoopDiagLogger();
-  return {
-    disable: () => {},
-    setLogger: () => {},
-    ...noopLogger,
-  };
+  return Object.assign(
+    { disable: nop, setLogger: nop },
+    createNoopDiagLogger()
+  );
 }
 
 /**
@@ -72,14 +72,12 @@ export class DiagAPI implements DiagLogger {
       return function () {
         // shortcut if logger not set
         if (!_filteredLogger) return;
-        const orgArguments = arguments as unknown;
-        const theFunc = _filteredLogger[funcName];
-        if (typeof theFunc === 'function') {
-          return theFunc.apply(
-            _filteredLogger,
-            orgArguments as Parameters<DiagLogFunction>
-          );
-        }
+        return _filteredLogger[funcName].apply(
+          _filteredLogger,
+          // work around Function.prototype.apply types
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          arguments as any
+        );
       };
     }
 
