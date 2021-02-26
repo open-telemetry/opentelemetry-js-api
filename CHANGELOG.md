@@ -25,7 +25,6 @@ All notable changes to this project will be documented in this file.
 * Daniel Dyla ([@dyladan](https://github.com/dyladan))
 * Gerhard Stöbich ([@Flarna](https://github.com/Flarna))
 
-
 ## v0.17.0
 
 Versions previous to `0.18.0` were developed in another repository.
