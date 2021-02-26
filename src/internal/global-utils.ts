@@ -48,7 +48,7 @@ export function registerGlobal<Type extends keyof OTelGlobalAPI>(
     return;
   }
 
-  if (api.version != VERSION) {
+  if (api.version !== VERSION) {
     // All registered APIs must be of the same version exactly
     const err = new Error(
       '@opentelemetry/api: All API registration versions must match'
