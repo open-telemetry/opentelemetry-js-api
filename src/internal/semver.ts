@@ -69,14 +69,14 @@ export function _makeCompatibilityCheck(
     };
 
     // major versions must match
-    if (ownVersionParsed.major != otherVersionParsed.major) {
+    if (ownVersionParsed.major !== otherVersionParsed.major) {
       rejectedVersions.add(version);
       return false;
     }
 
     // if major version is 0, minor is treated like major and patch is treated like minor
     if (ownVersionParsed.major === 0) {
-      if (ownVersionParsed.minor != otherVersionParsed.minor) {
+      if (ownVersionParsed.minor !== otherVersionParsed.minor) {
         rejectedVersions.add(version);
         return false;
       }
