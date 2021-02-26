@@ -43,7 +43,7 @@ describe('Global Utils', () => {
     api1.trace.disable();
     api1.diag.disable();
     // @ts-expect-error we are modifying internals for testing purposes here
-    delete _globalThis[Symbol.for('io.opentelemetry.js.api')];
+    delete _globalThis[Symbol.for('io.opentelemetry.js.api.0')];
   });
 
   it('should change the global context manager', () => {
@@ -82,7 +82,7 @@ describe('Global Utils', () => {
     const globalInstance = getGlobal('context');
     assert.ok(globalInstance);
     // @ts-expect-error we are modifying internals for testing purposes here
-    _globalThis[Symbol.for('io.opentelemetry.js.api')].version = '0.0.1';
+    _globalThis[Symbol.for('io.opentelemetry.js.api.0')].version = '0.0.1';
 
     assert.strictEqual(api1.context['_getContextManager'](), original);
   });

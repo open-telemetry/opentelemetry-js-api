@@ -23,7 +23,10 @@ import type { TracerProvider } from '../trace/tracer_provider';
 import { VERSION } from '../version';
 import { isCompatible } from './semver';
 
-const GLOBAL_OPENTELEMETRY_API_KEY = Symbol.for('io.opentelemetry.js.api');
+const major = VERSION.split('.')[0];
+const GLOBAL_OPENTELEMETRY_API_KEY = Symbol.for(
+  `io.opentelemetry.js.api.${major}`
+);
 
 const _global = _globalThis as OTelGlobal;
 
