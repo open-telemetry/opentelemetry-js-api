@@ -26,13 +26,13 @@ describe('Version Compatibility', () => {
     assert.ok(isCompatible(VERSION));
   });
 
-  describe('throws if own version cannot be parsed', () => {
+  it('throws if own version cannot be parsed', () => {
     assert.throws(() => {
       _makeCompatibilityCheck('this is not semver');
     });
   });
 
-  describe('incompatible if other version cannot be parsed', () => {
+  it('incompatible if other version cannot be parsed', () => {
     const check = _makeCompatibilityCheck('0.1.2');
     assert.ok(!check('this is not semver'));
   });
@@ -46,12 +46,13 @@ describe('Version Compatibility', () => {
       assert.ok(check('1.2.4-alpha'));
     });
 
-    it('should be compatible if major versions are equal and minor version is lesser', () => {
+    it('should be incompatible if major versions are equal and minor version is lesser', () => {
+      // we are ahead of the global and might call functions it doesn't have
       const check = _makeCompatibilityCheck('1.2.3');
-      assert.ok(check('1.1.2'));
-      assert.ok(check('1.1.2-alpha'));
-      assert.ok(check('1.1.4'));
-      assert.ok(check('1.1.4-alpha'));
+      assert.ok(!check('1.1.2'));
+      assert.ok(!check('1.1.2-alpha'));
+      assert.ok(!check('1.1.4'));
+      assert.ok(!check('1.1.4-alpha'));
     });
 
     it('should be incompatible if major versions do not match', () => {
@@ -60,10 +61,11 @@ describe('Version Compatibility', () => {
       assert.ok(!check('0.3.3'));
     });
 
-    it('should be incompatible if major versions match but other minor version is greater than our minor version', () => {
+    it('should be compatible if major versions match but other minor version is greater than our minor version', () => {
+      // global is ahead of us, but changes are backwards compatible
       const check = _makeCompatibilityCheck('1.2.3');
-      assert.ok(!check('1.3.3-alpha'));
-      assert.ok(!check('1.3.3'));
+      assert.ok(check('1.3.3-alpha'));
+      assert.ok(check('1.3.3'));
     });
   });
 
@@ -74,10 +76,11 @@ describe('Version Compatibility', () => {
       assert.ok(check('0.1.2-alpha'));
     });
 
-    it('should be compatible if minor versions are equal and patch version is lesser', () => {
+    it('should be incompatible if minor versions are equal and patch version is lesser', () => {
+      // we are ahead of the global and might call functions it doesn't have
       const check = _makeCompatibilityCheck('0.1.2');
-      assert.ok(check('0.1.1'));
-      assert.ok(check('0.1.1-alpha'));
+      assert.ok(!check('0.1.1'));
+      assert.ok(!check('0.1.1-alpha'));
     });
 
     it('should be incompatible if minor versions do not match', () => {
@@ -92,10 +95,11 @@ describe('Version Compatibility', () => {
       assert.ok(!check('0.4.3'));
     });
 
-    it('should be incompatible if minor versions match but other patch version is greater than our patch version', () => {
+    it('should be compatible if minor versions match but other patch version is greater than our patch version', () => {
+      // global is ahead of us, but changes are backwards compatible
       const check = _makeCompatibilityCheck('0.3.3');
-      assert.ok(!check('0.3.4-alpha'));
-      assert.ok(!check('0.3.4'));
+      assert.ok(check('0.3.4-alpha'));
+      assert.ok(check('0.3.4'));
     });
   });
 });
