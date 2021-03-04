@@ -26,10 +26,9 @@ describe('Version Compatibility', () => {
     assert.ok(isCompatible(VERSION));
   });
 
-  it('throws if own version cannot be parsed', () => {
-    assert.throws(() => {
-      _makeCompatibilityCheck('this is not semver');
-    });
+  it('returns false if own version cannot be parsed', () => {
+    const check = _makeCompatibilityCheck('this is not semver');
+    assert.ok(!check('1.0.0'));
   });
 
   it('incompatible if other version cannot be parsed', () => {
