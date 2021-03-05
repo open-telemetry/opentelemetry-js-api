@@ -162,10 +162,10 @@ Apache 2.0 - See [LICENSE][license-url] for more information.
 [npm-url]: https://www.npmjs.com/package/@opentelemetry/api
 [npm-img]: https://badge.fury.io/js/%40opentelemetry%2Fapi.svg
 
-[trace-api-docs]: https://open-telemetry.github.io/opentelemetry-js/classes/traceapi.html
-[metrics-api-docs]: https://open-telemetry.github.io/opentelemetry-js/classes/metricsapi.html
-[propagation-api-docs]: https://open-telemetry.github.io/opentelemetry-js/classes/propagationapi.html
-[context-api-docs]: https://open-telemetry.github.io/opentelemetry-js/classes/contextapi.html
+[trace-api-docs]: https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html
+[metrics-api-docs]: https://open-telemetry.github.io/opentelemetry-js-api/classes/metricsapi.html
+[propagation-api-docs]: https://open-telemetry.github.io/opentelemetry-js-api/classes/propagationapi.html
+[context-api-docs]: https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html
 
 [web]: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-web
 [tracing]: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-tracing
