@@ -17,7 +17,7 @@ The methods in this package perform no operations by default. This means they ca
 - [OpenTelemetry JS SDK][opentelemetry-js]
 - Node.js 8+ (14+ is preferred) or an ECMAScript 5+ compatible browser
 
-**Note for library authors:** Only your end users will need an OpenTelemetry SDK. If you wish to support OpenTelemetry in your library, you only need to use the OpenTelemetry API. For more information, please read the [tracing documentation](docs/tracing.md).
+**Note for library authors:** Only your end users will need an OpenTelemetry SDK. If you wish to support OpenTelemetry in your library, you only need to use the OpenTelemetry API. For more information, please read the [tracing documentation][docs-tracing].
 
 ### Install Dependencies
 
@@ -27,9 +27,9 @@ npm install @opentelemetry/api @opentelemetry/tracing
 
 ### Trace Your Application
 
-In order to get started with tracing, you will need to first register an SDK. The SDK you are using may provide a convenience method which calls the registration methods for you, but if you would like to call them directly they are documented here: [sdk registration methods](docs/sdk-registration.md).
+In order to get started with tracing, you will need to first register an SDK. The SDK you are using may provide a convenience method which calls the registration methods for you, but if you would like to call them directly they are documented here: [sdk registration methods][docs-sdk-registration].
 
-Once you have registered an SDK, you can start and end spans. A simple example of basic SDK registration and tracing a simple operation is below. The example should export spans to the console once per second. For more information, see the [tracing documentation](docs/tracing.md).
+Once you have registered an SDK, you can start and end spans. A simple example of basic SDK registration and tracing a simple operation is below. The example should export spans to the console once per second. For more information, see the [tracing documentation][docs-tracing].
 
 ```typescript
 const { trace }  = require("@opentelemetry/api");
@@ -92,3 +92,6 @@ Apache 2.0 - See [LICENSE][license-url] for more information.
 [devDependencies-url]: https://david-dm.org/open-telemetry/opentelemetry-js?path=packages%2Fopentelemetry-api&type=dev
 [npm-url]: https://www.npmjs.com/package/@opentelemetry/api
 [npm-img]: https://badge.fury.io/js/%40opentelemetry%2Fapi.svg
+
+[docs-tracing]: https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/tracing.md
+[docs-sdk-registration]: https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/sdk-registration.md
