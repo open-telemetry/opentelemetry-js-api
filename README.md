@@ -21,7 +21,7 @@ The methods in this package perform no operations by default. This means they ca
 
 ### Install Dependencies
 
-```
+```sh
 npm install @opentelemetry/api @opentelemetry/tracing
 ```
 

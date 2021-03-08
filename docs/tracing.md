@@ -4,7 +4,7 @@ This quick start is for end users of OpenTelemetry who wish to manually trace th
 
 _Trace API reference: <https://open-telemetry.github.io/opentelemetry-js/classes/traceapi.html>_
 
-### Acquiring a Tracer
+## Acquiring a Tracer
 
 In OpenTelemetry, tracing operations are performed using methods on a _tracer_. You can get a tracer by calling [`getTracer`](https://open-telemetry.github.io/opentelemetry-js/classes/traceapi.html#gettracer) on the global tracer provider. `getTracer` takes the name and version of the application or library acquiring the tracer, and provides a tracer which can be used to trace operations.
 
@@ -14,7 +14,7 @@ import { trace } from '@opentelemetry/api';
 const tracer = trace.getTracer("my-application", "0.1.0");
 ```
 
-### Starting and Ending a Span
+## Starting and Ending a Span
 
 In OpenTelemetry, all _traces_ are composed of [`Spans`](https://open-telemetry.github.io/opentelemetry-js/interfaces/span.html). These spans are linked together by parent-child relationships to form a tree. The resultant tree is your trace, and the root of the tree is commonly called the _root span_.
 
@@ -57,7 +57,7 @@ async function onGet(request, response) {
 httpServer.on("GET", onGet)
 ```
 
-### Span Attributes
+## Span Attributes
 
 While name, start time, end time, and status are the minimum information required to trace an operation, most of the time they will not be enough information on their own to effectively observe an application. In the example above we traced a `GET` request, but the same span name would be used for every route which would make it impossible to know what route was called by looking at the trace. To solve this, OpenTelemetry uses _Span Attributes_. Span attributes are an object with string keys and string, number, or boolean values which describe the span. For example, we can use the span attributes to add route and http response code information to the example above.
 
@@ -80,13 +80,13 @@ async function onGet(request, response) {
 }
 ```
 
-#### Semantic Conventions
+### Semantic Conventions
 
 One problem with span names and attributes is recognizing, categorizing, and analyzing them in your tracing backend. Between different applications, libraries, and tracing backends there might be different names and expected values for various attributes. For example, your application may use `http.status` to describe the HTTP status code, but a library you use may use `http.status_code`. In order to solve this problem, OpenTelemetry uses a library of semantic conventions which describe the name and attributes which should be used for specific types of spans.
 
 _See the current trace semantic conventions in the OpenTelemetry Specification repository: <https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions>_
 
-### Span Relationships
+## Span Relationships
 
 Now that we can start and end spans and effectively describe them, it is useful to be able to describe their relationships to each other. For instance, if one span describes an incoming request which makes a database call, it may be useful to trace the database call as a separate span which is a child of the original request span. In order to do this, when we create a span we can tell OpenTelemetry which span to use as its parent using a mechanism called _Context_.
 
