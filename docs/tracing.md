@@ -2,11 +2,11 @@
 
 This quick start is for end users of OpenTelemetry who wish to manually trace their applications. If you are a library author, please see the [Library Authors Guide](library-author.md). If you wish to automatically instrument your application, see the automatic instrumentation documentation for the SDK you wish to use.
 
-_Trace API reference: <https://open-telemetry.github.io/opentelemetry-js/classes/traceapi.html>_
+_Trace API reference: <https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html>_
 
 ## Acquiring a Tracer
 
-In OpenTelemetry, tracing operations are performed using methods on a _tracer_. You can get a tracer by calling [`getTracer`](https://open-telemetry.github.io/opentelemetry-js/classes/traceapi.html#gettracer) on the global tracer provider. `getTracer` takes the name and version of the application or library acquiring the tracer, and provides a tracer which can be used to trace operations.
+In OpenTelemetry, tracing operations are performed using methods on a _tracer_. You can get a tracer by calling [`getTracer`](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html#gettracer) on the global tracer provider. `getTracer` takes the name and version of the application or library acquiring the tracer, and provides a tracer which can be used to trace operations.
 
 ```typescript
 import { trace } from '@opentelemetry/api';
