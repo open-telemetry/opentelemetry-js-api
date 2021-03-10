@@ -9,17 +9,17 @@ These methods are used to register a compatible OpenTelemetry SDK. Some SDKs lik
 ```javascript
 const api = require("@opentelemetry/api");
 
-/* Initialize TracerProvider */
+/* Register a global TracerProvider */
 api.trace.setGlobalTracerProvider(tracerProvider);
 /* returns tracerProvider (no-op if a working provider has not been initialized) */
 api.trace.getTracerProvider();
 /* returns a tracer from the registered global tracer provider (no-op if a working provider has not been initialized) */
 api.trace.getTracer(name, version);
 
-/* Initialize Propagator */
+/* Register a global Propagator */
 api.propagation.setGlobalPropagator(httpTraceContextPropagator);
 
-/* Initialize Context Manager */
+/* Register a global Context Manager */
 api.context.setGlobalContextManager(asyncHooksContextManager);
 ```
 
