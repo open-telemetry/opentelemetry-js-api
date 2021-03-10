@@ -15,7 +15,9 @@ The methods in this package perform no operations by default. This means they ca
 
 - An application you wish to instrument
 - [OpenTelemetry JS SDK][opentelemetry-js]
-- Node.js 8+ (14+ is preferred) or an ECMAScript 5+ compatible browser
+- Node.js >=8.5.0 (14+ is preferred) or an ECMAScript 5+ compatible browser
+
+**Note:** ECMAScript 5+ compatibility is for this package only. Please refer to the documentation for the SDK you are using to determine its minimum ECMAScript version.
 
 **Note for library authors:** Only your end users will need an OpenTelemetry SDK. If you wish to support OpenTelemetry in your library, you only need to use the OpenTelemetry API. For more information, please read the [tracing documentation][docs-tracing].
 
@@ -31,7 +33,7 @@ In order to get started with tracing, you will need to first register an SDK. Th
 
 Once you have registered an SDK, you can start and end spans. A simple example of basic SDK registration and tracing a simple operation is below. The example should export spans to the console once per second. For more information, see the [tracing documentation][docs-tracing].
 
-```typescript
+```javascript
 const { trace }  = require("@opentelemetry/api");
 const { BasicTracerProvider, ConsoleSpanExporter, SimpleSpanProcessor }  = require("@opentelemetry/tracing");
 
