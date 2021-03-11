@@ -18,7 +18,7 @@ const tracer = trace.getTracer("my-application", "0.1.0");
 
 ## Starting and Ending a Span
 
-In OpenTelemetry, all _traces_ are composed of [`Spans`](https://open-telemetry.github.io/opentelemetry-js/interfaces/span.html). These spans are linked together by parent-child relationships to form a tree. The resultant tree is your trace, and the root of the tree is commonly called the _root span_.
+In OpenTelemetry, all _traces_ are composed of [`Spans`](https://open-telemetry.github.io/opentelemetry-js/interfaces/span.html). A span describes a single operation with a start time and and end time like a database request, outgoing remote request, or a function invocation. These spans are linked together by parent-child relationships to form a tree. The resultant tree is your trace, and the root of the tree is commonly called the _root span_.
 
 You can create a span by calling [`Tracer#startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/tracer.html#startspan). The only required argument to `startSpan` is the _span name_, which should describe the operation being performed with low cardinality.
 
@@ -127,7 +127,7 @@ server.on("GET", "/user/:id", onGet);
 
 ### Span Relationships
 
-One of the most important aspects of spans is their relationships to each other. For instance, if one span describes an incoming request which makes a database call, it may be useful to trace the database call as a separate span which is a child of the original request span. In order to do this, when we create a span we can tell OpenTelemetry which span to use as its parent using a mechanism called _Context_.
+One of the most important aspects of spans is their relationships to each other. For instance, if one span describes an incoming request which makes a database call, it is recommended to trace the database call as a separate span which is a child of the original request span. In order to do this, when we create a span we can tell OpenTelemetry which span to use as its parent using a mechanism called _Context_.
 
 Context is a very important part of the OpenTelemetry API which cannot be adequately explained in a single paragraph. To read more about context, see the [context documentation](context.md).
 
