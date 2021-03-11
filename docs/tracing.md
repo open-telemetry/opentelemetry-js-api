@@ -71,8 +71,12 @@ async function onGet(request, response) {
   const span = tracer.startSpan(`GET /user/:id`, {
     // attributes can be added when the span is started
     attributes: {
+      // Attributes from the HTTP tracce semantic conventions
+      // https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md
       "http.method": "GET",
+      "http.flavor": "1.1",
       "http.url": request.url
+      "net.peer.ip": "192.0.2.5",
     },
     // This span represents a remote incoming synchronous request
     kind: SpanKind.SERVER
@@ -86,10 +90,14 @@ async function onGet(request, response) {
   // Call getUser with the newly created context
   const user = await context.with(ctx, getUser, undefined, userId);
 
-  // attributes may also be added after the span is started
-  span.setAttribute("http.status", 200);
+  // Attributes may also be added after the span is started.
+  // http.status_code is required by the HTTP trace semantic conventions
+  span.setAttribute("http.status_code", 200);
 
   response.send(user.toJson());
+  span.setStatus({
+      code: SpanStatusCode.SUCCESS,
+  });
   span.end();
 
   // Attributes MAY NOT be added after the span ends
@@ -118,6 +126,9 @@ async function getUser(userId) {
   });
   const user = await db.select("Users", { id: userId });
 
+  span.setStatus({
+      code: SpanStatusCode.SUCCESS,
+  });
   span.end();
   return user;
 }
