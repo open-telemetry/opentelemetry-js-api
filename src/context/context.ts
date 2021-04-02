@@ -15,7 +15,7 @@
  */
 
 import { Context } from './types';
-import { Baggage, Span, SpanContext } from '../';
+import { Baggage, context, Span, SpanContext } from '../';
 import { NoopSpan } from '../trace/NoopSpan';
 
 /**
@@ -39,20 +39,20 @@ const BAGGAGE_KEY = createContextKey('OpenTelemetry Baggage Key');
 /**
  * Return the span if one exists
  *
- * @param context context to get span from
+ * @param ctx context to get span from
  */
-export function getSpan(context: Context): Span | undefined {
-  return (context.getValue(SPAN_KEY) as Span) || undefined;
+export function getSpan(ctx = context.active()): Span | undefined {
+  return (ctx.getValue(SPAN_KEY) as Span) || undefined;
 }
 
 /**
  * Set the span on a context
  *
- * @param context context to use as parent
- * @param span span to set active
+ * @param span to set
+ * @param ctx context to use as parent
  */
-export function setSpan(context: Context, span: Span): Context {
-  return context.setValue(SPAN_KEY, span);
+export function setSpan(span: Span, ctx = context.active()): Context {
+  return ctx.setValue(SPAN_KEY, span);
 }
 
 /**
@@ -66,7 +66,7 @@ export function setSpanContext(
   context: Context,
   spanContext: SpanContext
 ): Context {
-  return setSpan(context, new NoopSpan(spanContext));
+  return setSpan(new NoopSpan(spanContext), context);
 }
 
 /**
@@ -82,10 +82,10 @@ export function getSpanContext(context: Context): SpanContext | undefined {
  * Sets value on context to indicate that instrumentation should
  * be suppressed beyond this current scope.
  *
- * @param context context to set the suppress instrumentation value on.
+ * @param ctx context to set the suppress instrumentation value on.
  */
-export function suppressInstrumentation(context: Context): Context {
-  return context.setValue(SUPPRESS_INSTRUMENTATION_KEY, true);
+export function suppressInstrumentation(ctx = context.active()): Context {
+  return ctx.setValue(SUPPRESS_INSTRUMENTATION_KEY, true);
 }
 
 /**
@@ -109,7 +109,7 @@ export function isInstrumentationSuppressed(context: Context): boolean {
 }
 
 /**
- * @param {Context} Context that manage all context values
+ * @param {Context} context that manage all context values
  * @returns {Baggage} Extracted baggage from the context
  */
 export function getBaggage(context: Context): Baggage | undefined {
@@ -117,7 +117,7 @@ export function getBaggage(context: Context): Baggage | undefined {
 }
 
 /**
- * @param {Context} Context that manage all context values
+ * @param {Context} context that manage all context values
  * @param {Baggage} baggage that will be set in the actual context
  */
 export function setBaggage(context: Context, baggage: Baggage): Context {
