@@ -84,20 +84,20 @@ async function onGet(request, response) {
 
   const userId = request.params.id;
 
-  // Create a new context from the current context which has the span "active"
-  const ctx = setSpan(context.active(), span);
-  
+  // Create a new context and set the span
+  const ctx = setSpan(span);
+
   // Call getUser with the newly created context
-  // 
+  //
   // context.with calls a function with an associated "active" context. Within
   // the function, calling context.active() returns the currently active context.
   // If there is no active context, the ROOT_CONTEXT will be returned, which
   // has no key-value pairs.
-  // 
+  //
   // context.with requires at least 2 arguments: a context and a function to be called.
   // If a third argument is provided, it will be bound to `this` `this` inside the function.
   // Any additional parameters are used as arguments when calling the function.
-  // 
+  //
   //   Return value is the value returned from getUser
   //    |                         Context to be used as the "active" context
   //    |                         |    Function to be called
