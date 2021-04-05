@@ -3,11 +3,11 @@
   "version": "1.0.0-rc.0",
   "description": "Public API for OpenTelemetry",
   "main": "build/src/index.js",
-  "module": "build/lib/index.js",
+  "module": "build/esm/index.js",
   "types": "build/src/index.d.ts",
   "browser": {
     "./src/platform/index.ts": "./src/platform/browser/index.ts",
-    "./build/lib/platform/index.js": "./build/lib/platform/browser/index.js",
+    "./build/esm/platform/index.js": "./build/esm/platform/browser/index.js",
     "./build/src/platform/index.js": "./build/src/platform/browser/index.js"
   },
   "repository": "https://github.com/open-telemetry/opentelemetry-js-api.git",
@@ -42,9 +42,9 @@
     "node": ">=8.0.0"
   },
   "files": [
-    "build/lib/**/*.js",
-    "build/lib/**/*.js.map",
-    "build/lib/**/*.d.ts",
+    "build/esm/**/*.js",
+    "build/esm/**/*.js.map",
+    "build/esm/**/*.d.ts",
     "build/src/**/*.js",
     "build/src/**/*.js.map",
     "build/src/**/*.d.ts",
