@@ -33,7 +33,7 @@ export class NoopSpan implements Span {
   ) {}
 
   // Returns a SpanContext.
-  context(): SpanContext {
+  spanContext(): SpanContext {
     return this._spanContext;
   }
 

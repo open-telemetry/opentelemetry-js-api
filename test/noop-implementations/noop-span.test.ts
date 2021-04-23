@@ -44,7 +44,7 @@ describe('NoopSpan', () => {
     span.updateName('my-span');
 
     assert.ok(!span.isRecording());
-    assert.deepStrictEqual(span.context(), {
+    assert.deepStrictEqual(span.spanContext(), {
       traceId: INVALID_TRACEID,
       spanId: INVALID_SPANID,
       traceFlags: TraceFlags.NONE,
