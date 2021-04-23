@@ -23,7 +23,6 @@ import {
 } from '../internal/global-utils';
 
 const API_NAME = 'context';
-const NOOP_CONTEXT_MANAGER = new NoopContextManager();
 
 /**
  * Singleton object which represents the entry point to the OpenTelemetry Context API
@@ -87,7 +86,7 @@ export class ContextAPI {
   }
 
   private _getContextManager(): ContextManager {
-    return getGlobal(API_NAME) || NOOP_CONTEXT_MANAGER;
+    return getGlobal(API_NAME) || new NoopContextManager();
   }
 
   /** Disable and remove the global context manager */

@@ -15,7 +15,12 @@
  */
 
 import { Context } from '../context/types';
-import { NOOP_TEXT_MAP_PROPAGATOR } from '../propagation/NoopTextMapPropagator';
+import {
+  getGlobal,
+  registerGlobal,
+  unregisterGlobal,
+} from '../internal/global-utils';
+import { NoopTextMapPropagator } from '../propagation/NoopTextMapPropagator';
 import {
   defaultTextMapGetter,
   defaultTextMapSetter,
@@ -23,11 +28,6 @@ import {
   TextMapPropagator,
   TextMapSetter,
 } from '../propagation/TextMapPropagator';
-import {
-  getGlobal,
-  registerGlobal,
-  unregisterGlobal,
-} from '../internal/global-utils';
 
 const API_NAME = 'propagation';
 
@@ -101,6 +101,6 @@ export class PropagationAPI {
   }
 
   private _getGlobalPropagator(): TextMapPropagator {
-    return getGlobal(API_NAME) || NOOP_TEXT_MAP_PROPAGATOR;
+    return getGlobal(API_NAME) || new NoopTextMapPropagator();
   }
 }
