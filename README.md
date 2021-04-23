@@ -50,7 +50,7 @@ const tracer = trace.getTracer(name, version);
 // Trace your application by creating spans
 async function operation() {
   const span = tracer.startSpan("do operation");
-  
+
   // mock some work by sleeping 1 second
   await new Promise((resolve, reject) => {
     setTimeout(resolve, 1000);
@@ -73,6 +73,12 @@ main();
 
 Because the npm installer and node module resolution algorithm could potentially allow two or more copies of any given package to exist within the same `node_modules` structure, the OpenTelemetry API takes advantage of a variable on the `global` object to store the global API. When an API method in the API package is called, it checks if this `global` API exists and proxies calls to it if and only if it is a compatible API version. This means if a package has a dependency on an OpenTelemetry API version which is not compatible with the API used by the end user, the package will receive a no-op implementation of the API.
 
+## Upgrade guidelines
+
+### 1.0.0-rc.0 to x
+
+- `HttpBaggage` renamed to `HttpBaggagePropagator`
+
 ## Useful links
 
 - For more information on OpenTelemetry, visit: <https://opentelemetry.io/>
@@ -88,9 +94,9 @@ Apache 2.0 - See [LICENSE][license-url] for more information.
 [discussions-url]: https://github.com/open-telemetry/opentelemetry-js/discussions
 [license-url]: https://github.com/open-telemetry/opentelemetry-js-api/blob/main/LICENSE
 [license-image]: https://img.shields.io/badge/license-Apache_2.0-green.svg?style=flat
-[dependencies-image]: https://david-dm.org/open-telemetry/opentelemetry-js-api/status.svg
+[dependencies-image]: https://status.david-dm.org/gh/open-telemetry/opentelemetry-js-api.svg
 [dependencies-url]: https://david-dm.org/open-telemetry/opentelemetry-js-api
-[devDependencies-image]: https://david-dm.org/open-telemetry/opentelemetry-js-api/dev-status.svg
+[devDependencies-image]: https://status.david-dm.org/gh/open-telemetry/opentelemetry-js-api.svg?type=dev
 [devDependencies-url]: https://david-dm.org/open-telemetry/opentelemetry-js-api?type=dev
 [npm-url]: https://www.npmjs.com/package/@opentelemetry/api
 [npm-img]: https://badge.fury.io/js/%40opentelemetry%2Fapi.svg
