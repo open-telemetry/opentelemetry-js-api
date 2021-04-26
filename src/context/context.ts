@@ -16,7 +16,7 @@
 
 import { Context } from './types';
 import { Baggage, Span, SpanContext } from '../';
-import { NoopSpan } from '../trace/NoopSpan';
+import { NonRecordingSpan } from '../trace/NonRecordingSpan';
 
 /**
  * span key
@@ -56,7 +56,7 @@ export function setSpan(context: Context, span: Span): Context {
 }
 
 /**
- * Wrap span context in a NoopSpan and set as span in a new
+ * Wrap span context in a NonRecordingSpan and set as span in a new
  * context
  *
  * @param context context to set active span on
@@ -66,7 +66,7 @@ export function setSpanContext(
   context: Context,
   spanContext: SpanContext
 ): Context {
-  return setSpan(context, new NoopSpan(spanContext));
+  return setSpan(context, new NonRecordingSpan(spanContext));
 }
 
 /**
@@ -75,7 +75,7 @@ export function setSpanContext(
  * @param context context to get values from
  */
 export function getSpanContext(context: Context): SpanContext | undefined {
-  return getSpan(context)?.context();
+  return getSpan(context)?.spanContext();
 }
 
 /**
