@@ -1,9 +1,39 @@
+
+---
+<p align="center">
+  <strong>
+    <a href="https://open-telemetry.github.io/opentelemetry-js">API Documentation<a/>
+    &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+    <a href="https://github.com/open-telemetry/opentelemetry-js/discussions">Getting In Touch (GitHub Discussions)<a/>
+  </strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/open-telemetry/opentelemetry-js-api/releases">
+    <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/open-telemetry/opentelemetry-js-api?include_prereleases&style=for-the-badge">
+  </a>
+  <a href="https://codecov.io/gh/open-telemetry/opentelemetry-js-api/branch/main/">
+    <img alt="Codecov Status" src="https://img.shields.io/codecov/c/github/open-telemetry/opentelemetry-js-api?style=for-the-badge">
+  </a>
+  <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/main/LICENSE">
+    <img alt="license" src="https://img.shields.io/badge/license-Apache_2.0-green.svg?style=for-the-badge">
+  </a>
+  <br/>
+  <a href="https://github.com/open-telemetry/opentelemetry-js-api/actions/workflows/docs.yaml">
+    <img alt="Build Status" src="https://github.com/open-telemetry/opentelemetry-js-api/actions/workflows/test.yaml/badge.svg?branch=main">
+  </a>
+  <a href="https://github.com/open-telemetry/opentelemetry-js-api/actions/workflows/test.yaml?query=branch%3Amain">
+    <img alt="Build Status" src="https://github.com/open-telemetry/opentelemetry-js-api/actions/workflows/docs.yaml/badge.svg">
+  </a>
+</p>
+
+---
+
 # OpenTelemetry API for JavaScript
 
 [![NPM Published Version][npm-img]][npm-url]
 [![dependencies][dependencies-image]][dependencies-url]
 [![devDependencies][devDependencies-image]][devDependencies-url]
-[![Apache License][license-image]][license-image]
 
 This package provides everything needed to interact with the OpenTelemetry API, including all TypeScript interfaces, enums, and no-op implementations. It is intended for use both on the server and in the browser.
 
@@ -100,6 +130,5 @@ Apache 2.0 - See [LICENSE][license-url] for more information.
 [devDependencies-url]: https://david-dm.org/open-telemetry/opentelemetry-js-api?type=dev
 [npm-url]: https://www.npmjs.com/package/@opentelemetry/api
 [npm-img]: https://badge.fury.io/js/%40opentelemetry%2Fapi.svg
-
 [docs-tracing]: https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/tracing.md
 [docs-sdk-registration]: https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/sdk-registration.md
