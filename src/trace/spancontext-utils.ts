@@ -47,9 +47,10 @@ export function isSpanContextValid(spanContext: SpanContext): boolean {
 }
 
 /**
+ * Wrap the given {@link SpanContext} in a new non-recording {@link Span}
  *
  * @param spanContext span context to be wrapped
- * @returns a new {@link NonRecordingSpan} with the provided context
+ * @returns a new non-recording {@link Span} with the provided context
  */
 export function wrapSpanContext(spanContext: SpanContext): Span {
   return new NonRecordingSpan(spanContext);
