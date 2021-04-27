@@ -48,6 +48,7 @@ export {
   isSpanContextValid,
   isValidTraceId,
   isValidSpanId,
+  wrapSpanContext,
 } from './trace/spancontext-utils';
 
 export * from './context/context';
