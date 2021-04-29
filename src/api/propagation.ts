@@ -30,6 +30,7 @@ import {
 } from '../propagation/TextMapPropagator';
 
 const API_NAME = 'propagation';
+const NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator();
 
 /**
  * Singleton object which represents the entry point to the OpenTelemetry Propagation API
@@ -101,6 +102,6 @@ export class PropagationAPI {
   }
 
   private _getGlobalPropagator(): TextMapPropagator {
-    return getGlobal(API_NAME) || new NoopTextMapPropagator();
+    return getGlobal(API_NAME) || NOOP_TEXT_MAP_PROPAGATOR;
   }
 }

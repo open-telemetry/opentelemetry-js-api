@@ -28,7 +28,7 @@ import { NoopTracerProvider } from './NoopTracerProvider';
  *   all tracers already provided will use the provided delegate implementation.
  */
 export class ProxyTracerProvider implements TracerProvider {
-  private _delegate?: TracerProvider;
+  private _delegate: TracerProvider = new NoopTracerProvider();
 
   /**
    * Get a {@link ProxyTracer}
@@ -41,7 +41,7 @@ export class ProxyTracerProvider implements TracerProvider {
   }
 
   getDelegate(): TracerProvider {
-    return this._delegate ?? new NoopTracerProvider();
+    return this._delegate;
   }
 
   /**
@@ -52,6 +52,6 @@ export class ProxyTracerProvider implements TracerProvider {
   }
 
   getDelegateTracer(name: string, version?: string): Tracer | undefined {
-    return this._delegate?.getTracer(name, version);
+    return this._delegate.getTracer(name, version);
   }
 }
