@@ -17,17 +17,17 @@
 import * as assert from 'assert';
 import * as sinon from 'sinon';
 import {
-  ProxyTracerProvider,
-  SpanKind,
-  TracerProvider,
   ProxyTracer,
-  Tracer,
-  Span,
-  NoopTracer,
+  ProxyTracerProvider,
   ROOT_CONTEXT,
+  Span,
+  SpanKind,
   SpanOptions,
+  Tracer,
+  TracerProvider,
 } from '../../src';
 import { NonRecordingSpan } from '../../src/trace/NonRecordingSpan';
+import { NoopTracer } from '../../src/trace/NoopTracer';
 
 describe('ProxyTracer', () => {
   let provider: ProxyTracerProvider;

@@ -16,14 +16,14 @@
 
 import * as assert from 'assert';
 import {
-  NoopTracer,
+  context,
+  setSpanContext,
   SpanContext,
   SpanKind,
   TraceFlags,
-  context,
-  setSpanContext,
 } from '../../src';
 import { NonRecordingSpan } from '../../src/trace/NonRecordingSpan';
+import { NoopTracer } from '../../src/trace/NoopTracer';
 
 describe('NoopTracer', () => {
   it('should not crash', () => {
