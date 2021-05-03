@@ -33,7 +33,7 @@ import { SpanContext } from './span_context';
  *    Service Provider) can be correlated.
  */
 export interface Link {
-  /** The {@link LinkContext} of a linked span. */
+  /** The {@link SpanContext} of a linked span. */
   context: SpanContext;
   /** A set of {@link SpanAttributes} on the link. */
   attributes?: SpanAttributes;
