@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
-import { ProxyTracerProvider } from '../trace/ProxyTracerProvider';
-import { Tracer } from '../trace/tracer';
-import { TracerProvider } from '../trace/tracer_provider';
-import { isSpanContextValid } from '../trace/spancontext-utils';
 import {
   getGlobal,
   registerGlobal,
   unregisterGlobal,
 } from '../internal/global-utils';
+import { ProxyTracerProvider } from '../trace/ProxyTracerProvider';
+import {
+  isSpanContextValid,
+  wrapSpanContext,
+} from '../trace/spancontext-utils';
+import { Tracer } from '../trace/tracer';
+import { TracerProvider } from '../trace/tracer_provider';
+import {
+  getSpan,
+  getSpanContext,
+  setSpan,
+  setSpanContext,
+} from '../trace/context-utils';
 
 const API_NAME = 'trace';
 
@@ -76,5 +85,15 @@ export class TraceAPI {
     this._proxyTracerProvider = new ProxyTracerProvider();
   }
 
+  public wrapSpanContext = wrapSpanContext;
+
   public isSpanContextValid = isSpanContextValid;
+
+  public getSpan = getSpan;
+
+  public getSpanContext = getSpanContext;
+
+  public setSpan = setSpan;
+
+  public setSpanContext = setSpanContext;
 }
