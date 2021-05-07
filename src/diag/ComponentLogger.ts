@@ -56,7 +56,7 @@ export class DiagComponentLogger implements ComponentLogger {
 
 function logProxy(
   funcName: keyof DiagLogger,
-  nameSpace: string,
+  namespace: string,
   args: any
 ): void {
   const logger = getGlobal('diag');
@@ -65,6 +65,6 @@ function logProxy(
     return;
   }
 
-  args.unshift(nameSpace);
+  args.unshift(namespace);
   return logger[funcName].apply(logger, args);
 }
