@@ -133,5 +133,5 @@ export interface ComponentLogger {
  * Defines options for ComponentLogger
  */
 export interface ComponentLoggerOptions {
-  namespace?: string;
+  namespace: string;
 }
