@@ -93,45 +93,6 @@ export enum DiagLogLevel {
 /**
  * Defines options for ComponentLogger
  */
-export interface ComponentLogger {
-  namespace: string;
-  /** Log an error scenario that was not expected and caused the requested operation to fail. */
-  error: (...args: any) => void;
-
-  /**
-   * Log a warning scenario to inform the developer of an issues that should be investigated.
-   * The requested operation may or may not have succeeded or completed.
-   */
-  warn: (...args: any) => void;
-
-  /**
-   * Log a general informational message, this should not affect functionality.
-   * This is also the default logging level so this should NOT be used for logging
-   * debugging level information.
-   */
-  info: (...args: any) => void;
-
-  /**
-   * Log a general debug message that can be useful for identifying a failure.
-   * Information logged at this level may include diagnostic details that would
-   * help identify a failure scenario.
-   * For example: Logging the order of execution of async operations.
-   */
-  debug: (...args: any) => void;
-
-  /**
-   * Log a detailed (verbose) trace level logging that can be used to identify failures
-   * where debug level logging would be insufficient, this level of tracing can include
-   * input and output parameters and as such may include PII information passing through
-   * the API. As such it is recommended that this level of tracing should not be enabled
-   * in a production environment.
-   */
-  verbose: (...args: any) => void;
-}
-
-/**
- * Defines options for ComponentLogger
- */
 export interface ComponentLoggerOptions {
   namespace: string;
 }

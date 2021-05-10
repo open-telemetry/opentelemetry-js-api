@@ -15,7 +15,7 @@
  */
 
 import { getGlobal } from '../internal/global-utils';
-import { ComponentLogger, ComponentLoggerOptions, DiagLogger } from './types';
+import { ComponentLoggerOptions, DiagLogger } from './types';
 
 /**
  * Component Logger which is meant to be used as part of any component which
@@ -26,31 +26,31 @@ import { ComponentLogger, ComponentLoggerOptions, DiagLogger } from './types';
  * cLogger.debug('test');
  * // @opentelemetry/instrumentation-http test
  */
-export class DiagComponentLogger implements ComponentLogger {
-  public namespace: string;
+export class DiagComponentLogger implements DiagLogger {
+  private _namespace: string;
 
   constructor(props: ComponentLoggerOptions) {
-    this.namespace = props.namespace || 'DiagComponentLogger';
+    this._namespace = props.namespace || 'DiagComponentLogger';
   }
 
   public debug(...args: any[]): void {
-    return logProxy('debug', this.namespace, args);
+    return logProxy('debug', this._namespace, args);
   }
 
   public error(...args: any[]): void {
-    return logProxy('error', this.namespace, args);
+    return logProxy('error', this._namespace, args);
   }
 
   public info(...args: any[]): void {
-    return logProxy('info', this.namespace, args);
+    return logProxy('info', this._namespace, args);
   }
 
   public warn(...args: any[]): void {
-    return logProxy('warn', this.namespace, args);
+    return logProxy('warn', this._namespace, args);
   }
 
   public verbose(...args: any[]): void {
-    return logProxy('verbose', this.namespace, args);
+    return logProxy('verbose', this._namespace, args);
   }
 }
 

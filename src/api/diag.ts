@@ -17,7 +17,6 @@
 import { DiagComponentLogger } from '../diag/ComponentLogger';
 import { createLogLevelDiagLogger } from '../diag/internal/logLevelLogger';
 import {
-  ComponentLogger,
   ComponentLoggerOptions,
   DiagLogFunction,
   DiagLogger,
@@ -122,7 +121,7 @@ export class DiagAPI implements DiagLogger {
    */
   public createComponentLogger!: (
     options: ComponentLoggerOptions
-  ) => ComponentLogger;
+  ) => DiagLogger;
 
   // DiagLogger implementation
   public verbose!: DiagLogFunction;
