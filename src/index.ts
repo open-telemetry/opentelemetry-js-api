@@ -21,7 +21,6 @@ export * from './diag';
 export * from './propagation/NoopTextMapPropagator';
 export * from './propagation/TextMapPropagator';
 export * from './trace/attributes';
-export * from './trace/link_context';
 export * from './trace/link';
 export * from './trace/NoopTracer';
 export * from './trace/NoopTracerProvider';
