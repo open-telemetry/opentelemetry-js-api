@@ -85,11 +85,15 @@ export class DiagAPI implements DiagLogger {
         return false;
       }
 
-      return registerGlobal(
-        'diag',
-        createLogLevelDiagLogger(logLevel, logger),
-        true
-      );
+      const oldLogger = getGlobal('diag');
+      const newLogger = createLogLevelDiagLogger(logLevel, logger);
+      // There already is an logger registered. We'll let it know before overwriting it.
+      if (oldLogger) {
+        oldLogger.warn('Current logger will be overwritten');
+        newLogger.warn('Current logger will overwrite one already registered');
+      }
+
+      return registerGlobal('diag', newLogger, true);
     };
 
     self.disable = () => {
