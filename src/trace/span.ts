@@ -62,6 +62,18 @@ export interface Span {
   setAttributes(attributes: SpanAttributes): this;
 
   /**
+   * Get the attribute of the Span by key.
+   * 
+   * @param key Key of the span attribute
+   */
+  getAttribute(key: string): SpanAttributes;
+
+  /**
+   * Get all attributes of the span
+   */
+  getAttributes(): SpanAttributes;
+
+  /**
    * Adds an event to the Span.
    *
    * @param name the name of the event.
