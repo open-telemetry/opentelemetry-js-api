@@ -19,6 +19,7 @@ import { Context } from '../context/types';
 import { Span } from './span';
 import { SpanContext } from './span_context';
 import { NonRecordingSpan } from './NonRecordingSpan';
+import { INVALID_SPAN_CONTEXT } from './spancontext-utils';
 
 /**
  * span key
@@ -45,6 +46,15 @@ export function setSpan(context: Context, span: Span): Context {
 }
 
 /**
+ * Remove current span stored in the context
+ *
+ * @param context context to delete span from
+ */
+export function deleteSpan(context: Context): Context {
+  return context.deleteValue(SPAN_KEY);
+}
+
+/**
  * Wrap span context in a NoopSpan and set as span in a new
  * context
  *
@@ -65,4 +75,13 @@ export function setSpanContext(
  */
 export function getSpanContext(context: Context): SpanContext | undefined {
   return getSpan(context)?.spanContext();
+}
+
+/**
+ * Replace the span context from the context with an invalid span context
+ *
+ * @param context context to remove the span context from
+ */
+export function deleteSpanContext(context: Context): Context {
+  return setSpan(context, new NonRecordingSpan(INVALID_SPAN_CONTEXT));
 }
