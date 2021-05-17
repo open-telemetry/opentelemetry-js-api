@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ### :rocket: Enhancement
 
+* [#54](https://github.com/open-telemetry/opentelemetry-js-api/pull/54) feat: add tracer.startActiveSpan() ([@naseemkullah](https://github.com/naseemkullah))
 * [#58](https://github.com/open-telemetry/opentelemetry-js-api/pull/58) chore: use spancontext for link ([@dyladan](https://github.com/dyladan))
 * [#51](https://github.com/open-telemetry/opentelemetry-js-api/pull/51) feat: add function to wrap SpanContext in NonRecordingSpan #49 ([@dyladan](https://github.com/dyladan))
 
@@ -25,11 +26,12 @@ All notable changes to this project will be documented in this file.
 * [#64](https://github.com/open-telemetry/opentelemetry-js-api/pull/64) chore: document the reason for symbol.for ([@dyladan](https://github.com/dyladan))
 * [#44](https://github.com/open-telemetry/opentelemetry-js-api/pull/44) chore: updating readme headline and fixing links ([@obecny](https://github.com/obecny))
 
-### Committers: 5
+### Committers: 6
 
 * Bartlomiej Obecny ([@obecny](https://github.com/obecny))
 * Daniel Dyla ([@dyladan](https://github.com/dyladan))
 * Gerhard Stöbich ([@Flarna](https://github.com/Flarna))
+* Naseem ([@naseemkullah](https://github.com/naseemkullah))
 * Valentin Marchaud ([@vmarchaud](https://github.com/vmarchaud))
 * t2t2 ([@t2t2](https://github.com/t2t2))
 
