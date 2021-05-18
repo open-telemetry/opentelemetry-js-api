@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ### :rocket: Enhancement
 
+* [#62](https://github.com/open-telemetry/opentelemetry-js-api/pull/62) chore: adding component logger ([@obecny](https://github.com/obecny))
 * [#54](https://github.com/open-telemetry/opentelemetry-js-api/pull/54) feat: add tracer.startActiveSpan() ([@naseemkullah](https://github.com/naseemkullah))
 * [#58](https://github.com/open-telemetry/opentelemetry-js-api/pull/58) chore: use spancontext for link ([@dyladan](https://github.com/dyladan))
 * [#51](https://github.com/open-telemetry/opentelemetry-js-api/pull/51) feat: add function to wrap SpanContext in NonRecordingSpan #49 ([@dyladan](https://github.com/dyladan))
