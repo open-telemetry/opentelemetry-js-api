@@ -99,6 +99,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="nooptracer.html#startactivespan" class="tsd-kind-icon">start<wbr>Active<wbr>Span</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="nooptracer.html#startspan" class="tsd-kind-icon">start<wbr>Span</a></li>
 							</ul>
 						</section>
@@ -124,6 +125,53 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="startactivespan" class="tsd-anchor"></a>
+					<h3>start<wbr>Active<wbr>Span</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Active<wbr>Span&lt;F&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, arg2<span class="tsd-signature-symbol">: </span><a href="../interfaces/spanoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">F</span>, arg3<span class="tsd-signature-symbol">?: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">F</span>, arg4<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">F</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">F</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/tracer.html">Tracer</a>.<a href="../interfaces/tracer.html#startactivespan">startActiveSpan</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/trace/NoopTracer.ts#L50">trace/NoopTracer.ts:50</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Starts a new <a href="../interfaces/span.html">Span</a> and calls the given function passing it the
+										created span as first argument.
+										Additionally the new span gets set in context and this context is activated
+									for the duration of the function call.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>F<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>span<span class="tsd-signature-symbol">: </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">F</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>arg2: <a href="../interfaces/spanoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">F</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> arg3: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">F</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> arg4: <span class="tsd-signature-type">F</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">F</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="startspan" class="tsd-anchor"></a>
 					<h3>start<wbr>Span</h3>
@@ -135,7 +183,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/tracer.html">Tracer</a>.<a href="../interfaces/tracer.html#startspan">startSpan</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/trace/NoopTracer.ts#L31">trace/NoopTracer.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/trace/NoopTracer.ts#L32">trace/NoopTracer.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -179,6 +227,9 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="nooptracer.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="nooptracer.html#startactivespan" class="tsd-kind-icon">start<wbr>Active<wbr>Span</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="nooptracer.html#startspan" class="tsd-kind-icon">start<wbr>Span</a>

@@ -100,6 +100,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="diagapi.html#createcomponentlogger" class="tsd-kind-icon">create<wbr>Component<wbr>Logger</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="diagapi.html#debug" class="tsd-kind-icon">debug</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="diagapi.html#disable" class="tsd-kind-icon">disable</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="diagapi.html#error" class="tsd-kind-icon">error</a></li>
@@ -131,7 +132,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L41">api/diag.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L47">api/diag.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -147,13 +148,44 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="createcomponentlogger" class="tsd-anchor"></a>
+					<h3>create<wbr>Component<wbr>Logger</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Component<wbr>Logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/componentloggeroptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentLoggerOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L122">api/diag.ts:122</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/componentloggeroptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentLoggerOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>options: <a href="../interfaces/componentloggeroptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentLoggerOptions</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="debug" class="tsd-anchor"></a>
 					<h3>debug</h3>
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <a href="../modules.html#diaglogfunction" class="tsd-signature-type" data-tsd-kind="Type alias">DiagLogFunction</a></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/diaglogger.html">DiagLogger</a>.<a href="../interfaces/diaglogger.html#debug">debug</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L108">api/diag.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L128">api/diag.ts:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">disable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L116">api/diag.ts:116</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L136">api/diag.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -202,7 +234,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/diaglogger.html">DiagLogger</a>.<a href="../interfaces/diaglogger.html#error">error</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L111">api/diag.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L131">api/diag.ts:131</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -218,7 +250,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/diaglogger.html">DiagLogger</a>.<a href="../interfaces/diaglogger.html#info">info</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L109">api/diag.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L129">api/diag.ts:129</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -232,10 +264,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="setlogger" class="tsd-anchor"></a>
 					<h3>set<wbr>Logger</h3>
-					<div class="tsd-signature tsd-kind-icon">set<wbr>Logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>logger<span class="tsd-signature-symbol">: </span><a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a>, logLevel<span class="tsd-signature-symbol">?: </span><a href="../enums/diagloglevel.html#none" class="tsd-signature-type" data-tsd-kind="Enumeration member">NONE</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#error" class="tsd-signature-type" data-tsd-kind="Enumeration member">ERROR</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#warn" class="tsd-signature-type" data-tsd-kind="Enumeration member">WARN</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#info" class="tsd-signature-type" data-tsd-kind="Enumeration member">INFO</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#debug" class="tsd-signature-type" data-tsd-kind="Enumeration member">DEBUG</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#verbose" class="tsd-signature-type" data-tsd-kind="Enumeration member">VERBOSE</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#all" class="tsd-signature-type" data-tsd-kind="Enumeration member">ALL</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>logger<span class="tsd-signature-symbol">: </span><a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a>, logLevel<span class="tsd-signature-symbol">?: </span><a href="../enums/diagloglevel.html" class="tsd-signature-type" data-tsd-kind="Enumeration">DiagLogLevel</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L104">api/diag.ts:104</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L118">api/diag.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -251,7 +283,7 @@
 							<dd><p>[Optional] The DiagLogLevel used to filter logs sent to the logger. If not provided it will default to INFO.</p>
 							</dd>
 							<dt>returns</dt>
-							<dd><p>The previously registered DiagLogger</p>
+							<dd><p>true if the logger was successfully registered, else false</p>
 							</dd>
 						</dl>
 					</div>
@@ -260,7 +292,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>logger<span class="tsd-signature-symbol">: </span><a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a>, logLevel<span class="tsd-signature-symbol">?: </span><a href="../enums/diagloglevel.html#none" class="tsd-signature-type" data-tsd-kind="Enumeration member">NONE</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#error" class="tsd-signature-type" data-tsd-kind="Enumeration member">ERROR</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#warn" class="tsd-signature-type" data-tsd-kind="Enumeration member">WARN</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#info" class="tsd-signature-type" data-tsd-kind="Enumeration member">INFO</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#debug" class="tsd-signature-type" data-tsd-kind="Enumeration member">DEBUG</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#verbose" class="tsd-signature-type" data-tsd-kind="Enumeration member">VERBOSE</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#all" class="tsd-signature-type" data-tsd-kind="Enumeration member">ALL</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>logger<span class="tsd-signature-symbol">: </span><a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a>, logLevel<span class="tsd-signature-symbol">?: </span><a href="../enums/diagloglevel.html" class="tsd-signature-type" data-tsd-kind="Enumeration">DiagLogLevel</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -270,10 +302,10 @@
 												<h5>logger: <a href="../interfaces/diaglogger.html" class="tsd-signature-type" data-tsd-kind="Interface">DiagLogger</a></h5>
 											</li>
 											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> logLevel: <a href="../enums/diagloglevel.html#none" class="tsd-signature-type" data-tsd-kind="Enumeration member">NONE</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#error" class="tsd-signature-type" data-tsd-kind="Enumeration member">ERROR</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#warn" class="tsd-signature-type" data-tsd-kind="Enumeration member">WARN</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#info" class="tsd-signature-type" data-tsd-kind="Enumeration member">INFO</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#debug" class="tsd-signature-type" data-tsd-kind="Enumeration member">DEBUG</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#verbose" class="tsd-signature-type" data-tsd-kind="Enumeration member">VERBOSE</a><span class="tsd-signature-symbol"> | </span><a href="../enums/diagloglevel.html#all" class="tsd-signature-type" data-tsd-kind="Enumeration member">ALL</a></h5>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> logLevel: <a href="../enums/diagloglevel.html" class="tsd-signature-type" data-tsd-kind="Enumeration">DiagLogLevel</a></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 									</li>
 								</ul>
 							</li>
@@ -287,7 +319,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/diaglogger.html">DiagLogger</a>.<a href="../interfaces/diaglogger.html#verbose">verbose</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L107">api/diag.ts:107</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L127">api/diag.ts:127</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -307,7 +339,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/diaglogger.html">DiagLogger</a>.<a href="../interfaces/diaglogger.html#warn">warn</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L110">api/diag.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L130">api/diag.ts:130</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -319,11 +351,11 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="_instance" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagStatic">Static</span> _instance</h3>
-					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="diagapi.html" class="tsd-signature-type" data-tsd-kind="Class">DiagAPI</a></div>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _instance</h3>
+					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <a href="diagapi.html" class="tsd-signature-type" data-tsd-kind="Class">DiagAPI</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L32">api/diag.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L38">api/diag.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -340,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/diag.ts#L35">api/diag.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/diag.ts#L41">api/diag.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -371,6 +403,9 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-private">
 								<a href="diagapi.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="diagapi.html#createcomponentlogger" class="tsd-kind-icon">create<wbr>Component<wbr>Logger</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="diagapi.html#debug" class="tsd-kind-icon">debug</a>

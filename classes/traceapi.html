@@ -94,7 +94,12 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="traceapi.html#_proxytracerprovider" class="tsd-kind-icon">_proxy<wbr>Tracer<wbr>Provider</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="traceapi.html#getspan" class="tsd-kind-icon">get<wbr>Span</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="traceapi.html#getspancontext" class="tsd-kind-icon">get<wbr>Span<wbr>Context</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="traceapi.html#isspancontextvalid" class="tsd-kind-icon">is<wbr>Span<wbr>Context<wbr>Valid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="traceapi.html#setspan" class="tsd-kind-icon">set<wbr>Span</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="traceapi.html#setspancontext" class="tsd-kind-icon">set<wbr>Span<wbr>Context</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="traceapi.html#wrapspancontext" class="tsd-kind-icon">wrap<wbr>Span<wbr>Context</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="traceapi.html#_instance" class="tsd-kind-icon">_instance</a></li>
 							</ul>
 						</section>
@@ -123,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L35">api/trace.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L44">api/trace.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -144,9 +149,87 @@
 					<div class="tsd-signature tsd-kind-icon">_proxy<wbr>Tracer<wbr>Provider<span class="tsd-signature-symbol">:</span> <a href="proxytracerprovider.html" class="tsd-signature-type" data-tsd-kind="Class">ProxyTracerProvider</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L35">api/trace.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L44">api/trace.ts:44</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getspan" class="tsd-anchor"></a>
+					<h3>get<wbr>Span</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Span<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L92">api/trace.ts:92</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Return the span if one exists</p>
+											</div>
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>context to get span from</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getspancontext" class="tsd-anchor"></a>
+					<h3>get<wbr>Span<wbr>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Span<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L94">api/trace.ts:94</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Get the span context of the span if it exists.</p>
+											</div>
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>context to get values from</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="isspancontextvalid" class="tsd-anchor"></a>
@@ -154,7 +237,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Span<wbr>Context<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>spanContext<span class="tsd-signature-symbol">: </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L78">api/trace.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L90">api/trace.ts:90</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -185,13 +268,144 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="_instance" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagStatic">Static</span> _instance</h3>
-					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="traceapi.html" class="tsd-signature-type" data-tsd-kind="Class">TraceAPI</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="setspan" class="tsd-anchor"></a>
+					<h3>set<wbr>Span</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Span<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, span<span class="tsd-signature-symbol">: </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L33">api/trace.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L96">api/trace.ts:96</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, span<span class="tsd-signature-symbol">: </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Set the span on a context</p>
+											</div>
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>context to use as parent</p>
+												</div>
+											</li>
+											<li>
+												<h5>span: <a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>span to set active</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="setspancontext" class="tsd-anchor"></a>
+					<h3>set<wbr>Span<wbr>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Span<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, spanContext<span class="tsd-signature-symbol">: </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L98">api/trace.ts:98</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, spanContext<span class="tsd-signature-symbol">: </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Wrap span context in a NoopSpan and set as span in a new
+												context</p>
+											</div>
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>context to set active span on</p>
+												</div>
+											</li>
+											<li>
+												<h5>spanContext: <a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>span context to be wrapped</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="wrapspancontext" class="tsd-anchor"></a>
+					<h3>wrap<wbr>Span<wbr>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">wrap<wbr>Span<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>spanContext<span class="tsd-signature-symbol">: </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L88">api/trace.ts:88</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>spanContext<span class="tsd-signature-symbol">: </span><a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Wrap the given <a href="../interfaces/spancontext.html">SpanContext</a> in a new non-recording <a href="../interfaces/span.html">Span</a></p>
+											</div>
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>spanContext: <a href="../interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a></h5>
+												<div class="tsd-comment tsd-typography">
+													<p>span context to be wrapped</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/span.html" class="tsd-signature-type" data-tsd-kind="Interface">Span</a></h4>
+										<p>a new non-recording <a href="../interfaces/span.html">Span</a> with the provided context</p>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="_instance" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _instance</h3>
+					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <a href="traceapi.html" class="tsd-signature-type" data-tsd-kind="Class">TraceAPI</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L42">api/trace.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -208,7 +422,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L73">api/trace.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L83">api/trace.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -230,7 +444,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L68">api/trace.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L78">api/trace.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -261,7 +475,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L61">api/trace.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L71">api/trace.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -277,18 +491,18 @@
 					<a name="setglobaltracerprovider" class="tsd-anchor"></a>
 					<h3>set<wbr>Global<wbr>Tracer<wbr>Provider</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Global<wbr>Tracer<wbr>Provider<span class="tsd-signature-symbol">(</span>provider<span class="tsd-signature-symbol">: </span><a href="../interfaces/tracerprovider.html" class="tsd-signature-type" data-tsd-kind="Interface">TracerProvider</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/tracerprovider.html" class="tsd-signature-type" data-tsd-kind="Interface">TracerProvider</a></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Global<wbr>Tracer<wbr>Provider<span class="tsd-signature-symbol">(</span>provider<span class="tsd-signature-symbol">: </span><a href="../interfaces/tracerprovider.html" class="tsd-signature-type" data-tsd-kind="Interface">TracerProvider</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L52">api/trace.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L63">api/trace.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Set the current global tracer. Returns the initialized global tracer provider</p>
+									<p>Set the current global tracer.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -297,7 +511,8 @@
 									<h5>provider: <a href="../interfaces/tracerprovider.html" class="tsd-signature-type" data-tsd-kind="Interface">TracerProvider</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/tracerprovider.html" class="tsd-signature-type" data-tsd-kind="Interface">TracerProvider</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>true if the tracer provider was successfully registered, else false</p>
 						</li>
 					</ul>
 				</section>
@@ -311,7 +526,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/504041a/src/api/trace.ts#L41">api/trace.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/da59730/src/api/trace.ts#L50">api/trace.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -347,7 +562,22 @@
 								<a href="traceapi.html#_proxytracerprovider" class="tsd-kind-icon">_proxy<wbr>Tracer<wbr>Provider</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="traceapi.html#getspan" class="tsd-kind-icon">get<wbr>Span</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="traceapi.html#getspancontext" class="tsd-kind-icon">get<wbr>Span<wbr>Context</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="traceapi.html#isspancontextvalid" class="tsd-kind-icon">is<wbr>Span<wbr>Context<wbr>Valid</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="traceapi.html#setspan" class="tsd-kind-icon">set<wbr>Span</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="traceapi.html#setspancontext" class="tsd-kind-icon">set<wbr>Span<wbr>Context</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="traceapi.html#wrapspancontext" class="tsd-kind-icon">wrap<wbr>Span<wbr>Context</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="traceapi.html#_instance" class="tsd-kind-icon">_instance</a>
