@@ -18,6 +18,11 @@ import { BaggageImpl } from './internal/baggage';
 import { baggageEntryMetadataSymbol } from './internal/symbol';
 import { Baggage, BaggageEntry, BaggageEntryMetadata } from './types';
 
+/**
+ * Create a new Baggage with optional entries
+ *
+ * @param entries An array of baggage entries the new baggage should contain
+ */
 export function createBaggage(
   entries: Record<string, BaggageEntry> = {}
 ): Baggage {
