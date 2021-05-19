@@ -15,6 +15,7 @@
  */
 
 export * from './baggage/types';
+export { baggageEntryMetadataFromString } from './baggage/utils';
 export * from './common/Exception';
 export * from './common/Time';
 export * from './diag';
