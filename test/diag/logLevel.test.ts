@@ -164,8 +164,9 @@ describe('LogLevelFilter DiagLogger', () => {
             });
           });
 
-          levelMap.forEach(masterLevelMap => {
-            it(`diag.setLogger level is ignored when diag logger is set to ${masterLevelMap.message}`, () => {
+          it('diag.setLogger level is ignored when appropriate', () => {
+            levelMap.forEach(masterLevelMap => {
+              restore();
               diag.setLogger(dummyLogger, masterLevelMap.level);
 
               const testLogger = createLogLevelDiagLogger(
@@ -175,12 +176,17 @@ describe('LogLevelFilter DiagLogger', () => {
               testLogger[fName](`${fName} called %s`, 'param1');
               diagLoggerFunctions.forEach(lName => {
                 if (fName === lName && map.ignoreFuncs.indexOf(lName) === -1) {
-                  assert.deepStrictEqual(calledArgs[lName], [
-                    `${fName} called %s`,
-                    'param1',
-                  ]);
+                  assert.deepStrictEqual(
+                    calledArgs[lName],
+                    [`${fName} called %s`, 'param1'],
+                    `expected to see messages when diag logger is set to ${masterLevelMap.message}`
+                  );
                 } else {
-                  assert.strictEqual(calledArgs[lName], null);
+                  assert.strictEqual(
+                    calledArgs[lName],
+                    null,
+                    `did not expect to see messages when diag logger is set to ${masterLevelMap.message}`
+                  );
                 }
               });
             });
