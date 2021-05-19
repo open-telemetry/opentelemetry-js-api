@@ -45,7 +45,7 @@ describe('LogLevelFilter DiagLogger', () => {
   /** Simulated Legacy logger */
   let incompleteLogger: DiagLogger;
 
-  const restore = () => {
+  const restoreCallHistory = () => {
     diagLoggerFunctions.forEach(fName => {
       calledArgs[fName] = null;
     });
@@ -72,7 +72,7 @@ describe('LogLevelFilter DiagLogger', () => {
   });
 
   afterEach(() => {
-    restore();
+    restoreCallHistory();
   });
 
   const levelMap: Array<{
@@ -166,7 +166,7 @@ describe('LogLevelFilter DiagLogger', () => {
 
           it('diag.setLogger level is ignored when appropriate', () => {
             levelMap.forEach(masterLevelMap => {
-              restore();
+              restoreCallHistory();
               diag.setLogger(dummyLogger, masterLevelMap.level);
 
               const testLogger = createLogLevelDiagLogger(
