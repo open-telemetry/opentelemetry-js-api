@@ -194,6 +194,7 @@ describe('LogLevelFilter DiagLogger', () => {
 
           it('diag.setLogger level and logger should log', () => {
             diag.setLogger(dummyLogger, map.level);
+            restoreCallHistory();
             diag[fName](`${fName} called %s`, 'param1');
             diagLoggerFunctions.forEach(lName => {
               if (fName === lName && map.ignoreFuncs.indexOf(lName) === -1) {
