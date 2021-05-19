@@ -35,10 +35,6 @@ export function registerGlobal<Type extends keyof OTelGlobalAPI>(
   instance: OTelGlobalAPI[Type],
   allowOverride = false
 ): boolean {
-  diag.debug(
-    `@opentelemetry/api: Registering a global for ${type} v${VERSION}.`
-  );
-
   const api = (_global[GLOBAL_OPENTELEMETRY_API_KEY] = _global[
     GLOBAL_OPENTELEMETRY_API_KEY
   ] ?? {
@@ -64,6 +60,10 @@ export function registerGlobal<Type extends keyof OTelGlobalAPI>(
   }
 
   api[type] = instance;
+  diag.debug(
+    `@opentelemetry/api: Registered a global for ${type} v${VERSION}.`
+  );
+
   return true;
 }
 
