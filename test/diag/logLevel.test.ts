@@ -45,6 +45,12 @@ describe('LogLevelFilter DiagLogger', () => {
   /** Simulated Legacy logger */
   let incompleteLogger: DiagLogger;
 
+  const restore = () => {
+    diagLoggerFunctions.forEach(fName => {
+      calledArgs[fName] = null;
+    });
+  };
+
   beforeEach(() => {
     // Set no logger so that sinon doesn't complain about TypeError: Attempted to wrap xxxx which is already wrapped
     diag.disable();
@@ -66,10 +72,7 @@ describe('LogLevelFilter DiagLogger', () => {
   });
 
   afterEach(() => {
-    // restore
-    diagLoggerFunctions.forEach(fName => {
-      calledArgs[fName] = null;
-    });
+    restore();
   });
 
   const levelMap: Array<{
