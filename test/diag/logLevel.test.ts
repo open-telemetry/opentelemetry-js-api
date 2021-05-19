@@ -166,13 +166,13 @@ describe('LogLevelFilter DiagLogger', () => {
 
           it('diag.setLogger level is ignored when appropriate', () => {
             levelMap.forEach(masterLevelMap => {
-              restoreCallHistory();
               diag.setLogger(dummyLogger, masterLevelMap.level);
 
               const testLogger = createLogLevelDiagLogger(
                 map.level,
                 dummyLogger
               );
+              restoreCallHistory();
               testLogger[fName](`${fName} called %s`, 'param1');
               diagLoggerFunctions.forEach(lName => {
                 if (fName === lName && map.ignoreFuncs.indexOf(lName) === -1) {
@@ -221,6 +221,7 @@ describe('LogLevelFilter DiagLogger', () => {
               map.level,
               invalidLogger as any
             );
+            restoreCallHistory();
 
             testLogger[fName](`${fName} called %s`, 'param1');
             diagLoggerFunctions.forEach(lName => {
