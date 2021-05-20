@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { BaggageImpl } from './internal/baggage';
+import { diag } from '..';
+import { BaggageImpl } from './internal/baggage-impl';
 import { baggageEntryMetadataSymbol } from './internal/symbol';
 import { Baggage, BaggageEntry, BaggageEntryMetadata } from './types';
 
@@ -39,7 +40,9 @@ export function baggageEntryMetadataFromString(
   str: string
 ): BaggageEntryMetadata {
   if (typeof str !== 'string') {
-    // @TODO log diagnostic
+    diag.error(
+      `Cannot create baggage metadata from unknown type: ${typeof str}`
+    );
     str = '';
   }
 
