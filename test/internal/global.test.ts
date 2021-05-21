@@ -135,12 +135,18 @@ describe('Global Utils', () => {
     api1.diag.setLogger(logger1);
     api1.diag.setLogger(logger2);
 
+    const MSG = '__log message__';
+    api1.diag.info(MSG);
+
     sinon.assert.notCalled(logger1.error);
+    sinon.assert.notCalled(logger1.info);
     sinon.assert.calledOnce(logger1.warn);
     sinon.assert.calledWith(logger1.warn, sinon.match(/will be overwritten/i));
 
     sinon.assert.notCalled(logger2.error);
     sinon.assert.calledOnce(logger2.warn);
     sinon.assert.calledWith(logger2.warn, sinon.match(/will overwrite/i));
+    sinon.assert.calledOnce(logger2.info);
+    sinon.assert.calledWith(logger2.info, MSG);
   });
 });
