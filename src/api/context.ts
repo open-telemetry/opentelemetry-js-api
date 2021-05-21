@@ -78,11 +78,22 @@ export class ContextAPI {
 
   /**
    * Bind a context to a target function or event emitter
+   * @deprecated in 0.x, will be removed in 1.x
    *
    * @param target function or event emitter to bind
    * @param context context to bind to the event emitter or function. Defaults to the currently active context
    */
   public bind<T>(target: T, context: Context = this.active()): T {
+    return this._getContextManager().bind(target, context);
+  }
+
+  /**
+   * Bind a context to a target function or event emitter
+   *
+   * @param context context to bind to the event emitter or function. Defaults to the currently active context
+   * @param target function or event emitter to bind
+   */
+  public bind<T>(context: Context = this.active(), target: T): T {
     return this._getContextManager().bind(target, context);
   }
 
