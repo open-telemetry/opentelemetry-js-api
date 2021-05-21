@@ -89,8 +89,11 @@ export class DiagAPI implements DiagLogger {
       const newLogger = createLogLevelDiagLogger(logLevel, logger);
       // There already is an logger registered. We'll let it know before overwriting it.
       if (oldLogger) {
-        oldLogger.warn('Current logger will be overwritten');
-        newLogger.warn('Current logger will overwrite one already registered');
+        const stack = new Error().stack ?? '<failed to generate stacktrace>';
+        oldLogger.warn(`Current logger will be overwritten from ${stack}`);
+        newLogger.warn(
+          `Current logger will overwrite one already registered from ${stack}`
+        );
       }
 
       return registerGlobal('diag', newLogger, true);
