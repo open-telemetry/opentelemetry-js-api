@@ -53,13 +53,13 @@ export class NoopTracer implements Tracer {
   ): ReturnType<F>;
   startActiveSpan<F extends (span: Span) => ReturnType<F>>(
     name: string,
-    options: SpanOptions,
+    opts: SpanOptions,
     fn: F
   ): ReturnType<F>;
   startActiveSpan<F extends (span: Span) => ReturnType<F>>(
     name: string,
-    options: SpanOptions,
-    context: Context,
+    opts: SpanOptions,
+    ctx: Context,
     fn: F
   ): ReturnType<F>;
   startActiveSpan<F extends (span: Span) => ReturnType<F>>(
@@ -68,8 +68,8 @@ export class NoopTracer implements Tracer {
     arg3?: F | Context,
     arg4?: F
   ): ReturnType<F> | undefined {
-    let options: SpanOptions | undefined;
-    let activeContext: Context | undefined;
+    let opts: SpanOptions | undefined;
+    let ctx: Context | undefined;
     let fn: F;
 
     if (arguments.length < 2) {
@@ -77,16 +77,16 @@ export class NoopTracer implements Tracer {
     } else if (arguments.length === 2) {
       fn = arg2 as F;
     } else if (arguments.length === 3) {
-      options = arg2 as SpanOptions | undefined;
+      opts = arg2 as SpanOptions | undefined;
       fn = arg3 as F;
     } else {
-      options = arg2 as SpanOptions | undefined;
-      activeContext = arg3 as Context | undefined;
+      opts = arg2 as SpanOptions | undefined;
+      ctx = arg3 as Context | undefined;
       fn = arg4 as F;
     }
 
-    const parentContext = activeContext ?? context.active();
-    const span = this.startSpan(name, options, parentContext);
+    const parentContext = ctx ?? context.active();
+    const span = this.startSpan(name, opts, parentContext);
     const contextWithSpanSet = setSpan(parentContext, span);
 
     return context.with(contextWithSpanSet, fn, undefined, span);
