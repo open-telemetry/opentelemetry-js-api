@@ -70,6 +70,8 @@ describe('NoopTracer', () => {
     };
     const opts = { attributes: { foo: 'bar' } };
 
+    assert.strictEqual((tracer as any).startActiveSpan(name), undefined);
+
     assert.strictEqual(tracer.startActiveSpan(name, fn), 1);
 
     assert.strictEqual(tracer.startActiveSpan(name, opts, fn), 1);
