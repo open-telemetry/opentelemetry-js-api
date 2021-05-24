@@ -58,8 +58,8 @@ export class NoopTracer implements Tracer {
   ): ReturnType<F>;
   startActiveSpan<F extends (span: Span) => ReturnType<F>>(
     name: string,
-    opts: SpanOptions,
-    ctx: Context,
+    opts: SpanOptions | undefined,
+    ctx: Context | undefined,
     fn: F
   ): ReturnType<F>;
   startActiveSpan<F extends (span: Span) => ReturnType<F>>(
