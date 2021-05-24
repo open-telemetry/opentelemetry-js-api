@@ -94,6 +94,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#createbaggage" class="tsd-kind-icon">create<wbr>Baggage</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#deletebaggage" class="tsd-kind-icon">delete<wbr>Baggage</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#getbaggage" class="tsd-kind-icon">get<wbr>Baggage</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#setbaggage" class="tsd-kind-icon">set<wbr>Baggage</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="propagationapi.html#_instance" class="tsd-kind-icon">_instance</a></li>
@@ -126,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L39">api/propagation.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L44">api/propagation.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -144,10 +145,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="createbaggage" class="tsd-anchor"></a>
 					<h3>create<wbr>Baggage</h3>
-					<div class="tsd-signature tsd-kind-icon">create<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">BaggageEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Baggage</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/baggageentry.html" class="tsd-signature-type" data-tsd-kind="Interface">BaggageEntry</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L104">api/propagation.ts:104</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L109">api/propagation.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -155,7 +156,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">BaggageEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Baggage</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/baggageentry.html" class="tsd-signature-type" data-tsd-kind="Interface">BaggageEntry</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -167,13 +168,49 @@
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>entries: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">BaggageEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5>
+												<h5>entries: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/baggageentry.html" class="tsd-signature-type" data-tsd-kind="Interface">BaggageEntry</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5>
 												<div class="tsd-comment tsd-typography">
 													<p>An array of baggage entries the new baggage should contain</p>
 												</div>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Baggage</span></h4>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="deletebaggage" class="tsd-anchor"></a>
+					<h3>delete<wbr>Baggage</h3>
+					<div class="tsd-signature tsd-kind-icon">delete<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L115">api/propagation.ts:115</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Delete the baggage stored in the given context</p>
+											</div>
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h4>
 									</li>
 								</ul>
 							</li>
@@ -183,10 +220,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="getbaggage" class="tsd-anchor"></a>
 					<h3>get<wbr>Baggage</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Baggage</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L106">api/propagation.ts:106</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L111">api/propagation.ts:111</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -194,17 +231,22 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Baggage</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Retrieve the current baggage from the given context</p>
+											</div>
+										</div>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
 												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Baggage</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 										<p>Extracted baggage from the context</p>
 									</li>
 								</ul>
@@ -215,10 +257,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="setbaggage" class="tsd-anchor"></a>
 					<h3>set<wbr>Baggage</h3>
-					<div class="tsd-signature tsd-kind-icon">set<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, baggage<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Baggage</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, baggage<span class="tsd-signature-symbol">: </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L108">api/propagation.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L113">api/propagation.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -226,17 +268,22 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, baggage<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Baggage</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, baggage<span class="tsd-signature-symbol">: </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Store a baggage in the given context</p>
+											</div>
+										</div>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
 												<h5>context: <a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a></h5>
 											</li>
 											<li>
-												<h5>baggage: <span class="tsd-signature-type">Baggage</span></h5>
+												<h5>baggage: <a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a></h5>
 												<div class="tsd-comment tsd-typography">
 													<p>that will be set in the actual context</p>
 												</div>
@@ -255,7 +302,7 @@
 					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <a href="propagationapi.html" class="tsd-signature-type" data-tsd-kind="Class">PropagationAPI</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L39">api/propagation.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L44">api/propagation.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -272,7 +319,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L110">api/propagation.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L117">api/propagation.ts:117</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/textmappropagator.html" class="tsd-signature-type" data-tsd-kind="Interface">TextMapPropagator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -289,7 +336,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L100">api/propagation.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L105">api/propagation.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -311,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L84">api/propagation.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L89">api/propagation.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -360,7 +407,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L95">api/propagation.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L100">api/propagation.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -382,7 +429,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L69">api/propagation.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L74">api/propagation.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -431,7 +478,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L58">api/propagation.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L63">api/propagation.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -460,7 +507,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/8bd1c6e/src/api/propagation.ts#L45">api/propagation.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/api/propagation.ts#L50">api/propagation.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -494,6 +541,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="propagationapi.html#createbaggage" class="tsd-kind-icon">create<wbr>Baggage</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="propagationapi.html#deletebaggage" class="tsd-kind-icon">delete<wbr>Baggage</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="propagationapi.html#getbaggage" class="tsd-kind-icon">get<wbr>Baggage</a>

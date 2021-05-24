@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TracerProvider | OpenTelemetry API for JavaScript</title>
+	<title>BaggageEntry | OpenTelemetry API for JavaScript</title>
 	<meta name="description" content="Documentation for OpenTelemetry API for JavaScript">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,36 +55,22 @@
 					<a href="../modules.html">OpenTelemetry API for JavaScript</a>
 				</li>
 				<li>
-					<a href="tracerprovider.html">TracerProvider</a>
+					<a href="baggageentry.html">BaggageEntry</a>
 				</li>
 			</ul>
-			<h1>Interface TracerProvider</h1>
+			<h1>Interface BaggageEntry</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>A registry for creating named <a href="tracer.html">Tracer</a>s.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">TracerProvider</span>
+						<span class="target">BaggageEntry</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/nooptracerprovider.html" class="tsd-signature-type" data-tsd-kind="Class">NoopTracerProvider</a></li>
-					<li><a href="../classes/proxytracerprovider.html" class="tsd-signature-type" data-tsd-kind="Class">ProxyTracerProvider</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -92,56 +78,47 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="tracerprovider.html#gettracer" class="tsd-kind-icon">get<wbr>Tracer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="baggageentry.html#metadata" class="tsd-kind-icon">metadata</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="baggageentry.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="gettracer" class="tsd-anchor"></a>
-					<h3>get<wbr>Tracer</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Tracer<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, version<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="tracer.html" class="tsd-signature-type" data-tsd-kind="Interface">Tracer</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/trace/tracer_provider.ts#L34">trace/tracer_provider.ts:34</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Returns a Tracer, creating one if one with the given name and version is
-									not already created.</p>
-								</div>
-								<p>This function may return different Tracer types (e.g.
-								<a href="../classes/nooptracerprovider.html">NoopTracerProvider</a> vs. a functional tracer).</p>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The name of the tracer or instrumentation library.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> version: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The version of the tracer or instrumentation library.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="tracer.html" class="tsd-signature-type" data-tsd-kind="Interface">Tracer</a></h4>
-							<p>Tracer A Tracer with the given name and version</p>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="metadata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> metadata</h3>
+					<div class="tsd-signature tsd-kind-icon">metadata<span class="tsd-signature-symbol">:</span> <a href="../modules.html#baggageentrymetadata" class="tsd-signature-type" data-tsd-kind="Type alias">BaggageEntryMetadata</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/baggage/types.ts#L42">baggage/types.ts:42</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Metadata is an optional string property defined by the W3C baggage specification.
+							It currently has no special meaning defined by the specification.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/f667325/src/baggage/types.ts#L37">baggage/types.ts:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>String</code> value of the <code>BaggageEntry</code>.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -158,10 +135,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="tracerprovider.html" class="tsd-kind-icon">Tracer<wbr>Provider</a>
+						<a href="baggageentry.html" class="tsd-kind-icon">Baggage<wbr>Entry</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="tracerprovider.html#gettracer" class="tsd-kind-icon">get<wbr>Tracer</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="baggageentry.html#metadata" class="tsd-kind-icon">metadata</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="baggageentry.html#value" class="tsd-kind-icon">value</a>
 							</li>
 						</ul>
 					</li>
