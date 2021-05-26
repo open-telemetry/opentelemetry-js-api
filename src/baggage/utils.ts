@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-import { Baggage } from './Baggage';
-import { BaggageEntry, BaggageEntryMetadata } from './Entry';
-import { BaggageImpl } from './internal/baggage';
+import { diag } from '..';
+import { BaggageImpl } from './internal/baggage-impl';
 import { baggageEntryMetadataSymbol } from './internal/symbol';
-
-export * from './Baggage';
-export * from './Entry';
+import { Baggage, BaggageEntry, BaggageEntryMetadata } from './types';
 
 /**
  * Create a new Baggage with optional entries
@@ -43,7 +40,9 @@ export function baggageEntryMetadataFromString(
   str: string
 ): BaggageEntryMetadata {
   if (typeof str !== 'string') {
-    // @TODO log diagnostic
+    diag.error(
+      `Cannot create baggage metadata from unknown type: ${typeof str}`
+    );
     str = '';
   }
 

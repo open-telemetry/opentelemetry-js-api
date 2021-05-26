@@ -105,10 +105,15 @@ Because the npm installer and node module resolution algorithm could potentially
 
 ## Upgrade Guidelines
 
-### 1.0.0-rc.0 to x
+### 1.0.0-rc.1 to x
 
+### 1.0.0-rc.0 to 1.0.0-rc.1
+
+- Removing `TimedEvent` which was not part of spec
 - `HttpBaggage` renamed to `HttpBaggagePropagator`
 - [#45](https://github.com/open-telemetry/opentelemetry-js-api/pull/45) `Span#context` renamed to `Span#spanContext`
+- [#47](https://github.com/open-telemetry/opentelemetry-js-api/pull/47) `getSpan`/`setSpan`/`getSpanContext`/`setSpanContext` moved to `trace` namespace
+- [#55](https://github.com/open-telemetry/opentelemetry-js-api/pull/55) `getBaggage`/`setBaggage`/`createBaggage` moved to `propagation` namespace
 
 ## Useful links
 

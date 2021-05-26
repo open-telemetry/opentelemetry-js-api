@@ -28,6 +28,12 @@ import {
   TextMapPropagator,
   TextMapSetter,
 } from '../propagation/TextMapPropagator';
+import {
+  getBaggage,
+  setBaggage,
+  deleteBaggage,
+} from '../baggage/context-helpers';
+import { createBaggage } from '../baggage/utils';
 
 const API_NAME = 'propagation';
 const NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator();
@@ -100,6 +106,14 @@ export class PropagationAPI {
   public disable() {
     unregisterGlobal(API_NAME);
   }
+
+  public createBaggage = createBaggage;
+
+  public getBaggage = getBaggage;
+
+  public setBaggage = setBaggage;
+
+  public deleteBaggage = deleteBaggage;
 
   private _getGlobalPropagator(): TextMapPropagator {
     return getGlobal(API_NAME) || NOOP_TEXT_MAP_PROPAGATOR;
