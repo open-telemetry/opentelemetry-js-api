@@ -164,30 +164,30 @@ describe('LogLevelFilter DiagLogger', () => {
             });
           });
 
-          it('diag.setLogger level is ignored when appropriate', () => {
-            levelMap.forEach(masterLevelMap => {
-              diag.setLogger(dummyLogger, masterLevelMap.level);
+          levelMap.forEach(masterLevelMap => {
+            describe(`when diag logger is set to ${masterLevelMap.message}`, () => {
+              it('diag.setLogger level is ignored when using a specific logger', () => {
+                diag.setLogger(dummyLogger, masterLevelMap.level);
 
-              const testLogger = createLogLevelDiagLogger(
-                map.level,
-                dummyLogger
-              );
-              restoreCallHistory();
-              testLogger[fName](`${fName} called %s`, 'param1');
-              diagLoggerFunctions.forEach(lName => {
-                if (fName === lName && map.ignoreFuncs.indexOf(lName) === -1) {
-                  assert.deepStrictEqual(
-                    calledArgs[lName],
-                    [`${fName} called %s`, 'param1'],
-                    `expected to see messages when diag logger is set to ${masterLevelMap.message}`
-                  );
-                } else {
-                  assert.strictEqual(
-                    calledArgs[lName],
-                    null,
-                    `did not expect to see messages when diag logger is set to ${masterLevelMap.message}`
-                  );
-                }
+                const testLogger = createLogLevelDiagLogger(
+                  map.level,
+                  dummyLogger
+                );
+                restoreCallHistory();
+                testLogger[fName](`${fName} called %s`, 'param1');
+                diagLoggerFunctions.forEach(lName => {
+                  if (
+                    fName === lName &&
+                    map.ignoreFuncs.indexOf(lName) === -1
+                  ) {
+                    assert.deepStrictEqual(calledArgs[lName], [
+                      `${fName} called %s`,
+                      'param1',
+                    ]);
+                  } else {
+                    assert.strictEqual(calledArgs[lName], null);
+                  }
+                });
               });
             });
           });
