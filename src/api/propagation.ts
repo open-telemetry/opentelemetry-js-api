@@ -15,7 +15,12 @@
  */
 
 import { Context } from '../context/types';
-import { NOOP_TEXT_MAP_PROPAGATOR } from '../propagation/NoopTextMapPropagator';
+import {
+  getGlobal,
+  registerGlobal,
+  unregisterGlobal,
+} from '../internal/global-utils';
+import { NoopTextMapPropagator } from '../propagation/NoopTextMapPropagator';
 import {
   defaultTextMapGetter,
   defaultTextMapSetter,
@@ -24,14 +29,14 @@ import {
   TextMapSetter,
 } from '../propagation/TextMapPropagator';
 import {
-  getGlobal,
-  registerGlobal,
-  unregisterGlobal,
-} from '../internal/global-utils';
-import { getBaggage, setBaggage } from '../baggage/context-helpers';
+  getBaggage,
+  setBaggage,
+  deleteBaggage,
+} from '../baggage/context-helpers';
 import { createBaggage } from '../baggage/utils';
 
 const API_NAME = 'propagation';
+const NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator();
 
 /**
  * Singleton object which represents the entry point to the OpenTelemetry Propagation API
@@ -107,6 +112,8 @@ export class PropagationAPI {
   public getBaggage = getBaggage;
 
   public setBaggage = setBaggage;
+
+  public deleteBaggage = deleteBaggage;
 
   private _getGlobalPropagator(): TextMapPropagator {
     return getGlobal(API_NAME) || NOOP_TEXT_MAP_PROPAGATOR;
