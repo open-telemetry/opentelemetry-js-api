@@ -83,10 +83,7 @@ export class ContextAPI {
    * @param target function or event emitter to bind
    */
   public bind<T>(context: Context, target: T): T {
-    if (context === undefined) {
-      return target;
-    }
-    return this._getContextManager().bind(target, context);
+    return this._getContextManager().bind(context, target);
   }
 
   private _getContextManager(): ContextManager {
