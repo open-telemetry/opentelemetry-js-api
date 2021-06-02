@@ -62,8 +62,8 @@ export interface ContextManager {
 
   /**
    * Bind an object as the current context (or a specific one)
-   * @param target Any object to which a context need to be set
    * @param [context] Optionally specify the context which you want to assign
+   * @param target Any object to which a context need to be set
    */
   bind<T>(context: Context, target: T): T;
 
