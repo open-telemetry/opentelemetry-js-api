@@ -57,7 +57,7 @@ export function _makeCompatibilityCheck(
   if (ownVersionParsed.prerelease) {
     return function isExactmatch(globalVersion: string): boolean {
       return globalVersion === ownVersion;
-    }
+    };
   }
 
   function _reject(v: string) {

@@ -131,17 +131,18 @@ describe('semver', () => {
     ];
 
     test(globalVersion, vers);
-  })
+  });
 });
 
 function test(globalVersion: string, vers: [string, boolean][]) {
   describe(`global version is ${globalVersion}`, () => {
     for (const [version, compatible] of vers) {
-      it(`API version ${version} ${compatible ? 'should' : 'should not'
-        } be able to access global`, () => {
-          const check = _makeCompatibilityCheck(version);
-          assert.strictEqual(check(globalVersion), compatible);
-        });
+      it(`API version ${version} ${
+        compatible ? 'should' : 'should not'
+      } be able to access global`, () => {
+        const check = _makeCompatibilityCheck(version);
+        assert.strictEqual(check(globalVersion), compatible);
+      });
     }
   });
 }
