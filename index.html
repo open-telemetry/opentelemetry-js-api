@@ -157,11 +157,19 @@
 				<a href="#upgrade-guidelines" id="upgrade-guidelines" style="color: inherit; text-decoration: none;">
 					<h2>Upgrade Guidelines</h2>
 				</a>
-				<a href="#100-rc1-to-x" id="100-rc1-to-x" style="color: inherit; text-decoration: none;">
-					<h3>1.0.0-rc.1 to x</h3>
+				<a href="#0210-to-100" id="0210-to-100" style="color: inherit; text-decoration: none;">
+					<h3>0.21.0 to 1.0.0</h3>
 				</a>
-				<a href="#100-rc0-to-100-rc1" id="100-rc0-to-100-rc1" style="color: inherit; text-decoration: none;">
-					<h3>1.0.0-rc.0 to 1.0.0-rc.1</h3>
+				<p>No breaking changes</p>
+				<a href="#0200-to-0210" id="0200-to-0210" style="color: inherit; text-decoration: none;">
+					<h3>0.20.0 to 0.21.0</h3>
+				</a>
+				<ul>
+					<li><a href="https://github.com/open-telemetry/opentelemetry-js-api/issues/78">#78</a> <code>api.context.bind</code> arguments reversed and <code>context</code> is now a required argument.</li>
+					<li><a href="https://github.com/open-telemetry/opentelemetry-js-api/issues/46">#46</a> Noop classes and singletons are no longer exported. To create a noop span it is recommended to use <code>api.trace.wrapSpanContext</code> with <code>INVALID_SPAN_CONTEXT</code> instead of using the <code>NOOP_TRACER</code>.</li>
+				</ul>
+				<a href="#100-rc3-to-0200" id="100-rc3-to-0200" style="color: inherit; text-decoration: none;">
+					<h3>1.0.0-rc.3 to 0.20.0</h3>
 				</a>
 				<ul>
 					<li>Removing <code>TimedEvent</code> which was not part of spec</li>
