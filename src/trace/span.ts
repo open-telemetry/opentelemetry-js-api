@@ -65,14 +65,21 @@ export interface Span {
    * Adds an event to the Span.
    *
    * @param name the name of the event.
-   * @param [attributesOrStartTime] the attributes that will be added; these are
-   *     associated with this event. Can be also a start time
-   *     if type is {@type TimeInput} and 3rd param is undefined
+   * @param [startTime] start time of the event.
+   */
+  addEvent(name: string, startTime?: TimeInput): this;
+
+  /**
+   * Adds an event to the Span.
+   *
+   * @param name the name of the event.
+   * @param [attributes] the attributes that will be added; these are
+   *     associated with this event.
    * @param [startTime] start time of the event.
    */
   addEvent(
     name: string,
-    attributesOrStartTime?: SpanAttributes | TimeInput,
+    attributes?: SpanAttributes,
     startTime?: TimeInput
   ): this;
 
@@ -123,15 +130,22 @@ export interface Span {
    * Sets exception as a span event.
    *
    * @param exception the exception the only accepted values are string or Error
-   * @param [attributesOrTime] additional attributes to be associated with
-   *     this event. Can also be the time parameter if type is {@type TimeInput}
-   *     and 3rd parameter is undefined.
+   * @param [time] the time to set as Span's event time. If not provided,
+   *     use the current time.
+   */
+  recordException(exception: Exception, time?: TimeInput): void;
+
+  /**
+   * Sets exception as a span event.
+   *
+   * @param exception the exception the only accepted values are string or Error
+   * @param [attributes] additional attributes to be associated with this event.
    * @param [time] the time to set as Span's event time. If not provided,
    *     use the current time.
    */
   recordException(
     exception: Exception,
-    attributesOrTime?: SpanAttributes | TimeInput,
+    attributes?: SpanAttributes,
     time?: TimeInput
   ): void;
 }
