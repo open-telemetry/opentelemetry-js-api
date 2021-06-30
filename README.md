@@ -2,7 +2,7 @@
 ---
 <p align="center">
   <strong>
-    <a href="https://open-telemetry.github.io/opentelemetry-js">API Documentation<a/>
+    <a href="https://open-telemetry.github.io/opentelemetry-js-api">API Documentation<a/>
     &nbsp;&nbsp;&bull;&nbsp;&nbsp;
     <a href="https://github.com/open-telemetry/opentelemetry-js/discussions">Getting In Touch (GitHub Discussions)<a/>
   </strong>
@@ -104,6 +104,10 @@ main();
 Because the npm installer and node module resolution algorithm could potentially allow two or more copies of any given package to exist within the same `node_modules` structure, the OpenTelemetry API takes advantage of a variable on the `global` object to store the global API. When an API method in the API package is called, it checks if this `global` API exists and proxies calls to it if and only if it is a compatible API version. This means if a package has a dependency on an OpenTelemetry API version which is not compatible with the API used by the end user, the package will receive a no-op implementation of the API.
 
 ## Upgrade Guidelines
+
+### 0.21.0 to 1.0.0
+
+No breaking changes
 
 ### 0.20.0 to 0.21.0
 
