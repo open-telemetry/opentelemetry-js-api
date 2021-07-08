@@ -30,10 +30,9 @@ const consoleMap: { n: keyof DiagLogger; c: keyof Console }[] = [
  * {@link createLogLevelDiagLogger}
  */
 export class DiagConsoleLogger implements DiagLogger {
-  constructor() {
+  constructor(prefix?: string) {
     function _consoleFunc(funcName: keyof Console): DiagLogFunction {
-      return function () {
-        const orgArguments = arguments;
+      return function (message: string, ...args: unknown[]) {
         if (console) {
           // Some environments only expose the console when the F12 developer console is open
           let theFunc = console[funcName];
@@ -44,7 +43,11 @@ export class DiagConsoleLogger implements DiagLogger {
 
           // One last final check
           if (typeof theFunc === 'function') {
-            return theFunc.apply(console, orgArguments);
+            let logMessage = message;
+            if (prefix) {
+              logMessage = `${prefix} ${message}`;
+            }
+            return theFunc.apply(console, [logMessage, ...args]);
           }
         }
       };
