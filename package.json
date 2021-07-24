@@ -55,7 +55,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/mocha": "8.2.2",
+    "@types/mocha": "9.0.0",
     "@types/node": "16.4.2",
     "@types/sinon": "10.0.2",
     "@types/webpack-env": "1.16.2",
