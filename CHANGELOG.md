@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## 1.0.2
 
-### :rocket: Enhancement
+### :bug: Bug Fix
 
-* [#94](https://github.com/open-telemetry/opentelemetry-js-api/pull/94) chore: enforce strict equality on prerelease versions ([@dyladan](https://github.com/dyladan))
+* [#105](https://github.com/open-telemetry/opentelemetry-js-api/pull/105) fix: set delegate after successful registration ([@Flarna](https://github.com/Flarna))
+* [#94](https://github.com/open-telemetry/opentelemetry-js-api/pull/94) fix: enforce strict equality on prerelease versions ([@dyladan](https://github.com/dyladan))
 
 ### :memo: Documentation
 
@@ -16,6 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ### :house: Internal
 
+* [#109](https://github.com/open-telemetry/opentelemetry-js-api/pull/109) internal: add missing approvers from core ([@dyladan](https://github.com/dyladan))
 * [#103](https://github.com/open-telemetry/opentelemetry-js-api/pull/103) chore: reuse NoopTracer in ProxyTracer ([@Flarna](https://github.com/Flarna))
 
 ### Committers: 4
