@@ -19,8 +19,8 @@ while [[ $# -gt 0 ]]; do
       FORCE=YES
       shift
       ;;
-    -c|--no-clean)
-      NOCLEAN=YES
+    -c|--clean)
+      CLEAN=YES
       shift
       ;;
     -l|--no-latest)
@@ -58,8 +58,8 @@ if [ -n "$HELP" ]; then
   echo -e "\t-f | --force"
   echo -e "\t\tForce execution even if there are uncommitted changes in the workspace"
   echo ""
-  echo -e "\t-c | --no-clean"
-  echo -e "\t\tDo not clean the workspace"
+  echo -e "\t-c | --clean"
+  echo -e "\t\tRemove all files from the workspace not tracked by git"
   echo ""
   echo -e "\t-l | --latest"
   echo -e "\t\tApply the NPM dist-tag @latest after publish"
@@ -71,12 +71,12 @@ if [ -n "$HELP" ]; then
 fi
 
 if [ ! -d ".git" ]; then
-  echo "Not in a git repository"
+  echo "Not in a git repository. Please make sure to run this from the root of the OpenTelemetry API repository."
   exit 1
 fi
 
 if changes=$(git status --porcelain) && [ -n "$changes" ] && [ -z "$FORCE" ]; then
-  echo "There are uncommitted changes in the workspace"
+  echo "There are uncommitted changes in the workspace. Please commit or stash the changes or run this command again with the --force option."
   echo $changes
   exit 1
 fi
@@ -84,7 +84,7 @@ fi
 [ -n "$DRY" ] && echo "Dry run"
 
 # Ensure working directory is clean if user has not specifically disabled cleaning
-if [ -z "$NOCLEAN" ]; then
+if [ -n "$CLEAN" ]; then
   echo "Cleaning workspace"
   echo "rm -rf node_modules"
   [ -z "$DRY" ] && rm -rf node_modules
