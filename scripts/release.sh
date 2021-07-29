@@ -108,8 +108,8 @@ echo "npm test"
 echo "npm publish --tag $TAG"
 [ -z "$DRY" ] && npm publish --tag $TAG
 
-echo "npm dist-tag add \"@opentelemetry/api@$TAG\" latest"
 if [ -n "$LATEST" ]; then
+  echo "npm dist-tag add \"@opentelemetry/api@$TAG\" latest"
   [ -z "$DRY" ] && npm dist-tag add "@opentelemetry/api@$TAG" latest
 fi
 
