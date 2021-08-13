@@ -9,6 +9,11 @@ _Context Specification: <https://github.com/open-telemetry/opentelemetry-specifi
 
 _Context API reference: <https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html>_
 
+- [Basic Operations](#basic-operations)
+  - [Context Modification](#context-modification)
+  - [Get Active Context](#get-active-context)
+  - [Set Active Context](#set-active-context)
+
 ## Basic Operations
 
 The context is an immutable map from context keys to any value.
