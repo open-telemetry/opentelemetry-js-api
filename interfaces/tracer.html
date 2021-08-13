@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/821a007/src/trace/tracer.ts#L84">trace/tracer.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/tracer.ts#L85">trace/tracer.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -126,37 +126,39 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
-									<dd><p>  const something = tracer.startActiveSpan(&#39;op&#39;, span =&gt; {
-											try {
-											do some work
-											span.setStatus({code: SpanStatusCode.OK});
-											return something;
-											} catch (err) {
-											span.setStatus({
-											code: SpanStatusCode.ERROR,
-											message: err.message,
-											});
-											throw err;
-											} finally {
-											span.end();
-											}
-										});</p>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">something</span><span style="color: #000000"> = </span><span style="color: #001080">tracer</span><span style="color: #000000">.</span><span style="color: #795E26">startActiveSpan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;op&#039;</span><span style="color: #000000">, </span><span style="color: #001080">span</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">try</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">do</span><span style="color: #000000"> </span><span style="color: #001080">some</span><span style="color: #000000"> </span><span style="color: #001080">work</span>
+<span style="color: #000000">    </span><span style="color: #001080">span</span><span style="color: #000000">.</span><span style="color: #795E26">setStatus</span><span style="color: #000000">({</span><span style="color: #001080">code:</span><span style="color: #000000"> </span><span style="color: #001080">SpanStatusCode</span><span style="color: #000000">.</span><span style="color: #0070C1">OK</span><span style="color: #000000">});</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">something</span><span style="color: #000000">;</span>
+<span style="color: #000000">  } </span><span style="color: #AF00DB">catch</span><span style="color: #000000"> (</span><span style="color: #001080">err</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">span</span><span style="color: #000000">.</span><span style="color: #795E26">setStatus</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">code:</span><span style="color: #000000"> </span><span style="color: #001080">SpanStatusCode</span><span style="color: #000000">.</span><span style="color: #0070C1">ERROR</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">message:</span><span style="color: #000000"> </span><span style="color: #001080">err</span><span style="color: #000000">.</span><span style="color: #001080">message</span><span style="color: #000000">,</span>
+<span style="color: #000000">    });</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">throw</span><span style="color: #000000"> </span><span style="color: #001080">err</span><span style="color: #000000">;</span>
+<span style="color: #000000">  } </span><span style="color: #AF00DB">finally</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">span</span><span style="color: #000000">.</span><span style="color: #795E26">end</span><span style="color: #000000">();</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">});</span>
+</code></pre>
 									</dd>
 									<dt>example</dt>
-									<dd><p>  const span = tracer.startActiveSpan(&#39;op&#39;, span =&gt; {
-											try {
-											do some work
-											return span;
-											} catch (err) {
-											span.setStatus({
-											code: SpanStatusCode.ERROR,
-											message: err.message,
-											});
-											throw err;
-											}
-											});
-											do some more work
-										span.end();</p>
+									<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">span</span><span style="color: #000000"> = </span><span style="color: #001080">tracer</span><span style="color: #000000">.</span><span style="color: #795E26">startActiveSpan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;op&#039;</span><span style="color: #000000">, </span><span style="color: #001080">span</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">try</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">do</span><span style="color: #000000"> </span><span style="color: #001080">some</span><span style="color: #000000"> </span><span style="color: #001080">work</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">span</span><span style="color: #000000">;</span>
+<span style="color: #000000">  } </span><span style="color: #AF00DB">catch</span><span style="color: #000000"> (</span><span style="color: #001080">err</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">span</span><span style="color: #000000">.</span><span style="color: #795E26">setStatus</span><span style="color: #000000">({</span>
+<span style="color: #000000">      </span><span style="color: #001080">code:</span><span style="color: #000000"> </span><span style="color: #001080">SpanStatusCode</span><span style="color: #000000">.</span><span style="color: #0070C1">ERROR</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">message:</span><span style="color: #000000"> </span><span style="color: #001080">err</span><span style="color: #000000">.</span><span style="color: #001080">message</span><span style="color: #000000">,</span>
+<span style="color: #000000">    });</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">throw</span><span style="color: #000000"> </span><span style="color: #001080">err</span><span style="color: #000000">;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">});</span>
+<span style="color: #AF00DB">do</span><span style="color: #000000"> </span><span style="color: #001080">some</span><span style="color: #000000"> </span><span style="color: #001080">more</span><span style="color: #000000"> </span><span style="color: #001080">work</span>
+<span style="color: #001080">span</span><span style="color: #000000">.</span><span style="color: #795E26">end</span><span style="color: #000000">();</span>
+</code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -187,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/821a007/src/trace/tracer.ts#L88">trace/tracer.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/tracer.ts#L89">trace/tracer.ts:89</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -213,7 +215,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/821a007/src/trace/tracer.ts#L93">trace/tracer.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/tracer.ts#L94">trace/tracer.ts:94</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -251,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/821a007/src/trace/tracer.ts#L39">trace/tracer.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/tracer.ts#L39">trace/tracer.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
