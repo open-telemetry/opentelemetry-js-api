@@ -11,8 +11,8 @@ _Context API Reference: <https://open-telemetry.github.io/opentelemetry-js-api/c
 
 - [Context Manager](#context-manager)
 - [Basic Operations](#basic-operations)
-  - [Context Modification](#context-modification)
   - [Get Active Context](#get-active-context)
+  - [Context Modification](#context-modification)
   - [Set Active Context](#set-active-context)
 
 ## Context Manager
@@ -33,31 +33,6 @@ api.context.setGlobalContextManager(contextManager);
 ## Basic Operations
 
 The context is an immutable map from context keys to any value.
-
-### Context Modification
-
-The user may get, set, or delete context values by calling methods [documented here](https://open-telemetry.github.io/opentelemetry-js-api/interfaces/context.html).
-Because context is immutable, modifying an entry does not modify the context.
-Instead, it creates a new context which contains all of the entries of the previous context with the new entry added.
-
-Keys are created by calling [`api.createContextKey(description)`](https://open-telemetry.github.io/opentelemetry-js-api/modules.html#createcontextkey).
-Certain keys, such as the active span, are predefined to have specific meaning by the OpenTelemetry specification and the OpenTelemetry JS API.
-These predefined context properties can only be accessed through use of APIs such as [`api.trace.getSpan()`](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html#getspan).
-
-```typescript
-import * as api from "@opentelemetry/api";
-
-// ROOT_CONTEXT is the empty context
-const ctx = api.ROOT_CONTEXT;
-
-const myKey = api.createContextKey("Key to store a value");
-
-// Creates a new context with myKey set to "my value"
-const ctx2 = ctx.setValue(myKey, "my value");
-
-console.log(ctx.getValue(myKey)) //? undefined
-console.log(ctx2.getValue(myKey)) //? "my value"
-```
 
 ### Get Active Context
 
@@ -85,6 +60,32 @@ console.log(api.context.active() === ctx2) //? false
 console.log(api.context.active().getValue(myKey)) //? undefined
 console.log(ctx.getValue(myKey)) //? undefined
 console.log(ctx2.getValue(myKey)) //? "context 2"
+```
+
+### Context Modification
+
+The user may get, set, or delete context values by calling methods [documented here](https://open-telemetry.github.io/opentelemetry-js-api/interfaces/context.html).
+Because context is immutable, modifying an entry does not modify the context.
+Instead, it creates a new context which contains all of the entries of the previous context with the new entry added.
+For example, `ctx.setValue(key, value)` does not modify `ctx`, but returns a new context with all the entries of `ctx` and the new `key` set to `value`.
+
+Keys are created by calling [`api.createContextKey(description)`](https://open-telemetry.github.io/opentelemetry-js-api/modules.html#createcontextkey).
+Certain keys, such as the active span, are predefined to have specific meaning by the OpenTelemetry specification and the OpenTelemetry JS API.
+These predefined context properties can only be accessed through use of APIs such as [`api.trace.getSpan()`](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html#getspan).
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+// ROOT_CONTEXT is the empty context
+const ctx = api.ROOT_CONTEXT;
+
+const myKey = api.createContextKey("Key to store a value");
+
+// Creates a new context with myKey set to "my value"
+const ctx2 = ctx.setValue(myKey, "my value");
+
+console.log(ctx.getValue(myKey)) //? undefined
+console.log(ctx2.getValue(myKey)) //? "my value"
 ```
 
 ### Set Active Context
