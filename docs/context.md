@@ -10,10 +10,16 @@ _Context Specification: <https://github.com/open-telemetry/opentelemetry-specifi
 _Context API Reference: <https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html>_
 
 - [Context Manager](#context-manager)
+- [Root Context](#root-context)
+- [Context Keys](#context-keys)
 - [Basic Operations](#basic-operations)
+  - [Get Entry](#get-entry)
+  - [Set Entry](#set-entry)
+  - [Delete Entry](#delete-entry)
+- [Active Context](#active-context)
   - [Get Active Context](#get-active-context)
-  - [Context Modification](#context-modification)
   - [Set Active Context](#set-active-context)
+  - [Example](#example)
 
 ## Context Manager
 
@@ -30,17 +36,102 @@ context.Manager.enable();
 api.context.setGlobalContextManager(contextManager);
 ```
 
+## Root Context
+
+The `ROOT_CONTEXT` is the empty context.
+If no context is active, the `ROOT_CONTEXT` is active.
+Active context is explained below [Active Context](#active-context).
+
+## Context Keys
+
+Context entries are key-value pairs.
+Keys can be created by calling `api.createContextKey(description)`.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const key1 = api.createContextKey("My first key");
+const key2 = api.createContextKey("My second key");
+```
+
 ## Basic Operations
 
-The context is an immutable map from context keys to any value.
+### Get Entry
 
-### Get Active Context
+Entries are accessed using the `context.getValue(key)` method.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const key = api.createContextKey("some key");
+// ROOT_CONTEXT is the empty context
+const ctx = api.ROOT_CONTEXT;
+
+const value = ctx.getValue(key);
+```
+
+### Set Entry
+
+Entries are created by using the `context.setValue(key, value)` method.
+Setting a context entry creates a new context with all the entries of the previous context, but with the new entry.
+Setting a context entry does not modify the previous context.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const key = api.createContextKey("some key");
+const ctx = api.ROOT_CONTEXT;
+
+// add a new entry
+const ctx2 = ctx.setValue(key, "context 2");
+
+// ctx2 contains the new entry
+console.log(ctx2.getValue(key)) // "context 2"
+
+// ctx is unchanged
+console.log(ctx.getValue(key)) // undefined
+```
+
+### Delete Entry
+
+Entries are removed by calling `context.deleteValue(key)`.
+Deleting a context entry creates a new context with all the entries of the previous context, but without the entry identified by the key.
+Deleting a context entry does not modify the previous context.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const key = api.createContextKey("some key");
+const ctx = api.ROOT_CONTEXT;
+const ctx2 = ctx.setValue(key, "context 2");
+
+// remove the entry
+const ctx3 = ctx.deleteValue(key);
+
+// ctx3 does not contain the entry
+console.log(ctx3.getValue(key)) // undefined
+
+// ctx2 is unchanged
+console.log(ctx2.getValue(key)) // "context 2"
+// ctx is unchanged
+console.log(ctx.getValue(key)) // undefined
+```
+
+## Active Context
 
 **IMPORTANT**: This assumes you have configured a Context Manager.
 Without one, `api.context.active()` will _ALWAYS_ return the `ROOT_CONTEXT`.
 
-The active context is the context object which is returned when `api.context.active()` is called.
-This is accomplished through the use of mechanisms like [async_hooks](https://nodejs.org/api/async_hooks.html) in node or [zone.js](https://github.com/angular/zone.js/) on the web in order to propagate the context through a single execution.
+The active context is the context which is returned by `api.context.active()`.
+The context object contains entries which allow tracing components which are tracing a single thread of execution to communicate with each other and ensure the trace is successfully created.
+For example, when a span is created it may be added to the context.
+Later, when another span is created it may use the span from the context as its parent span.
+This is accomplished through the use of mechanisms like [async_hooks](https://nodejs.org/api/async_hooks.html) or [AsyncLocalStorage](https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage) in node, or [zone.js](https://github.com/angular/zone.js/) on the web in order to propagate the context through a single execution.
+If no context is active, the `ROOT_CONTEXT` is returned, which is just the empty context object.
+
+### Get Active Context
+
+The active context is the context which is returned by `api.context.active()`.
 
 ```typescript
 import * as api from "@opentelemetry/api";
@@ -48,74 +139,92 @@ import * as api from "@opentelemetry/api";
 // Returns the active context
 // If no context is active, the ROOT_CONTEXT is returned
 const ctx =  api.context.active(); 
-
-const myKey = api.createContextKey("Key to store a value");
-
-// Does not modify or change the active context
-const ctx2 = ctx.setValue(myKey, "context 2");
-
-console.log(api.context.active() === ctx) //? true
-console.log(api.context.active() === ctx2) //? false
-
-console.log(api.context.active().getValue(myKey)) //? undefined
-console.log(ctx.getValue(myKey)) //? undefined
-console.log(ctx2.getValue(myKey)) //? "context 2"
-```
-
-### Context Modification
-
-The user may get, set, or delete context values by calling methods [documented here](https://open-telemetry.github.io/opentelemetry-js-api/interfaces/context.html).
-Because context is immutable, modifying an entry does not modify the context.
-Instead, it creates a new context which contains all of the entries of the previous context with the new entry added.
-For example, `ctx.setValue(key, value)` does not modify `ctx`, but returns a new context with all the entries of `ctx` and the new `key` set to `value`.
-
-Keys are created by calling [`api.createContextKey(description)`](https://open-telemetry.github.io/opentelemetry-js-api/modules.html#createcontextkey).
-Certain keys, such as the active span, are predefined to have specific meaning by the OpenTelemetry specification and the OpenTelemetry JS API.
-These predefined context properties can only be accessed through use of APIs such as [`api.trace.getSpan()`](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html#getspan).
-
-```typescript
-import * as api from "@opentelemetry/api";
-
-// ROOT_CONTEXT is the empty context
-const ctx = api.ROOT_CONTEXT;
-
-const myKey = api.createContextKey("Key to store a value");
-
-// Creates a new context with myKey set to "my value"
-const ctx2 = ctx.setValue(myKey, "my value");
-
-console.log(ctx.getValue(myKey)) //? undefined
-console.log(ctx2.getValue(myKey)) //? "my value"
 ```
 
 ### Set Active Context
 
-A context can be made active by use of the `api.context.with(ctx, callback)` method.
-During execution of the `callback`, the context passed to `with` will be returned by `context.active` unless another context is made active.
+A context can be made active by use of `api.context.with(ctx, callback)`.
+During execution of the `callback`, the context passed to `with` will be returned by `context.active`.
 
 ```typescript
 import * as api from "@opentelemetry/api";
 
-const myKey = api.createContextKey("Key to store a value");
+const key = api.createContextKey("Key to store a value");
+const ctx = api.context.active();
 
-const ctx =  api.context.active(); // Returns the active context or the ROOT_CONTEXT if no context is active
-const ctx2 = ctx.setValue(myKey, "context 2"); // does not modify ctx
+api.context.with(ctx.setValue(key, "context 2"), async () => {
+  // "context 2" is active
+  console.log(api.context.active().getValue(key)) // "context 2"
+});
+```
 
-console.log(ctx.getValue(myKey)) //? undefined
-console.log(ctx2.getValue(myKey)) //? "context 2"
+The return value of `api.context.with(context, callback)` is the return value of the callback.
+The callback is always called synchronously.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const name = await api.context.with(api.context.active(), async () => {
+  const row = await db.getSomeValue();
+  return row["name"];
+});
+
+console.log(name); // name returned by the db
+```
+
+Active context executions may be nested.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const key = api.createContextKey("Key to store a value");
+const ctx = api.context.active();
+
+// No context is active
+console.log(api.context.active().getValue(key)); // undefined
+
+api.context.with(ctx.setValue(key, "context 2"), () => {
+  // "context 2" is active
+  console.log(api.context.active().getValue(key)) // "context 2"
+  api.context.with(ctx.setValue(key, "context 3"), () => {
+    // "context 3" is active
+    console.log(api.context.active().getValue(key)) // "context 3"
+  });
+  // "context 2" is active
+  console.log(api.context.active().getValue(key)) // "context 2"
+});
+
+// No context is active
+console.log(api.context.active().getValue(key)); // undefined
+```
+
+### Example
+
+This more complex example illustrates how the context is not modified, but new context objects are created.
+
+```typescript
+import * as api from "@opentelemetry/api";
+
+const key = api.createContextKey("Key to store a value");
+
+const ctx =  api.context.active(); // Returns ROOT_CONTEXT when no context is active
+const ctx2 = ctx.setValue(key, "context 2"); // does not modify ctx
+
+console.log(ctx.getValue(key)) //? undefined
+console.log(ctx2.getValue(key)) //? "context 2"
 
 const ret = api.context.with(ctx2, () => {
-    const ctx3 = api.context.active().setValue(myKey, "context 3");
+    const ctx3 = api.context.active().setValue(key, "context 3");
 
-    console.log(api.context.active().getValue(myKey)); //? "context 2"
-    console.log(ctx.getValue(myKey)) //? undefined
-    console.log(ctx2.getValue(myKey)) //? "context 2"
-    console.log(ctx3.getValue(myKey)) //? "context 3"
+    console.log(api.context.active().getValue(key)); //? "context 2"
+    console.log(ctx.getValue(key)) //? undefined
+    console.log(ctx2.getValue(key)) //? "context 2"
+    console.log(ctx3.getValue(key)) //? "context 3"
 
     api.context.with(ctx3, () => {
-        console.log(api.context.active().getValue(myKey)); //? "context 3"
+        console.log(api.context.active().getValue(key)); //? "context 3"
     });
-    console.log(api.context.active().getValue(myKey)); //? "context 2"
+    console.log(api.context.active().getValue(key)); //? "context 2"
 
     return "return value"
 });
