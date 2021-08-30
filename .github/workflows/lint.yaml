@@ -34,7 +34,7 @@ jobs:
         run: npm run lint
 
       - name: Check for Circular Dependencies
-        run: npm run dpdm
+        run: npm run cycle-check
 
       - name: Generate Documentation 📜
         run: npm run docs
