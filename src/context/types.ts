@@ -68,6 +68,22 @@ export interface ContextManager {
   bind<T>(context: Context, target: T): T;
 
   /**
+   * Make a context active in the current execution
+   *
+   * @param context context to make active in the current asynchronous execution
+   * @returns a restore key
+   */
+  attach(context: Context): symbol;
+
+  /**
+   * Restore the context which was active when attach was called using the restore
+   * token returned by attach.
+   *
+   * @param token the restore token returned by attach
+   */
+  detach(token: symbol): void;
+
+  /**
    * Enable context management
    */
   enable(): this;

@@ -87,6 +87,27 @@ export class ContextAPI {
     return this._getContextManager().bind(context, target);
   }
 
+  /**
+   * Make a context active in the current execution. Returns a unique restore
+   * key which must be used with detach to restore the previous context.
+   *
+   * @param context context to make active in the current asynchronous execution
+   * @returns a restore key
+   */
+  public attach(context: Context): symbol {
+    return this._getContextManager().attach(context);
+  }
+
+  /**
+   * Restore the context which was active when attach was called using the restore
+   * token returned by attach.
+   *
+   * @param token the restore token returned by attach
+   */
+  public detach(token: symbol): void {
+    return this._getContextManager().detach(token);
+  }
+
   private _getContextManager(): ContextManager {
     return getGlobal(API_NAME) || NOOP_CONTEXT_MANAGER;
   }

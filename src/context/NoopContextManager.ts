@@ -35,6 +35,12 @@ export class NoopContextManager implements types.ContextManager {
     return target;
   }
 
+  public attach(_context: types.Context): symbol {
+    return Symbol('NoopContextManager context restore key');
+  }
+
+  public detach(_token: symbol): void {}
+
   enable(): this {
     return this;
   }
