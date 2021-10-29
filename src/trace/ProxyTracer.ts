@@ -32,7 +32,8 @@ export class ProxyTracer implements Tracer {
   constructor(
     private _provider: TracerDelegator,
     public readonly name: string,
-    public readonly version?: string
+    public readonly version?: string,
+    public readonly schemaUrl?: string
   ) {}
 
   startSpan(name: string, options?: SpanOptions, context?: Context): Span {

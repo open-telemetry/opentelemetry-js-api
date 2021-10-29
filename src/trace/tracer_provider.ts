@@ -15,6 +15,7 @@
  */
 
 import { Tracer } from './tracer';
+import { TracerOptions } from './tracer_options';
 
 /**
  * A registry for creating named {@link Tracer}s.
@@ -31,5 +32,5 @@ export interface TracerProvider {
    * @param version The version of the tracer or instrumentation library.
    * @returns Tracer A Tracer with the given name and version
    */
-  getTracer(name: string, version?: string): Tracer;
+  getTracer(name: string, version?: string, options?: TracerOptions): Tracer;
 }
