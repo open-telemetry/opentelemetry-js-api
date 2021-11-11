@@ -39,7 +39,7 @@ export class ProxyTracerProvider implements TracerProvider {
   getTracer(name: string, version?: string, options?: TracerOptions): Tracer {
     return (
       this.getDelegateTracer(name, version, options) ??
-      new ProxyTracer(this, name, version, options?.schemaUrl)
+      new ProxyTracer(this, name, version, options)
     );
   }
 
