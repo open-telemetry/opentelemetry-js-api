@@ -14,5 +14,14 @@
  * limitations under the License.
  */
 
-export * from './globalThis';
-export * from './env';
+import { _globalThis } from '.';
+
+export function getEnv(name: string): unknown {
+    const v = Object.getOwnPropertyDescriptor(_globalThis, name);
+
+    if (!v) {
+        return null;
+    }
+
+    return v.value;
+}

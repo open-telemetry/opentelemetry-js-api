@@ -14,5 +14,6 @@
  * limitations under the License.
  */
 
-export * from './globalThis';
-export * from './env';
+export function getEnv(name: string): unknown {
+    return process.env[name];
+}

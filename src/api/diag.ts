@@ -15,18 +15,20 @@
  */
 
 import { DiagComponentLogger } from '../diag/ComponentLogger';
+import { DiagConsoleLogger } from '../diag/consoleLogger';
 import { createLogLevelDiagLogger } from '../diag/internal/logLevelLogger';
 import {
   ComponentLoggerOptions,
   DiagLogFunction,
   DiagLogger,
-  DiagLogLevel,
+  DiagLogLevel
 } from '../diag/types';
 import {
   getGlobal,
   registerGlobal,
-  unregisterGlobal,
+  unregisterGlobal
 } from '../internal/global-utils';
+import { getEnv } from '../platform';
 
 const API_NAME = 'diag';
 
@@ -93,6 +95,36 @@ export class DiagAPI implements DiagLogger {
 
       return registerGlobal('diag', newLogger, self, true);
     };
+
+    const envLogLevel = getEnv('OTEL_LOG_LEVEL');
+
+    if (typeof envLogLevel === 'string') {
+      let logLevel = DiagLogLevel.NONE;
+      switch (envLogLevel.toUpperCase().trim()) {
+        case 'ERROR':
+          logLevel = DiagLogLevel.ERROR
+          break;
+        case 'WARN':
+          logLevel = DiagLogLevel.WARN
+          break;
+        case 'INFO':
+          logLevel = DiagLogLevel.INFO
+          break;
+        case 'DEBUG':
+          logLevel = DiagLogLevel.DEBUG
+          break;
+        case 'VERBOSE':
+          logLevel = DiagLogLevel.VERBOSE
+          break;
+        case 'ALL':
+          logLevel = DiagLogLevel.ALL
+          break;
+      }
+
+      if (logLevel !== DiagLogLevel.NONE) {
+        self.setLogger(new DiagConsoleLogger(), logLevel);
+      }
+    }
 
     self.disable = () => {
       unregisterGlobal(API_NAME, self);
