@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { TraceStateImpl } from "./tracestate-impl";
+import { TraceStateImpl } from './tracestate-impl';
 
 
 export function createTraceState(rawTraceState?: string): TraceStateImpl {
