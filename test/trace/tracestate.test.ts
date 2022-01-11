@@ -16,6 +16,7 @@
 
 import * as assert from 'assert';
 import { createTraceState } from '../../src/trace/internal/utils';
+import { TraceStateImpl } from '../../src/trace/internal/tracestate-impl';
 
 describe('TraceState', () => {
   describe('.serialize()', () => {
@@ -104,7 +105,7 @@ describe('TraceState', () => {
           .fill(0)
           .map((_: null, num: number) => `a${num}=${num}`)
           .join(',')
-      );
+      ) as TraceStateImpl;
       assert.deepStrictEqual(state['_keys']().length, 32);
       assert.deepStrictEqual(state.get('a0'), '0');
       assert.deepStrictEqual(state.get('a31'), '31');
@@ -125,7 +126,7 @@ describe('TraceState', () => {
       tracestate.splice(15, 0, 'invalid.middle.key.b=2');
       tracestate.splice(15, 0, 'invalid.middle.key.c=3');
 
-      const state = createTraceState(tracestate.join(','));
+      const state = createTraceState(tracestate.join(',')) as TraceStateImpl;
 
       assert.deepStrictEqual(state['_keys']().length, 32);
       assert.deepStrictEqual(state.get('a0'), '0');
