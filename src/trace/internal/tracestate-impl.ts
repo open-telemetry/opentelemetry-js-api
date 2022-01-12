@@ -15,7 +15,7 @@
  */
 
 import { TraceState } from '../trace_state';
-import { validateKey, validateValue } from './validators';
+import { validateKey, validateValue } from './tracestate-validators';
 
 const MAX_TRACE_STATE_ITEMS = 32;
 const MAX_TRACE_STATE_LEN = 512;
