@@ -30,6 +30,7 @@ export interface TracerProvider {
    *
    * @param name The name of the tracer or instrumentation library.
    * @param version The version of the tracer or instrumentation library.
+   * @param options The options of the tracer or instrumentation library.
    * @returns Tracer A Tracer with the given name and version
    */
   getTracer(name: string, version?: string, options?: TracerOptions): Tracer;
