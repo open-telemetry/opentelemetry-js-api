@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SamplingResult | OpenTelemetry API for JavaScript</title>
+	<title>TracerOptions | OpenTelemetry API for JavaScript</title>
 	<meta name="description" content="Documentation for OpenTelemetry API for JavaScript">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">OpenTelemetry API for JavaScript</a>
 				</li>
 				<li>
-					<a href="samplingresult.html">SamplingResult</a>
+					<a href="traceroptions.html">TracerOptions</a>
 				</li>
 			</ul>
-			<h1>Interface SamplingResult</h1>
+			<h1>Interface TracerOptions</h1>
 		</div>
 	</div>
 </header>
@@ -68,8 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A sampling result contains a decision for a <a href="span.html">Span</a> and additional
-						attributes the sampler would like to added to the Span.</p>
+						<p>An interface describes additional metadata of a tracer.</p>
 					</div>
 				</div>
 			</section>
@@ -77,7 +76,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">SamplingResult</span>
+						<span class="target">TracerOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -88,8 +87,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="samplingresult.html#attributes" class="tsd-kind-icon">attributes</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="samplingresult.html#decision" class="tsd-kind-icon">decision</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="traceroptions.html#schemaurl" class="tsd-kind-icon">schema<wbr>Url</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,34 +96,17 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="attributes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attributes</h3>
-					<div class="tsd-signature tsd-kind-icon">attributes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="attributes.html" class="tsd-signature-type" data-tsd-kind="Interface">Attributes</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="schemaurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> schema<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">schema<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/SamplingResult.ts#L55">trace/SamplingResult.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/tracer_options.ts#L24">trace/tracer_options.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The list of attributes returned by SamplingResult MUST be immutable.
-								Caller may call <a href="sampler.html">Sampler</a>.shouldSample any number of times and
-							can safely cache the returned value.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="decision" class="tsd-anchor"></a>
-					<h3>decision</h3>
-					<div class="tsd-signature tsd-kind-icon">decision<span class="tsd-signature-symbol">:</span> <a href="../enums/samplingdecision.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SamplingDecision</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/SamplingResult.ts#L49">trace/SamplingResult.ts:49</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A sampling decision, refer to <a href="../enums/samplingdecision.html">SamplingDecision</a> for details.</p>
+							<p>The schemaUrl of the tracer or instrumentation library</p>
 						</div>
 					</div>
 				</section>
@@ -144,13 +125,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="samplingresult.html" class="tsd-kind-icon">Sampling<wbr>Result</a>
+						<a href="traceroptions.html" class="tsd-kind-icon">Tracer<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="samplingresult.html#attributes" class="tsd-kind-icon">attributes</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="samplingresult.html#decision" class="tsd-kind-icon">decision</a>
+								<a href="traceroptions.html#schemaurl" class="tsd-kind-icon">schema<wbr>Url</a>
 							</li>
 						</ul>
 					</li>

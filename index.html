@@ -88,9 +88,7 @@
 				<a href="#opentelemetry-api-for-javascript" id="opentelemetry-api-for-javascript" style="color: inherit; text-decoration: none;">
 					<h1>OpenTelemetry API for JavaScript</h1>
 				</a>
-				<p><a href="https://www.npmjs.com/package/@opentelemetry/api"><img src="https://badge.fury.io/js/%40opentelemetry%2Fapi.svg" alt="NPM Published Version"></a>
-					<a href="https://david-dm.org/open-telemetry/opentelemetry-js-api"><img src="https://status.david-dm.org/gh/open-telemetry/opentelemetry-js-api.svg" alt="dependencies"></a>
-				<a href="https://david-dm.org/open-telemetry/opentelemetry-js-api?type=dev"><img src="https://status.david-dm.org/gh/open-telemetry/opentelemetry-js-api.svg?type=dev" alt="devDependencies"></a></p>
+				<p><a href="https://www.npmjs.com/package/@opentelemetry/api"><img src="https://badge.fury.io/js/%40opentelemetry%2Fapi.svg" alt="NPM Published Version"></a></p>
 				<p>This package provides everything needed to interact with the OpenTelemetry API, including all TypeScript interfaces, enums, and no-op implementations. It is intended for use both on the server and in the browser.</p>
 				<p>The methods in this package perform no operations by default. This means they can be safely called by a library or end-user application whether there is an SDK registered or not. In order to generate and export telemetry data, you will also need an SDK such as the <a href="https://github.com/open-telemetry/opentelemetry-js">OpenTelemetry JS SDK</a>.</p>
 				<a href="#tracing-quick-start" id="tracing-quick-start" style="color: inherit; text-decoration: none;">
@@ -109,7 +107,7 @@
 				<a href="#install-dependencies" id="install-dependencies" style="color: inherit; text-decoration: none;">
 					<h3>Install Dependencies</h3>
 				</a>
-				<pre><code class="language-sh"><span style="color: #000000">npm install @opentelemetry/api @opentelemetry/tracing</span>
+				<pre><code class="language-sh"><span style="color: #000000">npm install @opentelemetry/api @opentelemetry/sdk-trace-base</span>
 </code></pre>
 				<a href="#trace-your-application" id="trace-your-application" style="color: inherit; text-decoration: none;">
 					<h3>Trace Your Application</h3>
@@ -117,7 +115,7 @@
 				<p>In order to get started with tracing, you will need to first register an SDK. The SDK you are using may provide a convenience method which calls the registration methods for you, but if you would like to call them directly they are documented here: <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/sdk-registration.md">sdk registration methods</a>.</p>
 				<p>Once you have registered an SDK, you can start and end spans. A simple example of basic SDK registration and tracing a simple operation is below. The example should export spans to the console once per second. For more information, see the <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/tracing.md">tracing documentation</a>.</p>
 				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">trace</span><span style="color: #000000"> }  = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;@opentelemetry/api&quot;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">BasicTracerProvider</span><span style="color: #000000">, </span><span style="color: #0070C1">ConsoleSpanExporter</span><span style="color: #000000">, </span><span style="color: #0070C1">SimpleSpanProcessor</span><span style="color: #000000"> }  = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;@opentelemetry/tracing&quot;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">BasicTracerProvider</span><span style="color: #000000">, </span><span style="color: #0070C1">ConsoleSpanExporter</span><span style="color: #000000">, </span><span style="color: #0070C1">SimpleSpanProcessor</span><span style="color: #000000"> }  = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;@opentelemetry/sdk-trace-base&quot;</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// Create and register an SDK</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">provider</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">BasicTracerProvider</span><span style="color: #000000">();</span>
@@ -238,6 +236,9 @@
 						<a href="classes/traceapi.html" class="tsd-kind-icon">TraceAPI</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/attributes.html" class="tsd-kind-icon">Attributes</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/baggage.html" class="tsd-kind-icon">Baggage</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -268,9 +269,6 @@
 						<a href="interfaces/span.html" class="tsd-kind-icon">Span</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/spanattributes.html" class="tsd-kind-icon">Span<wbr>Attributes</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/spancontext.html" class="tsd-kind-icon">Span<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -295,7 +293,16 @@
 						<a href="interfaces/tracer.html" class="tsd-kind-icon">Tracer</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/tracerdelegator.html" class="tsd-kind-icon">Tracer<wbr>Delegator</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/traceroptions.html" class="tsd-kind-icon">Tracer<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/tracerprovider.html" class="tsd-kind-icon">Tracer<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#attributevalue" class="tsd-kind-icon">Attribute<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#baggageentrymetadata" class="tsd-kind-icon">Baggage<wbr>Entry<wbr>Metadata</a>
@@ -311,6 +318,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#spanattributevalue" class="tsd-kind-icon">Span<wbr>Attribute<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#spanattributes" class="tsd-kind-icon">Span<wbr>Attributes</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#timeinput" class="tsd-kind-icon">Time<wbr>Input</a>
@@ -355,6 +365,9 @@
 						<a href="modules.html#createcontextkey" class="tsd-kind-icon">create<wbr>Context<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="modules.html#createtracestate" class="tsd-kind-icon">create<wbr>Trace<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="modules.html#isspancontextvalid" class="tsd-kind-icon">is<wbr>Span<wbr>Context<wbr>Valid</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -380,10 +393,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>

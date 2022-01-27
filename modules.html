@@ -86,6 +86,7 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/attributes.html" class="tsd-kind-icon">Attributes</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/baggage.html" class="tsd-kind-icon">Baggage</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/baggageentry.html" class="tsd-kind-icon">Baggage<wbr>Entry</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/componentloggeroptions.html" class="tsd-kind-icon">Component<wbr>Logger<wbr>Options</a></li>
@@ -96,7 +97,6 @@
 								<li class="tsd-kind-interface"><a href="interfaces/sampler.html" class="tsd-kind-icon">Sampler</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/samplingresult.html" class="tsd-kind-icon">Sampling<wbr>Result</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/span.html" class="tsd-kind-icon">Span</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/spanattributes.html" class="tsd-kind-icon">Span<wbr>Attributes</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/spancontext.html" class="tsd-kind-icon">Span<wbr>Context</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/spanoptions.html" class="tsd-kind-icon">Span<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/spanstatus.html" class="tsd-kind-icon">Span<wbr>Status</a></li>
@@ -105,17 +105,21 @@
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/textmapsetter.html" class="tsd-kind-icon">Text<wbr>Map<wbr>Setter</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/tracestate.html" class="tsd-kind-icon">Trace<wbr>State</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/tracer.html" class="tsd-kind-icon">Tracer</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/tracerdelegator.html" class="tsd-kind-icon">Tracer<wbr>Delegator</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/traceroptions.html" class="tsd-kind-icon">Tracer<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/tracerprovider.html" class="tsd-kind-icon">Tracer<wbr>Provider</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="modules.html#attributevalue" class="tsd-kind-icon">Attribute<wbr>Value</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#baggageentrymetadata" class="tsd-kind-icon">Baggage<wbr>Entry<wbr>Metadata</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#diaglogfunction" class="tsd-kind-icon">Diag<wbr>Log<wbr>Function</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#exception" class="tsd-kind-icon">Exception</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#hrtime" class="tsd-kind-icon">Hr<wbr>Time</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#spanattributevalue" class="tsd-kind-icon">Span<wbr>Attribute<wbr>Value</a></li>
+								<li class="tsd-kind-type-alias"><a href="modules.html#spanattributes" class="tsd-kind-icon">Span<wbr>Attributes</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#timeinput" class="tsd-kind-icon">Time<wbr>Input</a></li>
 							</ul>
 						</section>
@@ -145,6 +149,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="modules.html#baggageentrymetadatafromstring" class="tsd-kind-icon">baggage<wbr>Entry<wbr>Metadata<wbr>From<wbr>String</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#createcontextkey" class="tsd-kind-icon">create<wbr>Context<wbr>Key</a></li>
+								<li class="tsd-kind-function"><a href="modules.html#createtracestate" class="tsd-kind-icon">create<wbr>Trace<wbr>State</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#isspancontextvalid" class="tsd-kind-icon">is<wbr>Span<wbr>Context<wbr>Valid</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#isvalidspanid" class="tsd-kind-icon">is<wbr>Valid<wbr>Span<wbr>Id</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#isvalidtraceid" class="tsd-kind-icon">is<wbr>Valid<wbr>Trace<wbr>Id</a></li>
@@ -156,12 +161,28 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="attributevalue" class="tsd-anchor"></a>
+					<h3>Attribute<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">Attribute<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/common/Attributes.ts#L31">common/Attributes.ts:31</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Attribute values may be any non-nullish primitive value except an object.</p>
+						</div>
+						<p>null or undefined attribute values are invalid and will result in undefined behavior.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="baggageentrymetadata" class="tsd-anchor"></a>
 					<h3>Baggage<wbr>Entry<wbr>Metadata</h3>
 					<div class="tsd-signature tsd-kind-icon">Baggage<wbr>Entry<wbr>Metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>toString<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>__TYPE__<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">baggageEntryMetadataSymbol</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/baggage/types.ts#L49">baggage/types.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/baggage/types.ts#L49">baggage/types.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -177,7 +198,7 @@
 					<div class="tsd-signature tsd-kind-icon">Diag<wbr>Log<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/diag/types.ts#L17">diag/types.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/diag/types.ts#L17">diag/types.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -211,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">Exception<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExceptionWithCode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ExceptionWithMessage</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ExceptionWithName</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/common/Exception.ts#L43">common/Exception.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/common/Exception.ts#L43">common/Exception.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,24 +248,55 @@
 					<div class="tsd-signature tsd-kind-icon">Hr<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/common/Time.ts#L16">common/Time.ts:16</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias">
-					<a name="spanattributevalue" class="tsd-anchor"></a>
-					<h3>Span<wbr>Attribute<wbr>Value</h3>
-					<div class="tsd-signature tsd-kind-icon">Span<wbr>Attribute<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/attributes.ts#L26">trace/attributes.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/common/Time.ts#L28">common/Time.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Attribute values may be any non-nullish primitive value except an object.</p>
+							<p>Defines High-Resolution Time.</p>
 						</div>
-						<p>null or undefined attribute values are invalid and will result in undefined behavior.</p>
+						<p>The first number, HrTime[0], is UNIX Epoch time in seconds since 00:00:00 UTC on 1 January 1970.
+							The second number, HrTime[1], represents the partial second elapsed since Unix Epoch time represented by first number in nanoseconds.
+							For example, 2021-01-01T12:30:10.150Z in UNIX Epoch time in milliseconds is represented as 1609504210150.
+							The first number is calculated by converting and truncating the Epoch time in milliseconds to seconds:
+							HrTime[0] = Math.trunc(1609504210150 / 1000) = 1609504210.
+							The second number is calculated by converting the digits after the decimal point of the subtraction, (1609504210150 / 1000) - HrTime[0], to nanoseconds:
+							HrTime[1] = Number((1609504210.150 - HrTime[0]).toFixed(9)) * 1e9 = 150000000.
+						This is represented in HrTime format as [1609504210, 150000000].</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="spanattributevalue" class="tsd-anchor"></a>
+					<h3>Span<wbr>Attribute<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">Span<wbr>Attribute<wbr>Value<span class="tsd-signature-symbol">:</span> <a href="modules.html#attributevalue" class="tsd-signature-type" data-tsd-kind="Type alias">AttributeValue</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/attributes.ts#L27">trace/attributes.ts:27</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>please use <a href="modules.html#attributevalue">AttributeValue</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="spanattributes" class="tsd-anchor"></a>
+					<h3>Span<wbr>Attributes</h3>
+					<div class="tsd-signature tsd-kind-icon">Span<wbr>Attributes<span class="tsd-signature-symbol">:</span> <a href="interfaces/attributes.html" class="tsd-signature-type" data-tsd-kind="Interface">Attributes</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/attributes.ts#L22">trace/attributes.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>please use <a href="interfaces/attributes.html">Attributes</a></p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
@@ -253,7 +305,7 @@
 					<div class="tsd-signature tsd-kind-icon">Time<wbr>Input<span class="tsd-signature-symbol">:</span> <a href="modules.html#hrtime" class="tsd-signature-type" data-tsd-kind="Type alias">HrTime</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/common/Time.ts#L23">common/Time.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/common/Time.ts#L35">common/Time.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -299,7 +351,7 @@
 					<div class="tsd-signature tsd-kind-icon">INVALID_<wbr>SPANID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0000000000000000&quot;</span><span class="tsd-signature-symbol"> = &#x27;0000000000000000&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/spancontext-utils.ts#L23">trace/spancontext-utils.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/invalid-span-constants.ts#L20">trace/invalid-span-constants.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -309,7 +361,7 @@
 					<div class="tsd-signature tsd-kind-icon">INVALID_<wbr>SPAN_<wbr>CONTEXT<span class="tsd-signature-symbol">:</span> <a href="interfaces/spancontext.html" class="tsd-signature-type" data-tsd-kind="Interface">SpanContext</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/spancontext-utils.ts#L25">trace/spancontext-utils.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/invalid-span-constants.ts#L22">trace/invalid-span-constants.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -319,7 +371,7 @@
 					<div class="tsd-signature tsd-kind-icon">INVALID_<wbr>TRACEID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;00000000000000000000000000000000&quot;</span><span class="tsd-signature-symbol"> = &#x27;00000000000000000000000000000000&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/spancontext-utils.ts#L24">trace/spancontext-utils.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/invalid-span-constants.ts#L21">trace/invalid-span-constants.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -329,7 +381,7 @@
 					<div class="tsd-signature tsd-kind-icon">ROOT_<wbr>CONTEXT<span class="tsd-signature-symbol">:</span> <a href="interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/context/context.ts#L85">context/context.ts:85</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/context/context.ts#L85">context/context.ts:85</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -344,7 +396,7 @@
 					<div class="tsd-signature tsd-kind-icon">context<span class="tsd-signature-symbol">:</span> <a href="classes/contextapi.html" class="tsd-signature-type" data-tsd-kind="Class">ContextAPI</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/index.ts#L54">index.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/index.ts#L60">index.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -359,7 +411,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Text<wbr>Map<wbr>Getter<span class="tsd-signature-symbol">:</span> <a href="interfaces/textmapgetter.html" class="tsd-signature-type" data-tsd-kind="Interface">TextMapGetter</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/propagation/TextMapPropagator.ts#L113">propagation/TextMapPropagator.ts:113</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/propagation/TextMapPropagator.ts#L113">propagation/TextMapPropagator.ts:113</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -369,7 +421,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Text<wbr>Map<wbr>Setter<span class="tsd-signature-symbol">:</span> <a href="interfaces/textmapsetter.html" class="tsd-signature-type" data-tsd-kind="Interface">TextMapSetter</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/propagation/TextMapPropagator.ts#L129">propagation/TextMapPropagator.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/propagation/TextMapPropagator.ts#L129">propagation/TextMapPropagator.ts:129</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -379,7 +431,7 @@
 					<div class="tsd-signature tsd-kind-icon">diag<span class="tsd-signature-symbol">:</span> <a href="classes/diagapi.html" class="tsd-signature-type" data-tsd-kind="Class">DiagAPI</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/index.ts#L75">index.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/index.ts#L81">index.ts:81</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -397,7 +449,7 @@
 					<div class="tsd-signature tsd-kind-icon">propagation<span class="tsd-signature-symbol">:</span> <a href="classes/propagationapi.html" class="tsd-signature-type" data-tsd-kind="Class">PropagationAPI</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/index.ts#L64">index.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/index.ts#L70">index.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -412,7 +464,7 @@
 					<div class="tsd-signature tsd-kind-icon">trace<span class="tsd-signature-symbol">:</span> <a href="classes/traceapi.html" class="tsd-signature-type" data-tsd-kind="Class">TraceAPI</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/index.ts#L59">index.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/index.ts#L65">index.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -434,7 +486,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/baggage/utils.ts#L39">baggage/utils.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/baggage/utils.ts#L41">baggage/utils.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -465,7 +517,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/context/context.ts#L20">context/context.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/context/context.ts#L20">context/context.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -484,6 +536,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createtracestate" class="tsd-anchor"></a>
+					<h3>create<wbr>Trace<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Trace<wbr>State<span class="tsd-signature-symbol">(</span>rawTraceState<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/tracestate.html" class="tsd-signature-type" data-tsd-kind="Interface">TraceState</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/internal/utils.ts#L21">trace/internal/utils.ts:21</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> rawTraceState: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/tracestate.html" class="tsd-signature-type" data-tsd-kind="Interface">TraceState</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="isspancontextvalid" class="tsd-anchor"></a>
 					<h3>is<wbr>Span<wbr>Context<wbr>Valid</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -493,7 +568,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/spancontext-utils.ts#L43">trace/spancontext-utils.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/spancontext-utils.ts#L36">trace/spancontext-utils.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -522,7 +597,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/spancontext-utils.ts#L35">trace/spancontext-utils.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/spancontext-utils.ts#L28">trace/spancontext-utils.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -545,7 +620,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/trace/spancontext-utils.ts#L31">trace/spancontext-utils.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/trace/spancontext-utils.ts#L24">trace/spancontext-utils.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -607,6 +682,9 @@
 						<a href="classes/traceapi.html" class="tsd-kind-icon">TraceAPI</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/attributes.html" class="tsd-kind-icon">Attributes</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/baggage.html" class="tsd-kind-icon">Baggage</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -637,9 +715,6 @@
 						<a href="interfaces/span.html" class="tsd-kind-icon">Span</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/spanattributes.html" class="tsd-kind-icon">Span<wbr>Attributes</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/spancontext.html" class="tsd-kind-icon">Span<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -664,7 +739,16 @@
 						<a href="interfaces/tracer.html" class="tsd-kind-icon">Tracer</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/tracerdelegator.html" class="tsd-kind-icon">Tracer<wbr>Delegator</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/traceroptions.html" class="tsd-kind-icon">Tracer<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/tracerprovider.html" class="tsd-kind-icon">Tracer<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#attributevalue" class="tsd-kind-icon">Attribute<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#baggageentrymetadata" class="tsd-kind-icon">Baggage<wbr>Entry<wbr>Metadata</a>
@@ -680,6 +764,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#spanattributevalue" class="tsd-kind-icon">Span<wbr>Attribute<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#spanattributes" class="tsd-kind-icon">Span<wbr>Attributes</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#timeinput" class="tsd-kind-icon">Time<wbr>Input</a>
@@ -724,6 +811,9 @@
 						<a href="modules.html#createcontextkey" class="tsd-kind-icon">create<wbr>Context<wbr>Key</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="modules.html#createtracestate" class="tsd-kind-icon">create<wbr>Trace<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="modules.html#isspancontextvalid" class="tsd-kind-icon">is<wbr>Span<wbr>Context<wbr>Valid</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -749,10 +839,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>

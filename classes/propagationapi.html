@@ -84,12 +84,6 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-private"><a href="propagationapi.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
@@ -97,13 +91,11 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#deletebaggage" class="tsd-kind-icon">delete<wbr>Baggage</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#getbaggage" class="tsd-kind-icon">get<wbr>Baggage</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="propagationapi.html#setbaggage" class="tsd-kind-icon">set<wbr>Baggage</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="propagationapi.html#_instance" class="tsd-kind-icon">_instance</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="propagationapi.html#_getglobalpropagator" class="tsd-kind-icon">_get<wbr>Global<wbr>Propagator</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="propagationapi.html#disable" class="tsd-kind-icon">disable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="propagationapi.html#extract" class="tsd-kind-icon">extract</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="propagationapi.html#fields" class="tsd-kind-icon">fields</a></li>
@@ -115,31 +107,6 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-private">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>PropagationAPI<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="propagationapi.html" class="tsd-signature-type" data-tsd-kind="Class">PropagationAPI</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L46">api/propagation.ts:46</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Empty private constructor prevents end users from constructing a new instance of the API</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="propagationapi.html" class="tsd-signature-type" data-tsd-kind="Class">PropagationAPI</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -148,7 +115,7 @@
 					<div class="tsd-signature tsd-kind-icon">create<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/baggageentry.html" class="tsd-signature-type" data-tsd-kind="Interface">BaggageEntry</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L111">api/propagation.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L111">api/propagation.ts:111</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -187,7 +154,7 @@
 					<div class="tsd-signature tsd-kind-icon">delete<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L117">api/propagation.ts:117</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L117">api/propagation.ts:117</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -223,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L113">api/propagation.ts:113</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L113">api/propagation.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -260,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">set<wbr>Baggage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a>, baggage<span class="tsd-signature-symbol">: </span><a href="../interfaces/baggage.html" class="tsd-signature-type" data-tsd-kind="Interface">Baggage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L115">api/propagation.ts:115</a></li>
+							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L115">api/propagation.ts:115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -296,36 +263,9 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="_instance" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _instance</h3>
-					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <a href="propagationapi.html" class="tsd-signature-type" data-tsd-kind="Class">PropagationAPI</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L46">api/propagation.ts:46</a></li>
-						</ul>
-					</aside>
-				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_getglobalpropagator" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _get<wbr>Global<wbr>Propagator</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_get<wbr>Global<wbr>Propagator<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/textmappropagator.html" class="tsd-signature-type" data-tsd-kind="Interface">TextMapPropagator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L119">api/propagation.ts:119</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/textmappropagator.html" class="tsd-signature-type" data-tsd-kind="Interface">TextMapPropagator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="disable" class="tsd-anchor"></a>
 					<h3>disable</h3>
@@ -336,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L107">api/propagation.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L107">api/propagation.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -358,7 +298,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L91">api/propagation.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L91">api/propagation.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -407,7 +347,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L102">api/propagation.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L102">api/propagation.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -429,7 +369,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L76">api/propagation.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L76">api/propagation.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -478,7 +418,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L65">api/propagation.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L65">api/propagation.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,7 +447,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/5f45865/src/api/propagation.ts#L52">api/propagation.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/open-telemetry/opentelemetry-js-api/blob/24f1cb8/src/api/propagation.ts#L52">api/propagation.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -536,9 +476,6 @@
 					<li class="current tsd-kind-class">
 						<a href="propagationapi.html" class="tsd-kind-icon">PropagationAPI</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-private">
-								<a href="propagationapi.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="propagationapi.html#createbaggage" class="tsd-kind-icon">create<wbr>Baggage</a>
 							</li>
@@ -550,12 +487,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="propagationapi.html#setbaggage" class="tsd-kind-icon">set<wbr>Baggage</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="propagationapi.html#_instance" class="tsd-kind-icon">_instance</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="propagationapi.html#_getglobalpropagator" class="tsd-kind-icon">_get<wbr>Global<wbr>Propagator</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="propagationapi.html#disable" class="tsd-kind-icon">disable</a>
@@ -596,10 +527,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
