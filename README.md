@@ -43,7 +43,7 @@ The methods in this package perform no operations by default. This means they ca
 
 - An application you wish to instrument
 - [OpenTelemetry JS SDK][opentelemetry-js]
-- Node.js >=8.5.0 (14+ is preferred) or an ECMAScript 5+ compatible browser
+- Node.js >=8.12.0 (14+ is preferred) or an ECMAScript 5+ compatible browser
 
 **Note:** ECMAScript 5+ compatibility is for this package only. Please refer to the documentation for the SDK you are using to determine its minimum ECMAScript version.
 
