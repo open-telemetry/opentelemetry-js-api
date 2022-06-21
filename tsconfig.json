@@ -19,7 +19,8 @@
     "strictNullChecks": true,
     "target": "es5",
     "incremental": true,
-    "newLine": "LF"
+    "newLine": "LF",
+    "inlineSources": true
   },
   "include": [
     "src/**/*.ts",
@@ -32,6 +33,7 @@
     "name": "OpenTelemetry API for JavaScript",
     "out": "docs/out",
     "entryPoints": ["./src/index.ts"],
+    "excludePrivate": true,
     "hideGenerator": true
   }
 }

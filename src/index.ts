@@ -18,6 +18,7 @@ export * from './baggage/types';
 export { baggageEntryMetadataFromString } from './baggage/utils';
 export * from './common/Exception';
 export * from './common/Time';
+export * from './common/Attributes';
 export * from './diag';
 export * from './propagation/TextMapPropagator';
 export * from './trace/attributes';
@@ -33,8 +34,10 @@ export * from './trace/SpanOptions';
 export * from './trace/status';
 export * from './trace/trace_flags';
 export * from './trace/trace_state';
+export { createTraceState } from './trace/internal/utils';
 export * from './trace/tracer_provider';
 export * from './trace/tracer';
+export * from './trace/tracer_options';
 
 export {
   isSpanContextValid,

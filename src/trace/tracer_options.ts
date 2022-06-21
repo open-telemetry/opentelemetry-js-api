@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-import { Attributes, AttributeValue } from '../common/Attributes';
-
 /**
- * @deprecated please use {@link Attributes}
+ * An interface describes additional metadata of a tracer.
  */
-export type SpanAttributes = Attributes;
-
-/**
- * @deprecated please use {@link AttributeValue}
- */
-export type SpanAttributeValue = AttributeValue;
+export interface TracerOptions {
+  /**
+   * The schemaUrl of the tracer or instrumentation library
+   */
+  schemaUrl?: string;
+}

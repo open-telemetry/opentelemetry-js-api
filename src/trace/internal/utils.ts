@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-import { Attributes, AttributeValue } from '../common/Attributes';
+import { TraceState } from '../trace_state';
+import { TraceStateImpl } from './tracestate-impl';
 
-/**
- * @deprecated please use {@link Attributes}
- */
-export type SpanAttributes = Attributes;
 
-/**
- * @deprecated please use {@link AttributeValue}
- */
-export type SpanAttributeValue = AttributeValue;
+export function createTraceState(rawTraceState?: string): TraceState {
+  return new TraceStateImpl(rawTraceState);
+}

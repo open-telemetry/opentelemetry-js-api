@@ -16,6 +16,7 @@
 
 import { NoopTracer } from './NoopTracer';
 import { Tracer } from './tracer';
+import { TracerOptions } from './tracer_options';
 import { TracerProvider } from './tracer_provider';
 
 /**
@@ -25,7 +26,11 @@ import { TracerProvider } from './tracer_provider';
  * All operations are no-op.
  */
 export class NoopTracerProvider implements TracerProvider {
-  getTracer(_name?: string, _version?: string): Tracer {
+  getTracer(
+    _name?: string,
+    _version?: string,
+    _options?: TracerOptions
+  ): Tracer {
     return new NoopTracer();
   }
 }
