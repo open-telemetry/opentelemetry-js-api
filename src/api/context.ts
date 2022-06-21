@@ -90,7 +90,65 @@ export class ContextAPI {
   /**
    * Make a context active in the current execution. Returns a unique restore
    * key which must be used with detach to restore the previous context.
-   *
+   * 
+   * The context will remain the active context for the entire asynchronous
+   * execution unless another context is made active by calling `attach`,
+   * `with`, or `detach`, or if a `with` callback ends.
+   * 
+   * If `attach` is used within a `with` callback, the context which was active
+   * before `with` was called will be made the active context when the callback
+   * ends.
+   * 
+   * `with` should be preferred over `attach` unless there are strong reasons to use this method.
+   * 
+   * Note that every call to this operation should result in a corresponding call to detach Context.
+   * 
+   * @example <caption>Example of using context.attach to make context active in a sibling execution</caption>
+   * 
+   * ```typescript
+   * func1() // ctx1 is made active within this execution
+   * func2() // ctx1 is still active
+   * 
+   * function func1() {
+   *   api.context.attach(ctx1)
+   * }
+   * 
+   * function func2() {
+   *   api.context.active() // returns ctx1
+   * }
+   * ```
+   * 
+   * @example <caption>Example of using context.with to override the context set by context.attach</caption>
+   * 
+   * ```typescript
+   * func1()
+   * api.context.active() // returns ctx1
+   * api.context.with(ctx2, func2) // run func2 with ctx2 active
+   * api.context.active() // returns ctx1
+   * 
+   * function func1() {
+   *   api.context.attach(ctx1)
+   * }
+   * 
+   * function func2() {
+   *   api.context.active() // returns ctx2
+   * }
+   * ```
+   * 
+   * @example <caption>Example of incorrect use of context.attach inside a context.with callback</caption>
+   * 
+   * ```typescript
+   * api.context.active() // returns root context
+   * api.context.with(ctx1, foo)
+   * api.context.active() // returns root context
+   * 
+   * function foo() {
+   *   api.context.active()     // returns ctx1
+   *   api.context.attach(ctx2) // make ctx2 active
+   *   api.context.active()     // returns ctx2
+   * }
+   * ```
+   * 
    * @param context context to make active in the current execution
    * @returns a restore key
    */

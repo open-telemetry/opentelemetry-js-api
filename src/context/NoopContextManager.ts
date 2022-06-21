@@ -36,7 +36,7 @@ export class NoopContextManager implements types.ContextManager {
   }
 
   public attach(_context: types.Context): symbol {
-    return Symbol('NoopContextManager context restore key');
+    return Symbol('OpenTelemetry NoopContextManager context restore key');
   }
 
   public detach(_token: symbol): void {}
