@@ -91,7 +91,7 @@ export class ContextAPI {
    * Make a context active in the current execution. Returns a unique restore
    * key which must be used with detach to restore the previous context.
    *
-   * @param context context to make active in the current asynchronous execution
+   * @param context context to make active in the current execution
    * @returns a restore key
    */
   public attach(context: Context): symbol {
