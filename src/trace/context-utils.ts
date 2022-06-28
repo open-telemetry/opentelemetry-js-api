@@ -36,7 +36,7 @@ const SPAN_KEY = createContextKey('OpenTelemetry Context Key SPAN');
 }
 
 /**
- * Gets the current span from the current context, if one exists.
+ * Gets the span from the current context, if one exists.
  */
 export function getCurrentSpan(): Span | undefined {
   const ctx = ContextAPI.getInstance().active();
