@@ -35,6 +35,7 @@ import { DiagAPI } from '../../src/api/diag';
 import { NonRecordingSpan } from '../../src/trace/NonRecordingSpan';
 import { NoopTracer } from '../../src/trace/NoopTracer';
 import { NoopTracerProvider } from '../../src/trace/NoopTracerProvider';
+import { ContextManager } from '../../src';
 
 // DiagLogger implementation
 const diagLoggerFunctions = [
@@ -50,7 +51,15 @@ describe('API', () => {
     const tracer = api.trace.getTracerProvider();
     assert.ok(tracer);
     assert.strictEqual(typeof tracer, 'object');
-  });
+  }),
+  it('getCurrentspan should get the current span', () => {
+    const span = new NonRecordingSpan();
+    const ctx = trace.setSpan(ROOT_CONTEXT, span);
+    context.setGlobalContextManager({ active: () => ctx } as any as ContextManager);
+    
+    const active = trace.getCurrentSpan();
+    assert.strictEqual(active, span);
+  }),
 
   describe('Context', () => {
     it('with should forward this, arguments and return value', () => {
