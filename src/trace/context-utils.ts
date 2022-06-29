@@ -31,7 +31,7 @@ const SPAN_KEY = createContextKey('OpenTelemetry Context Key SPAN');
  *
  * @param context context to get span from
  */
- export function getSpan(context: Context): Span | undefined {
+export function getSpan(context: Context): Span | undefined {
   return (context.getValue(SPAN_KEY) as Span) || undefined;
 }
 
