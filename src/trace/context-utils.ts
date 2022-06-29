@@ -19,7 +19,7 @@ import { Context } from '../context/types';
 import { Span } from './span';
 import { SpanContext } from './span_context';
 import { NonRecordingSpan } from './NonRecordingSpan';
-import { context } from '..';
+import { ContextAPI } from '../api/context';
 
 /**
  * span key
@@ -39,7 +39,7 @@ export function getSpan(context: Context): Span | undefined {
  * Gets the span from the current context, if one exists.
  */
 export function getCurrentSpan(): Span | undefined {
-  return getSpan(context.active());
+  return getSpan(ContextAPI.getInstance().active());
 }
 
 /**
