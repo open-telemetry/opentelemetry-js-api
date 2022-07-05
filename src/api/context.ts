@@ -88,20 +88,21 @@ export class ContextAPI {
   }
 
   /**
+   * @experimental this operation should be considered experimental and may make use of experimental APIs.
+   * {@link with} should be preferred over `attach`/{@link detach} unless there are strong reasons to use this method.
+   * 
    * Make a context active in the current execution. Returns a unique restore
    * key which must be used with detach to restore the previous context.
    * 
    * The context will remain the active context for the entire asynchronous
    * execution unless another context is made active by calling `attach`,
-   * `with`, or `detach`, or if a `with` callback ends.
+   * {@link with}, or {@link detach}, or if a {@link with} callback ends.
    * 
-   * If `attach` is used within a `with` callback, the context which was active
-   * before `with` was called will be made the active context when the callback
+   * If `attach` is used within a {@link with} callback, the context which was active
+   * before {@link with} was called will be made the active context when the callback
    * ends.
    * 
-   * `with` should be preferred over `attach` unless there are strong reasons to use this method.
-   * 
-   * Note that every call to this operation should result in a corresponding call to detach Context.
+   * Note that every call to this operation should result in a corresponding call to {@link detach}.
    * 
    * @example <caption>Example of using context.attach to make context active in a sibling execution</caption>
    * 
@@ -157,6 +158,9 @@ export class ContextAPI {
   }
 
   /**
+   * @experimental this operation should be considered experimental and may make use of experimental APIs.
+   * {@link with} should be preferred over {@link attach}/`detach` unless there are strong reasons to use this method.
+   *
    * Restore the context which was active when attach was called using the restore
    * token returned by attach.
    *
