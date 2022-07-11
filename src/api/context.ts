@@ -102,7 +102,7 @@ export class ContextAPI {
    * before {@link with} was called will be made the active context when the callback
    * ends.
    * 
-   * Note that every call to this operation should result in a corresponding call to {@link detach}.
+   * Note that every call to this operation should result in a corresponding call to {@link detach} in the reverse order.
    * 
    * @example <caption>Example of using context.attach to make context active in a sibling execution</caption>
    * 
