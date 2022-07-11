@@ -107,9 +107,6 @@ export class ContextAPI {
    * @example <caption>Example of using context.attach to make context active in a sibling execution</caption>
    * 
    * ```typescript
-   * func1() // ctx1 is made active within this execution
-   * func2() // ctx1 is still active
-   * 
    * function func1() {
    *   api.context.attach(ctx1)
    * }
@@ -117,16 +114,14 @@ export class ContextAPI {
    * function func2() {
    *   api.context.active() // returns ctx1
    * }
+   * 
+   * func1() // ctx1 is made active within this execution
+   * func2() // ctx1 is still active
    * ```
    * 
    * @example <caption>Example of using context.with to override the context set by context.attach</caption>
    * 
    * ```typescript
-   * func1()
-   * api.context.active() // returns ctx1
-   * api.context.with(ctx2, func2) // run func2 with ctx2 active
-   * api.context.active() // returns ctx1
-   * 
    * function func1() {
    *   api.context.attach(ctx1)
    * }
@@ -134,20 +129,25 @@ export class ContextAPI {
    * function func2() {
    *   api.context.active() // returns ctx2
    * }
+   * 
+   * func1()
+   * api.context.active() // returns ctx1
+   * api.context.with(ctx2, func2) // run func2 with ctx2 active
+   * api.context.active() // returns ctx1
    * ```
    * 
-   * @example <caption>Example of incorrect use of context.attach inside a context.with callback</caption>
+   * @example <caption>Example of incorrect use of context.attach inside a context.with callback. This is incorrect because attach is called within a with callback, but there is no corresponding detach within the same callback.</caption>
    * 
    * ```typescript
-   * api.context.active() // returns root context
-   * api.context.with(ctx1, foo)
-   * api.context.active() // returns root context
-   * 
    * function foo() {
    *   api.context.active()     // returns ctx1
    *   api.context.attach(ctx2) // make ctx2 active
    *   api.context.active()     // returns ctx2
    * }
+   * 
+   * api.context.active() // returns root context
+   * api.context.with(ctx1, foo)
+   * api.context.active() // returns root context
    * ```
    * 
    * @param context context to make active in the current execution
