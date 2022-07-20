@@ -52,12 +52,12 @@ describe('API', () => {
     assert.strictEqual(typeof tracer, 'object');
   });
 
-  it('getCurrentSpan should get the current span', () => {
+  it('getActiveSpan should get the current span', () => {
     const span = new NonRecordingSpan();
     const ctx = trace.setSpan(ROOT_CONTEXT, span);
     context.setGlobalContextManager({ active: () => ctx, disable: () => {} } as any);
     
-    const active = trace.getCurrentSpan();
+    const active = trace.getActiveSpan();
     assert.strictEqual(active, span);
 
     context.disable();

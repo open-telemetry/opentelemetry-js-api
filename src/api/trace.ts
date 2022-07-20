@@ -28,7 +28,7 @@ import { Tracer } from '../trace/tracer';
 import { TracerProvider } from '../trace/tracer_provider';
 import {
   deleteSpan,
-  getCurrentSpan,
+  getActiveSpan,
   getSpan,
   getSpanContext,
   setSpan,
@@ -103,7 +103,7 @@ export class TraceAPI {
 
   public getSpan = getSpan;
 
-  public getCurrentSpan = getCurrentSpan;
+  public getActiveSpan = getActiveSpan;
 
   public getSpanContext = getSpanContext;
 

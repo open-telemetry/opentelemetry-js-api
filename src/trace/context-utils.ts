@@ -38,7 +38,7 @@ export function getSpan(context: Context): Span | undefined {
 /**
  * Gets the span from the current context, if one exists.
  */
-export function getCurrentSpan(): Span | undefined {
+export function getActiveSpan(): Span | undefined {
   return getSpan(ContextAPI.getInstance().active());
 }
 
