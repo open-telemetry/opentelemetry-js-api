@@ -34,6 +34,10 @@ describe('ProxyTracer', () => {
   let provider: ProxyTracerProvider;
   const sandbox = sinon.createSandbox();
 
+  const voidPromiseResolve = (): Promise<void> => {
+    return Promise.resolve()
+  }
+
   beforeEach(() => {
     provider = new ProxyTracerProvider();
   });
@@ -72,6 +76,8 @@ describe('ProxyTracer', () => {
       getTracerStub = sandbox.stub().returns(new NoopTracer());
       delegate = {
         getTracer: getTracerStub,
+        forceFlush: voidPromiseResolve,
+        shutdown: voidPromiseResolve,
       };
       provider.setDelegate(delegate);
     });
@@ -127,6 +133,8 @@ describe('ProxyTracer', () => {
         getTracer() {
           return delegateTracer;
         },
+        forceFlush: voidPromiseResolve,
+        shutdown: voidPromiseResolve,
       };
       provider.setDelegate(delegate);
     });

@@ -61,4 +61,12 @@ export class ProxyTracerProvider implements TracerProvider {
   ): Tracer | undefined {
     return this._delegate?.getTracer(name, version, options);
   }
+
+  shutdown(): Promise<void> {
+    return this.getDelegate().shutdown()
+  }
+
+  forceFlush(): Promise<void> {
+    return this.getDelegate().forceFlush();
+  }
 }
