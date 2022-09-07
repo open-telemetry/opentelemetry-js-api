@@ -23,6 +23,8 @@ export * from './diag';
 export * from './propagation/TextMapPropagator';
 export * from './trace/attributes';
 export * from './trace/link';
+export * from './trace/NoopTracer';
+export * from './trace/NoopTracerProvider';
 export * from './trace/ProxyTracer';
 export * from './trace/ProxyTracerProvider';
 export * from './trace/Sampler';
