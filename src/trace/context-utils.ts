@@ -31,14 +31,14 @@ const SPAN_KEY = createContextKey('OpenTelemetry Context Key SPAN');
  *
  * @param context context to get span from
  */
-export function getSpan(context: Context): Span | undefined {
+export function getSpan(context: Context): Span {
   return (context.getValue(SPAN_KEY) as Span) || new NonRecordingSpan();
 }
 
 /**
  * Gets the span from the current context, if one exists.
  */
-export function getActiveSpan(): Span | undefined {
+export function getActiveSpan(): Span {
   return getSpan(ContextAPI.getInstance().active());
 }
 
