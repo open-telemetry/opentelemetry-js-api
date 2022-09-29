@@ -35,6 +35,7 @@ import { DiagAPI } from '../../src/api/diag';
 import { NonRecordingSpan } from '../../src/trace/NonRecordingSpan';
 import { NoopTracer } from '../../src/trace/NoopTracer';
 import { NoopTracerProvider } from '../../src/trace/NoopTracerProvider';
+import { INVALID_SPAN_CONTEXT } from '../../src/trace/invalid-span-constants';
 
 // DiagLogger implementation
 const diagLoggerFunctions = [
@@ -56,11 +57,23 @@ describe('API', () => {
     const span = new NonRecordingSpan();
     const ctx = trace.setSpan(ROOT_CONTEXT, span);
     context.setGlobalContextManager({ active: () => ctx, disable: () => {} } as any);
-    
+
     const active = trace.getActiveSpan();
     assert.strictEqual(active, span);
 
     context.disable();
+  });
+
+  it('setSpanContext and getSpanContext should set and get span context', () => {
+    const tracer = api.trace.getTracerProvider().getTracer('name');
+    const span = tracer.startSpan('test');
+    let ctx = ROOT_CONTEXT;
+
+    assert.equal(INVALID_SPAN_CONTEXT, span.spanContext());
+    assert.equal(INVALID_SPAN_CONTEXT, trace.getSpanContext(ctx));
+
+    ctx = trace.setSpanContext(ctx, span.spanContext());
+    assert.strictEqual(span.spanContext(), trace.getSpanContext(ctx));
   });
 
   describe('Context', () => {
