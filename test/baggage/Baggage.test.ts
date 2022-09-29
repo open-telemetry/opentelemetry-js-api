@@ -55,6 +55,15 @@ describe('Baggage', () => {
 
       assert.strictEqual(bag.getEntry('key')?.value, 'value');
     });
+
+    it('should return an invalid entry if none exists', () => {
+      const bag = propagation
+        .createBaggage();
+
+      const entry = bag.getEntry('key');
+      assert.ok(entry);
+      assert.equal(entry.value, '');
+    });
   });
 
   describe('set', () => {

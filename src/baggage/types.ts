@@ -61,7 +61,7 @@ export interface Baggage {
    *
    * @param key The key which identifies the BaggageEntry
    */
-  getEntry(key: string): BaggageEntry | undefined;
+  getEntry(key: string): BaggageEntry;
 
   /**
    * Get a list of all entries in the Baggage

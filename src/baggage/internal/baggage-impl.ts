@@ -23,10 +23,10 @@ export class BaggageImpl implements Baggage {
     this._entries = entries ? new Map(entries) : new Map();
   }
 
-  getEntry(key: string): BaggageEntry | undefined {
+  getEntry(key: string): BaggageEntry {
     const entry = this._entries.get(key);
     if (!entry) {
-      return undefined;
+      return { value: '' };
     }
 
     return Object.assign({}, entry);
