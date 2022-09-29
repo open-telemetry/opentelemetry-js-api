@@ -17,6 +17,7 @@
 import { createContextKey } from '../context/context';
 import { Context } from '../context/types';
 import { Baggage } from './types';
+import { createBaggage } from './utils';
 
 /**
  * Baggage key
@@ -29,8 +30,8 @@ const BAGGAGE_KEY = createContextKey('OpenTelemetry Baggage Key');
  * @param {Context} Context that manage all context values
  * @returns {Baggage} Extracted baggage from the context
  */
-export function getBaggage(context: Context): Baggage | undefined {
-  return (context.getValue(BAGGAGE_KEY) as Baggage) || undefined;
+export function getBaggage(context: Context): Baggage {
+  return (context.getValue(BAGGAGE_KEY) as Baggage) || createBaggage();
 }
 
 /**

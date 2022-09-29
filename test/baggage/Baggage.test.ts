@@ -140,6 +140,11 @@ describe('Baggage', () => {
 
       assert.strictEqual(bag, propagation.getBaggage(ctx));
     });
+
+    it('should get an empty baggage if none is in the context', () => {
+      const bag = propagation.getBaggage(ROOT_CONTEXT);
+      assert.deepEqual(propagation.createBaggage(), bag);
+    });
   });
 
   describe('metadata', () => {
