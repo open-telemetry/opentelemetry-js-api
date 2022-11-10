@@ -1,4 +1,9 @@
 
+> **Warning**
+> This repository has been archived.
+> The [`@opentelemetry/api`](https://www.npmjs.com/package/@opentelemetry/api) source has been moved to <https://github.com/open-telemetry/opentelemetry-js/tree/main/api>.
+> This repository is kept for historical purposes only.
+
 ---
 <p align="center">
   <strong>
